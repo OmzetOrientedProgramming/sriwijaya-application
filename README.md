@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a PWA front-end client repository for Software Engineering Project
+This is a PWA front-end client repository for Software Engineering Project using Next.js, Typescript, twin.macro, and react-query.
 
 ## Installation & Development
 
