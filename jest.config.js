@@ -10,13 +10,13 @@ module.exports = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
-  // modulePathIgnorePatterns: ["/pages/"],
+  modulePathIgnorePatterns: ["/pages/"],
   transform: {
     "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-    // "^.+\\.css$": "<rootDir>/cssTransform.js",
+    "^.+\\.css$": "<rootDir>/cssTransform.js",
   },
   transformIgnorePatterns: ["/node_modules/"],
-  // moduleNameMapper: {
-  //   "^.+\\.module\\.(css)$": "identity-obj-proxy",
-  // },
+  moduleNameMapper: {
+    "^.+\\.module\\.(css)$": "identity-obj-proxy",
+  },
 };

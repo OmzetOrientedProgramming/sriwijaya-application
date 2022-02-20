@@ -1,3 +1,5 @@
+// Alternative to react-detect-offline
+
 import React, { useState, useEffect, useContext } from 'react';
 
 const OnlineStatusContext = React.createContext(true);
@@ -31,6 +33,26 @@ export const OnlineStatusProvider: React.FC = ({ children }) => {
 };
 
 export const useOnlineStatus = () => {
-  const store = useContext(OnlineStatusContext);
-  return store;
+  return useContext(OnlineStatusContext);
+};
+
+// Usage example in Layout.tsx
+// also add wrap OnlineStatusProvider in _app.tsx
+export const Example = () => {
+  const isOnline = useOnlineStatus();
+  const [status, setStatus] = useState(isOnline);
+
+  useEffect(() => {
+    setStatus(isOnline);
+  }, [isOnline]);
+
+  return (
+    <>
+      {!status && (
+        <div tw="bg-yellow-300 w-full fixed bottom-10 text-center">
+          You are Offline!
+        </div>
+      )}
+    </>
+  );
 };
