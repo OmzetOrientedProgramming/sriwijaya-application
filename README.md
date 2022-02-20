@@ -1,5 +1,8 @@
 # Sriwijaya Front-End Application
 
+[![pipeline status](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2022/Kelas-B/OOP/sriwijaya-application/badges/master/pipeline.svg)](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2022/Kelas-B/OOP/sriwijaya-application/-/commits/master)
+[![coverage report](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2022/Kelas-B/OOP/sriwijaya-application/badges/master/coverage.svg)](https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2022/Kelas-B/OOP/sriwijaya-application/-/commits/master)
+
 ## Description
 
 This is a PWA front-end client repository for Software Engineering Project using Next.js, Typescript, twin.macro, and react-query.
