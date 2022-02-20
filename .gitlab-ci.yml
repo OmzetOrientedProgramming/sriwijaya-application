@@ -44,8 +44,8 @@ staging:
   image: node:latest
 
   variables:
-    PROJECT_NAME: app-wave-staging
-    STAGING_URL: app-wave-staging.vercel.app
+    PROJECT_NAME: app-wave
+    STAGING_URL: $PROJECT_NAME-staging.vercel.app
 
   rules:
     - if: $CI_COMMIT_BRANCH == 'staging'
@@ -70,7 +70,7 @@ prod:
 
   variables:
     PROJECT_NAME: app-wave
-    PROD_URL: app-wave.vercel.app
+    PROD_URL: $PROJECT_NAME.vercel.app
 
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
