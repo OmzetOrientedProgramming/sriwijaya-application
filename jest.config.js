@@ -3,6 +3,7 @@ module.exports = {
   coverageDirectory: "coverage",
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
+    "!**/{_app.tsx,_document.tsx,jest.setup.ts}",
     "!**/*.d.ts",
     "!**/node_modules/**",
   ],
@@ -10,7 +11,6 @@ module.exports = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
-  modulePathIgnorePatterns: ["/pages/"],
   transform: {
     "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/babel-jest",
     "^.+\\.css$": "<rootDir>/cssTransform.js",
