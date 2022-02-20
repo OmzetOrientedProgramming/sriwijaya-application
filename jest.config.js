@@ -19,4 +19,5 @@ module.exports = {
   moduleNameMapper: {
     "^.+\\.module\\.(css)$": "identity-obj-proxy",
   },
+  testResultsProcessor: "jest-sonar-reporter",
 };

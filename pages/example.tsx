@@ -1,6 +1,6 @@
 import React from 'react';
 import 'twin.macro';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 
 import Button from '../components/Example/Button';
 import { Layout } from '../components/Utils/Layout';
@@ -17,7 +17,8 @@ const getData = async () => {
 };
 
 const Example: React.FC = () => {
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
+  console.log(queryClient);
 
   // Query hook
   const { data, status, error } = useQuery('data', getData);
