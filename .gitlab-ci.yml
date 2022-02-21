@@ -40,21 +40,21 @@ test:
       cobertura: coverage/cobertura-coverage.xml
 
 SonarScanner Dev:
-image:
-  name: sonarsource/sonar-scanner-cli:latest
-  entrypoint: [""]
-stage: test
-script:
-  - sonar-scanner
-    -Dsonar.host.url=$SONARQUBE_HOST_URL
-    -Dsonar.login=$SONARQUBE_TOKEN
-    -Dsonar.branch.name=$CI_COMMIT_REF_NAME
-    -Dsonar.branch.target=staging
-    -Dsonar.projectKey=$SONARQUBE_PROJECT_KEY
-    -Dproject.settings=./sonar-project.properties
-except:
-  - master
-  - staging
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: test
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=$SONARQUBE_HOST_URL
+      -Dsonar.login=$SONARQUBE_TOKEN
+      -Dsonar.branch.name=$CI_COMMIT_REF_NAME
+      -Dsonar.branch.target=staging
+      -Dsonar.projectKey=$SONARQUBE_PROJECT_KEY
+      -Dproject.settings=./sonar-project.properties
+  except:
+    - master
+    - staging
 
 SonarScanner:
   image:
