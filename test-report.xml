@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\tests\pages\offline.test.tsx">
-    <testCase name="renders offline status" duration="611"/>
+  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/tests/pages/offline.test.tsx">
+    <testCase name="renders offline status" duration="73"/>
   </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\tests\pages\index.test.tsx">
-    <testCase name="renders a title" duration="1122"/>
+  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/tests/pages/index.test.tsx">
+    <testCase name="renders a title" duration="116"/>
   </file>
 </testExecutions>
