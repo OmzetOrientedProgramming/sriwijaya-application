@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\api\exampleService.test.tsx">
-    <testCase name="getExample() getExample return correct list" duration="77"/>
-    <testCase name="postExample() postExample return correct list" duration="31"/>
+    <testCase name="getExample() getExample return correct list" duration="87"/>
+    <testCase name="postExample() postExample return correct list" duration="14"/>
   </file>
   <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\index.test.tsx">
-    <testCase name="renders a title" duration="888"/>
-  </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\example.test.tsx">
-    <testCase name="useGetExample() page display data requested" duration="690"/>
-    <testCase name="useGetExample() page failed to display data requested" duration="123"/>
-    <testCase name="usePostExample() post button request successful" duration="210"/>
-    <testCase name="usePostExample() post button request failed" duration="185"/>
-    <testCase name="user interface component button link exist" duration="94"/>
+    <testCase name="renders a title" duration="1647"/>
   </file>
   <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\_offline.test.tsx">
-    <testCase name="renders offline status" duration="221"/>
+    <testCase name="renders offline status" duration="291"/>
+  </file>
+  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\example.test.tsx">
+    <testCase name="useGetExample() page display data requested" duration="583"/>
+    <testCase name="useGetExample() page failed to display data requested" duration="124"/>
+    <testCase name="usePostExample() post button request successful" duration="187"/>
+    <testCase name="usePostExample() post button request failed" duration="170"/>
+    <testCase name="user interface component button link exist" duration="166"/>
   </file>
 </testExecutions>

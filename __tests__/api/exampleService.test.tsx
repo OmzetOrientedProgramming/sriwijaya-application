@@ -1,5 +1,5 @@
 import { cleanup } from '@testing-library/react';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { headers } from '../../api/constants';
 import { getExample, postExample } from '../../api/services/exampleService';
 import {

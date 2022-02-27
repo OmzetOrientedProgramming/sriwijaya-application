@@ -95,26 +95,20 @@ describe('usePostExample()', () => {
     mockedAxios.post.mockResolvedValueOnce(mockedResponse);
 
     render(
-      <>
-        {/* <Toaster /> */}
-        <Wrapper>
-          <Example />
-        </Wrapper>
-      </>
+      <Wrapper>
+        <Example />
+      </Wrapper>
     );
 
     fireEvent.click(screen.getByText('Click to Post'));
 
     await waitFor(() => {
-      null;
-      // expect(screen.getByText('Post Success!')).toBeInTheDocument();
+      expect(mockedAxios.post).toHaveBeenCalledTimes(1);
+      expect(mockedAxios.post).toHaveBeenCalledWith(
+        'https://reqres.in/api/users',
+        { headers: headers, params: postParams }
+      );
     });
-
-    expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockedAxios.post).toHaveBeenCalledWith(
-      'https://reqres.in/api/users',
-      { headers: headers, params: postParams }
-    );
   });
 
   // Test expect not actually helpful yet
@@ -132,10 +126,8 @@ describe('usePostExample()', () => {
     fireEvent.click(screen.getByText('Click to Post'));
 
     await waitFor(() => {
-      null;
+      expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     });
-
-    expect(mockedAxios.get).toHaveBeenCalledTimes(1);
   });
 });
 
