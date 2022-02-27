@@ -11,7 +11,7 @@ This is a PWA front-end client repository for Software Engineering Project using
 
 1. Clone this repository
    ```
-   git clone https://gitlab.com/omzet-oriented-programming/sriwijaya-application.git
+   git clone https://gitlab.cs.ui.ac.id/ppl-fasilkom-ui/2022/Kelas-B/OOP/sriwijaya-application.git
    ```
 2. Instal all dependencies (using node v16)
    ```

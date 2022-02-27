@@ -1,9 +1,9 @@
-// Change to connect backend URL
-export const baseUrl = 'https://reqres.in/api'
+// Add backend URL to request
+export const baseUrlExample = 'https://reqres.in/api'
 
 const endpoint = {
   // Add more URL endpoints to request here
-  example: `${baseUrl}/users`,
+  example: `${baseUrlExample}/users`,
 }
 
 export default endpoint

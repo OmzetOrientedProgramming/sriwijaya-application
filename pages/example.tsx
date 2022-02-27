@@ -2,13 +2,9 @@ import React from 'react';
 import 'twin.macro';
 import Head from 'next/head';
 import toast from 'react-hot-toast';
-import { useQueryClient } from 'react-query';
-import { useRouter } from 'next/router';
 
 import { Layout } from '../components/Utils/Layout';
 import Button from '../components/Example/Button';
-
-// import
 import { useGetExample, usePostExample } from '../api/hooks/exampleHooks';
 
 const dummyPost = {
@@ -17,20 +13,17 @@ const dummyPost = {
 };
 
 const Example: React.FC = () => {
-  // Might be used later
-  const router = useRouter();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   // POST Request Example (using hook made from ./api)
   const { mutate: postRegistration, isLoading: isPostingRegistration } =
     usePostExample(dummyPost, {
       onSuccess: (res: any) => {
-        console.log(res);
+        // console.log(res);
         toast.success('Post Success!');
-        // router.push('/'); // redirect
       },
       onError: (err: any) => {
-        console.log(err);
+        // console.log(err);
         toast.error(err.message, { position: 'top-right' });
       },
     });
@@ -40,12 +33,12 @@ const Example: React.FC = () => {
     { page: 2 },
     {
       onSuccess: (res: any) => {
-        console.log(res);
+        // console.log(res);
         toast.success('Get Success!');
         // queryClient.invalidateQueries(['get_example', params]);
       },
       onError: (err: any) => {
-        console.log(err);
+        // console.log(err);
         toast.error(err.message, { position: 'top-right' });
       },
     }
@@ -76,7 +69,7 @@ const Example: React.FC = () => {
 
           {isPostingRegistration && <p>Posting . . .</p>}
           <button tw="border p-4" onClick={() => postRegistration()}>
-            Post
+            Click to Post
           </button>
         </div>
       </Layout>

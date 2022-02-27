@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\tests\pages\offline.test.tsx">
-    <testCase name="renders offline status" duration="440"/>
+  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\api\exampleService.test.tsx">
+    <testCase name="getExample() getExample return correct list" duration="52"/>
+    <testCase name="postExample() postExample return correct list" duration="20"/>
   </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\tests\pages\index.test.tsx">
-    <testCase name="renders a title" duration="725"/>
+  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\index.test.tsx">
+    <testCase name="renders a title" duration="681"/>
   </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\tests\pages\example.test.tsx">
-    <testCase name="react-query works" duration="757"/>
+  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\_offline.test.tsx">
+    <testCase name="renders offline status" duration="533"/>
+  </file>
+  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\example.test.tsx">
+    <testCase name="useGetExample() page display data requested" duration="472"/>
+    <testCase name="useGetExample() page failed to display data requested" duration="115"/>
+    <testCase name="usePostExample() post button request successful" duration="182"/>
+    <testCase name="usePostExample() post button request failed" duration="126"/>
+    <testCase name="user interface component button link exist" duration="85"/>
   </file>
 </testExecutions>

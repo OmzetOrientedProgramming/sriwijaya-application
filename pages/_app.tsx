@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" href="/icon-192x192.png" />
       </Head>
       <GlobalStyles />
-      <Toaster position="bottom-center" />
+      <Toaster position="top-center" />
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
       </QueryClientProvider>
