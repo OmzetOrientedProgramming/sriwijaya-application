@@ -1,13 +1,15 @@
 import React from 'react';
 import 'twin.macro';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { getExample, postExample } from '../api/services/example';
-
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import Button from '../components/Example/Button';
-import { Layout } from '../components/Utils/Layout';
 import toast from 'react-hot-toast';
+import { useQueryClient } from 'react-query';
+import { useRouter } from 'next/router';
+
+import { Layout } from '../components/Utils/Layout';
+import Button from '../components/Example/Button';
+
+// import
+import { useGetExample, usePostExample } from '../api/hooks/exampleHooks';
 
 const dummyPost = {
   name: 'budi',
@@ -19,10 +21,10 @@ const Example: React.FC = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  // POST Request Example (Mutation)
+  // POST Request Example (using hook made from ./api)
   const { mutate: postRegistration, isLoading: isPostingRegistration } =
-    useMutation(() => postExample(dummyPost), {
-      onSuccess: (res) => {
+    usePostExample(dummyPost, {
+      onSuccess: (res: any) => {
         console.log(res);
         toast.success('Post Success!');
         // router.push('/'); // redirect
@@ -33,13 +35,13 @@ const Example: React.FC = () => {
       },
     });
 
-  // GET Request Example (Query)
-  const { data, status, error } = useQuery(
-    'get_example',
-    () => getExample({ page: 2 }),
+  // GET Request Example (using hook made from ./api)
+  const { data, status, error } = useGetExample(
+    { page: 2 },
     {
-      onSuccess: (res) => {
+      onSuccess: (res: any) => {
         console.log(res);
+        toast.success('Get Success!');
         // queryClient.invalidateQueries(['get_example', params]);
       },
       onError: (err: any) => {

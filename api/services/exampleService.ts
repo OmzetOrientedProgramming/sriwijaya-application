@@ -2,10 +2,14 @@
 
 import axios from 'axios'
 import endpoint from '../endpoint'
-import headers from '../headers'
+import { headers } from '../constants'
 
-export const getExample = (params: { page: number }) => {
-  console.log(params)
+// Export all params & axios function to create hooks
+export interface getExampleParams {
+  page: number
+}
+
+export const getExample = (params: getExampleParams) => {
   const options = {
     headers,
     params
@@ -13,7 +17,7 @@ export const getExample = (params: { page: number }) => {
   return axios.get(endpoint.example, options) 
 }
 
-interface postExampleParams {
+export interface postExampleParams {
   name: string,
   job: string
 }

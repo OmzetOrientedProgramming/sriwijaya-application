@@ -1,45 +1,73 @@
-import { render, screen } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react-hooks';
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+} from '@testing-library/react';
+// import { renderHook, act } from '@testing-library/react-hooks';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Example from '../../pages/example';
 
-// // THIRD mock axios
-// jest.mock('axios');
-// const mockAxios = axios as jest.Mocked<typeof axios>;
+// Mock axios
+jest.mock('axios');
+const mockAxios = axios as jest.Mocked<typeof axios>;
 
-// const dummyFactData = { fact: 'some-fact-1', length: 11 };
+const dummyFactData = {
+  data: {
+    data: [
+      { id: 1, email: 'a@gmail.com', first_name: 'Abik' },
+      { id: 2, email: 'b@gmail.com', first_name: 'Abik' },
+      { id: 3, email: 'c@gmail.com', first_name: 'Abik' },
+      { id: 4, email: 'd@gmail.com', first_name: 'Abik' },
+      { id: 5, email: 'e@gmail.com', first_name: 'Abik' },
+      { id: 6, email: 'f@gmail.com', first_name: 'Abik' },
+    ],
+  },
+};
 
-// test('react-query works', async () => {
-//   interface wrapperProps {
-//     children: React.ReactNode;
-//   }
+afterEach(() => {
+  cleanup();
+});
 
-//   const queryClient = new QueryClient();
+test('react-query works', async () => {
+  const queryClient = new QueryClient();
 
-//   const Wrapper: React.FC<wrapperProps> = ({ children }) => (
-//     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-//   );
+  const Wrapper: React.FC = ({ children }) => (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 
-//   //show loader
-//   render(
-//     <Wrapper>
-//       <Example />
-//     </Wrapper>
-//   );
-//   console.log(screen.debug());
-//   expect(screen.getByText('Loading data . . .')).toBeInTheDocument();
-//   expect(mockAxios.get).toHaveBeenCalledTimes(1);
+  mockAxios.get.mockImplementationOnce(() =>
+    Promise.resolve({
+      data: dummyFactData,
+    })
+  );
 
-//   // const { result, waitFor } = renderHook(
-//   //   () => useQuery('data', () => 'Hello'),
-//   //   { wrapper }
-//   // );
+  //show loader
+  render(
+    <Wrapper>
+      <Example />
+    </Wrapper>
+  );
+  console.log(screen.debug());
+  expect(screen.getByText('Loading data . . .')).toBeInTheDocument();
+  expect(mockAxios.get).toHaveBeenCalledTimes(1);
 
-//   // await waitFor(() => result.current.isSuccess);
+  // await waitFor(() => {
+  //   console.log('Waited...');
+  //   console.log(screen.debug());
+  //   expect(screen.getByText('b@gmail.com')).toBeInTheDocument();
+  // });
+  // const { result, waitFor } = renderHook(
+  //   () => useQuery('data', () => 'Hello'),
+  //   { wrapper }
+  // );
 
-//   // expect(result.current.data).toEqual('Hello');
-// });
+  // await waitFor(() => result.current.isSuccess);
+
+  // expect(result.current.data).toEqual('Hello');
+});
 
 // test('fetches data from catfact', async () => {
 //   // setup
