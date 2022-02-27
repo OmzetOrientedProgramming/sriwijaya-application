@@ -9,8 +9,6 @@
 /coverage/**
 !**/lcov.info
 !**/cobertura-coverage.xml
-!/coverage/lcov-report/
-!/coverage/lcov-report/**
 
 # next.js
 /.next/
