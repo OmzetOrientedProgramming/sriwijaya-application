@@ -5,6 +5,7 @@ export const baseUrlExample = 'https://reqres.in/api'
 const endpoint = {
   // Add more URL endpoints to request here
   example: `${baseUrlExample}/users`,
+  place: `${baseUrl}/place`
 }
 
 export default endpoint
