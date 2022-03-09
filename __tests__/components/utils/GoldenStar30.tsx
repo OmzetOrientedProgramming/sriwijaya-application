@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import {StarFull, StarHalf, StarEmpty} from '../../components/Utils/BlackStar14';
+import {StarFull, StarHalf, StarEmpty} from '../../../components/Utils/GoldenStar30';
 
-describe('Test For BlackStar ', () => {
+describe('Test For Golden Star ', () => {
   test('renders StarFull', () => {
     render(<StarFull/>);
   });

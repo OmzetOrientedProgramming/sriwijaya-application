@@ -68,4 +68,26 @@ describe('useGetPlaceDetail()', () => {
             { headers: headers }
         );
     });
+
+    test('post button request failed', async () => {
+        const mockRouter = createMockRouter({
+            query: { id: '1' }
+        });
+
+        const Wrapper = setupWrapper();
+    
+        mockedAxios.post.mockRejectedValueOnce(new Error('Async error'));
+    
+        render(
+        <Wrapper>
+            <RouterContext.Provider value={mockRouter}>
+                 <PlaceDetail />    
+            </RouterContext.Provider>
+        </Wrapper>
+        );
+    
+        await waitFor(() => {
+          expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+        });
+    });
 });
