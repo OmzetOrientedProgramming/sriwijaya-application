@@ -7,6 +7,7 @@ import {
 } from '@testing-library/react';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
+
 import Example from '../pages/example';
 import { headers } from '../api/constants';
 import {

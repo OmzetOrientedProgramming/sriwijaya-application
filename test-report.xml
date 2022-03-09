@@ -1,58 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/components/placeDetail/goldenStartComponent.tsx">
-    <testCase name="Test For GoldStar  renders StarFull" duration="73"/>
-    <testCase name="Test For GoldStar  renders StarHalf" duration="16"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/Layout.test.tsx">
+    <testCase name="Rendering Layout renders children properly" duration="30"/>
+    <testCase name="Rendering Offline should render popup when offline" duration="6"/>
+    <testCase name="Rendering Navigation renders home to be active when pathname is home" duration="18"/>
+    <testCase name="Rendering Navigation renders none to be active when pathname is not in any of the navbar" duration="9"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/components/placeDetail/blackStartComponent.tsx">
-    <testCase name="Test For BlackStar  renders StarFull" duration="88"/>
-    <testCase name="Test For BlackStar  renders StarHalf" duration="34"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/placeDetail.test.tsx">
+    <testCase name="useGetPlaceDetail() page display place detail data" duration="51"/>
+    <testCase name="useGetPlaceDetail() post button request failed" duration="6"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/ListPlacesUI.test.tsx">
-    <testCase name="Test UI For List Places  page display data requested" duration="686"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/ListPlacesUI.test.tsx">
+    <testCase name="Test UI For List Places  page display data requested" duration="61"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/components/GoldenStar30.test.tsx">
-    <testCase name="Test For Golden Star  renders StarFull" duration="26"/>
-    <testCase name="Test For Golden Star  renders StarHalf" duration="18"/>
-    <testCase name="Test For Golden Star  renders StarEmpty" duration="5"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/example.test.tsx">
+    <testCase name="useGetExample() page display data requested" duration="26"/>
+    <testCase name="useGetExample() page failed to display data requested" duration="4"/>
+    <testCase name="usePostExample() post button request successful" duration="8"/>
+    <testCase name="usePostExample() post button request failed" duration="4"/>
+    <testCase name="user interface component button link exist" duration="2"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/_offline.test.tsx">
-    <testCase name="renders offline status" duration="72"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/Drawer.test.tsx">
+    <testCase name="Rendering Drawer shouldn&apos;t render portal root if Drawer is not opened" duration="8"/>
+    <testCase name="Rendering Drawer should render portal root if Drawer is opened" duration="17"/>
+    <testCase name="Rendering Drawer shouldn&apos;t render portal root if Overlay is clicked after portal opened" duration="10"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/index.test.tsx">
-    <testCase name="renders a title" duration="156"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/index.test.tsx">
+    <testCase name="renders a title" duration="34"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/components/utils/BlackStar14.tsx">
-    <testCase name="Test For BlackStar  renders StarFull" duration="59"/>
-    <testCase name="Test For BlackStar  renders StarHalf" duration="21"/>
-    <testCase name="Test For BlackStar  renders StarEmpty" duration="6"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/placeDetail/goldenStartComponent.tsx">
+    <testCase name="Test For GoldStar  renders StarFull" duration="10"/>
+    <testCase name="Test For GoldStar  renders StarHalf" duration="2"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/components/utils/GoldenStar30.tsx">
-    <testCase name="Test For Golden Star  renders StarFull" duration="72"/>
-    <testCase name="Test For Golden Star  renders StarHalf" duration="15"/>
-    <testCase name="Test For Golden Star  renders StarEmpty" duration="5"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/placeDetail/blackStartComponent.tsx">
+    <testCase name="Test For BlackStar  renders StarFull" duration="18"/>
+    <testCase name="Test For BlackStar  renders StarHalf" duration="2"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/components/BlackStar17.test.tsx">
-    <testCase name="Test For BlackStar  renders StarFull" duration="54"/>
-    <testCase name="Test For BlackStar  renders StarHalf" duration="5"/>
-    <testCase name="Test For BlackStar  renders StarEmpty" duration="4"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/utils/BlackStar14.tsx">
+    <testCase name="Test For BlackStar  renders StarFull" duration="7"/>
+    <testCase name="Test For BlackStar  renders StarHalf" duration="2"/>
+    <testCase name="Test For BlackStar  renders StarEmpty" duration="1"/>
   </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/api/exampleService.test.tsx">
-    <testCase name="getExample() getExample return correct list" duration="5"/>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/utils/GoldenStar30.tsx">
+    <testCase name="Test For Golden Star  renders StarFull" duration="7"/>
+    <testCase name="Test For Golden Star  renders StarHalf" duration="1"/>
+    <testCase name="Test For Golden Star  renders StarEmpty" duration="1"/>
+  </file>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/GoldenStar30.test.tsx">
+    <testCase name="Test For Golden Star  renders StarFull" duration="8"/>
+    <testCase name="Test For Golden Star  renders StarHalf" duration="2"/>
+    <testCase name="Test For Golden Star  renders StarEmpty" duration="1"/>
+  </file>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/_offline.test.tsx">
+    <testCase name="renders offline status" duration="16"/>
+  </file>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/components/BlackStar17.test.tsx">
+    <testCase name="Test For BlackStar  renders StarFull" duration="8"/>
+    <testCase name="Test For BlackStar  renders StarHalf" duration="1"/>
+    <testCase name="Test For BlackStar  renders StarEmpty" duration="1"/>
+  </file>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/api/PlaceDetailService.test.tsx">
+    <testCase name="getPlaceDetail() getPlaceDetail return correct data" duration="2"/>
+  </file>
+  <file path="/Users/sirka/Desktop/projects/ppl/sriwijaya-application/__tests__/api/exampleService.test.tsx">
+    <testCase name="getExample() getExample return correct list" duration="1"/>
     <testCase name="postExample() postExample return correct list" duration="1"/>
-  </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/api/PlaceDetailService.test.tsx">
-    <testCase name="getPlaceDetail() getPlaceDetail return correct data" duration="6"/>
-  </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/example.test.tsx">
-    <testCase name="useGetExample() page display data requested" duration="200"/>
-    <testCase name="useGetExample() page failed to display data requested" duration="138"/>
-    <testCase name="usePostExample() post button request successful" duration="85"/>
-    <testCase name="usePostExample() post button request failed" duration="43"/>
-    <testCase name="user interface component button link exist" duration="15"/>
-  </file>
-  <file path="/Users/mekari/Documents/personal/akademis/ppl/gitlab-cs/sriwijaya-application/__tests__/placeDetail.test.tsx">
-    <testCase name="useGetPlaceDetail() page display place detail data" duration="197"/>
-    <testCase name="useGetPlaceDetail() post button request failed" duration="34"/>
   </file>
 </testExecutions>
