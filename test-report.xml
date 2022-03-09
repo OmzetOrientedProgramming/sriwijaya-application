@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\api\exampleService.test.tsx">
-    <testCase name="getExample() getExample return correct list" duration="87"/>
-    <testCase name="postExample() postExample return correct list" duration="14"/>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/components/GoldenStar30.test.tsx">
+    <testCase name="Test For Golden Star  renders StarFull" duration="34"/>
+    <testCase name="Test For Golden Star  renders StarHalf" duration="13"/>
+    <testCase name="Test For Golden Star  renders StarEmpty" duration="5"/>
   </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\index.test.tsx">
-    <testCase name="renders a title" duration="1647"/>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/example.test.tsx">
+    <testCase name="useGetExample() page display data requested" duration="135"/>
+    <testCase name="useGetExample() page failed to display data requested" duration="48"/>
+    <testCase name="usePostExample() post button request successful" duration="36"/>
+    <testCase name="usePostExample() post button request failed" duration="42"/>
+    <testCase name="user interface component button link exist" duration="26"/>
   </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\_offline.test.tsx">
-    <testCase name="renders offline status" duration="291"/>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/components/BlackStar17.test.tsx">
+    <testCase name="Test For BlackStar  renders StarFull" duration="29"/>
+    <testCase name="Test For BlackStar  renders StarHalf" duration="13"/>
+    <testCase name="Test For BlackStar  renders StarEmpty" duration="5"/>
   </file>
-  <file path="C:\Users\Asus\Documents\Git\Kuliah\Sem6\PPL\sriwijaya-application\__tests__\example.test.tsx">
-    <testCase name="useGetExample() page display data requested" duration="583"/>
-    <testCase name="useGetExample() page failed to display data requested" duration="124"/>
-    <testCase name="usePostExample() post button request successful" duration="187"/>
-    <testCase name="usePostExample() post button request failed" duration="170"/>
-    <testCase name="user interface component button link exist" duration="166"/>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/api/exampleService.test.tsx">
+    <testCase name="getExample() getExample return correct list" duration="18"/>
+    <testCase name="postExample() postExample return correct list" duration="2"/>
+  </file>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/index.test.tsx">
+    <testCase name="renders a title" duration="108"/>
+  </file>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/_offline.test.tsx">
+    <testCase name="renders offline status" duration="41"/>
+  </file>
+  <file path="/home/haikalsusanto/university/ppl/sriwijaya-application/__tests__/ListPlacesUI.test.tsx">
+    <testCase name="Test UI For List Places  page display data requested" duration="247"/>
   </file>
 </testExecutions>
