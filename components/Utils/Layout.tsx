@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 export const Layout: React.FC = ({ children }) => {
   return (
     <div tw="min-h-screen flex flex-col items-center justify-center">
-      <div tw="min-h-screen w-full">{children}</div>
+      <div tw="min-h-screen w-full max-w-[360px]">{children}</div>
       <Detector
         render={({ online }) =>
           !online ? (
