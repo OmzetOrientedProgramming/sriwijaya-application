@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { styled, css } from 'twin.macro';
 
-import StarRating from "../ListPlace/StarRating"
+import StarRating from '../Utils/StarRating';
 
 interface CardPlaceProps {
   id: number;
-  //    image: string;
+  image: string;
   name: string;
   description: string;
   address: string;
@@ -19,32 +19,38 @@ const CardPlace: React.FC<CardPlaceProps> = (props) => {
   return (
     <Link href={`/place/${props.id}`}>
       <StyledCardPlaceContainer tw="shadow-md">
-        <StyledCardImageDiv src="/images/image-gunung.jpg" />
+        <StyledCardImageDiv src={props.image} />
         <div tw="px-2 py-2 flex flex-col justify-between leading-normal ">
           <div tw="mb-2">
             <div tw="mb-1">
-                <p tw="text-[20px] leading-tight overflow-hidden font-bold" 
-                    css={css`
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                `}>{props.name}</p>
-            </div>
-            <p tw="text-[12px] text-base overflow-hidden leading-normal"
+              <p
+                tw="text-[20px] leading-tight overflow-hidden font-bold"
                 css={css`
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-            `}
-            >{props.description}</p>
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                `}
+              >
+                {props.name}
+              </p>
+            </div>
+            <p
+              tw="text-[12px] text-base overflow-hidden leading-normal"
+              css={css`
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              `}
+            >
+              {props.description}
+            </p>
 
             <div tw="my-1 border-b-2 border-black"></div>
-
 
             <div tw="flex flex-row space-x-1">
               <p
                 tw="w-2/3 overflow-hidden text-[12px] text-base leading-normal"
                 css={css`
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                 `}
               >
                 {props.address}
@@ -55,14 +61,13 @@ const CardPlace: React.FC<CardPlaceProps> = (props) => {
               </p>
             </div>
 
-
             <div tw="flex flex-row space-x-1 justify-center items-center">
-                <div tw="w-1/2">
-                    <StarRating rating={props.rating}/>
-                </div>
-                <p tw="w-1/2 text-[12px] text-base leading-normal">
-                    {props.review_count} Reviews
-                </p>
+              <div tw="w-1/2">
+                <StarRating rating={props.rating} type={'golden'} size={'17'} />
+              </div>
+              <p tw="w-1/2 text-[12px] text-base leading-normal">
+                {props.review_count} Reviews
+              </p>
             </div>
           </div>
         </div>

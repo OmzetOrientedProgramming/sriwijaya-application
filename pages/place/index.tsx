@@ -35,13 +35,13 @@ const ListPlaces: React.FC = () => {
     };
   }, []);
 
-  const { data, status, error, refetch } = useGetListPlaces(
+  const { status, refetch } = useGetListPlaces(
     { limit: 10, page: page },
     {
       onSuccess: (res: any) => {
         if (res.data.places.length !== 0) {
-          setPlaces((places) => places.concat(res.data.places));
-          setPage((page) => page + 1);
+          setPlaces((oldPlaces) => oldPlaces.concat(res.data.places));
+          setPage((oldPage) => oldPage + 1);
         }
       },
       onError: (err: any) => {
@@ -66,6 +66,7 @@ const ListPlaces: React.FC = () => {
             <div key={detail.id}>
               <CardPlace
                 id={detail.id}
+                image={detail.image}
                 name={detail.name}
                 description={detail.description}
                 address={detail.address}
