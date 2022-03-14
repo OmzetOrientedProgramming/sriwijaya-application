@@ -33,7 +33,7 @@ const PlaceDetail: React.FC = () => {
       <Head>
         <title>Detail Tempat</title>
       </Head>
-      <Layout>
+      <Layout title="Detail" back={true}>
         <div tw="pt-0 pb-16 flex flex-col items-center min-h-screen w-full">
           {status === 'error' && <p>Error: {error}</p>}
           <div tw="my-4 mx-0 my-0 flex flex-col items-center justify-center">

@@ -70,12 +70,23 @@ const layoutMainNavbarProps = {
   activeItemHref: null,
 } as MainNavbarProps;
 
-const layoutMainHeaderProps = {
-  src: '/header/logo.png',
-  alt: 'Wave Logo',
-} as MainHeaderProps;
+interface LayoutProps {
+  title?: string;
+  back?: boolean;
+}
 
-export const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  title,
+  back = false,
+  children,
+}) => {
+  const layoutMainHeaderProps = {
+    src: '/header/logo.png',
+    alt: 'Wave Logo',
+    title: title,
+    back: back,
+  } as MainHeaderProps;
+
   const router = useRouter();
 
   const pathname = router.pathname;

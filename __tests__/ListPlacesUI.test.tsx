@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import ListPlaces, { handleScrollRefetch } from '../pages/place/index';
+import ListPlaces, { handleScrollRefetch } from '../pages/index';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { RouterContext } from 'next/dist/shared/lib/router-context';

@@ -2,18 +2,18 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { css } from 'twin.macro';
-import { Drawer } from '../components/Drawer';
-import AuthForm from '../components/LandingPage/AuthForm';
-import LandingWrapper from '../components/LandingPage/LandingWrapper';
-import Button from '../components/Utils/Button';
+import { Drawer } from '../../components/Drawer';
+import AuthForm from '../../components/LandingPage/AuthForm';
+import LandingWrapper from '../../components/LandingPage/LandingWrapper';
+import Button from '../../components/Utils/Button';
 
-const LandingPage: React.FC = () => {
+const Auth: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <LandingWrapper>
       <Head>
-        <title>Wave</title>
+        <title>Auth - Wave</title>
       </Head>
       <img
         src="/assets/wave-logo.png"
@@ -54,4 +54,4 @@ const LandingPage: React.FC = () => {
   );
 };
 
-export default LandingPage;
+export default Auth;
