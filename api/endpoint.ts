@@ -1,12 +1,14 @@
 // Base URL based on environment variable
-export const baseUrl = `${process.env.NEXT_PUBLIC_API_URL!}/api/v1`
-export const baseUrlMock = `${process.env.NEXT_PUBLIC_API_URL_MOCK!}/api/v1`
-export const baseUrlExample = 'https://reqres.in/api' // for initial example page only
+export const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/v1`;
+export const baseUrlMock = `${process.env.NEXT_PUBLIC_API_URL_MOCK!}/api/v1`;
+export const baseUrlExample = 'https://reqres.in/api'; // for initial example page only
+export const localURL = `${process.env.NEXT_PUBLIC_API_URL_LOCAL!}/api/v1`;
 
+console.log('localURL: ', localURL);
 const endpoint = {
   // Add more URL endpoints to request here
   example: `${baseUrlExample}/users`,
-  place: `${baseUrl}/place`
-}
+  place: `${localURL}/place`,
+};
 
-export default endpoint
+export default endpoint;

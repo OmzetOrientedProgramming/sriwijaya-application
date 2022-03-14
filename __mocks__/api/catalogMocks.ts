@@ -45,3 +45,21 @@ export const catalogPaginationSuccessResponse = {
     ],
   },
 };
+
+export const mockedResponse = {
+  data: {
+    status: 200,
+    message: 'success',
+    data: catalogPaginationSuccessResponse,
+  },
+  statusText: 'OK',
+  headers: {},
+  config: {},
+};
+
+export const getParams = {
+  id: '1',
+  name: '',
+  limit: '',
+  page: '',
+};

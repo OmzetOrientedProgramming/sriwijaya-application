@@ -33,6 +33,8 @@ const Example: React.FC = () => {
     {
       onSuccess: (res: any) => {
         // console.log(res);
+        console.log('res:', res);
+        console.log('status:', status);
         toast.success('Get Success!');
         // queryClient.invalidateQueries(['get_example', params]);
       },

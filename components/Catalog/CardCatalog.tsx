@@ -2,9 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import 'twin.macro';
 import { css, styled } from 'twin.macro';
+import endpoint from '../../api/endpoint';
 
 interface CardCatalogProps {
-  itemID: number;
+  placeID: string;
+  itemID: string;
   image: string;
   name: string;
   description: string;
@@ -13,7 +15,7 @@ interface CardCatalogProps {
 
 const CardCatalog: React.FC<CardCatalogProps> = (props) => {
   return (
-    <Link href={`/catalog/${props.itemID}`}>
+    <Link href={`/place/${props.placeID}/catalog/${props.itemID}`}>
       <StyledCardCatalogContainer tw="shadow-md">
         <StyledCardImageDiv src={props.image} />
         <div tw="py-4 px-3 flex flex-col">

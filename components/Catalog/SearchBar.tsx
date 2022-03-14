@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'twin.macro';
 
-const SearchBar: React.FC = () => {
+interface SearchBarFunctionProps {
+  onClick: any;
+  setInputText: any;
+}
+
+const SearchBar: React.FC<SearchBarFunctionProps> = (props) => {
+  let inputHandler = (e: any) => {
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    props.setInputText(lowerCase);
+  };
+
   return (
     <>
       <div tw="flex items-center justify-center">
         <div tw="mx-4 flex border-2 rounded w-full">
-          <input type="text" tw="w-10/12 px-4 py-2" placeholder="Search..." />
-          <button tw="w-2/12 flex items-center justify-center border-l">
+          <input
+            type="text"
+            tw="w-10/12 px-4 py-2"
+            placeholder="Search..."
+            onChange={inputHandler}
+          />
+          <button
+            tw="w-2/12 flex items-center justify-center border-l"
+            onClick={props.onClick}
+          >
             <svg
               tw="w-6 h-6 text-gray-600"
               fill="currentColor"

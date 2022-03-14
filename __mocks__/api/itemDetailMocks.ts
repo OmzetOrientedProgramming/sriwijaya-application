@@ -12,3 +12,19 @@ export const itemDetailSuccessResponse = {
       'mock_item_descriptions_0 mock_item_descriptions_0 mock_item_descriptions_0',
   },
 };
+
+export const mockedResponse = {
+  data: {
+    status: 200,
+    message: 'success',
+    data: itemDetailSuccessResponse,
+  },
+  statusText: 'OK',
+  headers: {},
+  config: {},
+};
+
+export const getParams = {
+  placeID: '1',
+  itemID: '1',
+};
