@@ -60,6 +60,6 @@ export const mockedResponse = {
 export const getParams = {
   id: '1',
   name: '',
-  limit: '',
-  page: '',
+  limit: 1,
+  page: 1,
 };

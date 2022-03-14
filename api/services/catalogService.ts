@@ -6,8 +6,8 @@ import { headers } from '../constants';
 export interface getCatalogParams {
   id: string;
   name?: string;
-  limit?: string;
-  page?: string;
+  limit?: number;
+  page?: number;
 }
 
 export const getCatalog = async (params: getCatalogParams) => {
