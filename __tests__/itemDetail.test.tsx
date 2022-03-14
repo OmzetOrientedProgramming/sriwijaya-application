@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
   cleanup,
   fireEvent,
@@ -6,45 +5,62 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import ItemDetail from '../pages/place/[id]/catalog/[item_id]';
+import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
-import { RouterContext } from 'next/dist/shared/lib/router-context';
+import ItemDetail from '../pages/place/[id]/catalog/[item_id]';
+import { headers } from '../api/constants';
+import { getParams, mockedResponse } from '../__mocks__/api/itemDetailMocks';
+import endpoint from '../api/endpoint';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 
+// Mock axios
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+beforeAll(() => {
+  console.error = jest.fn();
+});
+
+// Must do
 afterEach(() => {
   cleanup();
   jest.clearAllMocks();
 });
 
+// Setup for react-query hooks
 const setupWrapper = () => {
   const queryClient = new QueryClient();
 
-  const mockRouter = createMockRouter({
-    query: { session: 'Register' },
-  });
-
   const Wrapper: React.FC = ({ children }) => (
-    <RouterContext.Provider value={mockRouter}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </RouterContext.Provider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 
   return Wrapper;
 };
 
-describe('Test UI For Catalog ', () => {
-  console.error = jest.fn();
+describe('useGetItemDetail()', () => {
+  test('page display catalog data', async () => {
+    const mockRouter = createMockRouter({
+      query: { placeID: '1', itemID: '1' },
+    });
 
-  test('page display data requested', async () => {
     const Wrapper = setupWrapper();
+
+    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
 
     render(
       <Wrapper>
-        <ItemDetail />
+        <RouterContext.Provider value={mockRouter}>
+          <ItemDetail />
+        </RouterContext.Provider>
       </Wrapper>
     );
 
-    expect(screen.queryByText('mock_item_name_0')).toBeInTheDocument();
+    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
+    // expect(mockedAxios.get).toHaveBeenCalledWith(
+    //   `${endpoint.place}/${getParams.placeID}/catalog/${getParams.itemID}`,
+    //   { headers: headers }
+    // );
   });
 });
