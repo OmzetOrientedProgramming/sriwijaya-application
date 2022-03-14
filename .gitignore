@@ -8,7 +8,6 @@
 # testing
 /coverage/**
 !**/lcov.info
-!**/cobertura-coverage.xml
 
 # next.js
 /.next/
