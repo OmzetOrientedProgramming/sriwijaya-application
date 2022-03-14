@@ -6,9 +6,9 @@ export const baseUrlExample = 'https://reqres.in/api'; // for initial example pa
 const endpoint = {
   // Add more URL endpoints to request here
   example: `${baseUrlExample}/users`,
-  checkPhoneNumber: `${baseUrlMock}/auth/check-phone-number`,
-  verifyOTP: `${baseUrlMock}/verify-otp`,
-  register: `${baseUrlMock}/auth/register`,
+  checkPhoneNumber: `${baseUrl}/auth/check-phone-number`,
+  verifyOTP: `${baseUrl}/auth/verify-otp`,
+  registerUser: `${baseUrl}/auth/register`,
   place: `${baseUrl}/place`,
 };
 

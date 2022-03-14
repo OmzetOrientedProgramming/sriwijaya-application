@@ -3,10 +3,16 @@ import 'twin.macro';
 import { AuthFormContext } from '.';
 import Button from '../../Utils/Button';
 import { useFormContext } from 'react-hook-form';
-import { useCheckPhoneNumber } from '../../../api/hooks/registrationHooks';
+import { useCheckPhoneNumber } from '../../../api/hooks/authHooks';
 import toast from 'react-hot-toast';
 
-const InputPhone: React.FC = () => {
+import { AuthFormSession } from './types';
+
+interface InputPhoneProps {
+  session: AuthFormSession;
+}
+
+const InputPhone: React.FC<InputPhoneProps> = (props) => {
   const { setStep } = useContext(AuthFormContext);
   const {
     register,
@@ -14,7 +20,10 @@ const InputPhone: React.FC = () => {
     formState: { errors },
   } = useFormContext();
 
-  const { mutate: checkPhoneNumber } = useCheckPhoneNumber();
+  const { mutate: checkPhoneNumber, isLoading: isCheckingPhoneNumber } =
+    useCheckPhoneNumber();
+
+  const { session } = props;
 
   return (
     <>
@@ -53,7 +62,7 @@ const InputPhone: React.FC = () => {
         <Button
           onClick={handleSubmit((data: any) => {
             return checkPhoneNumber(
-              { session: 'register', phone_number: `0${data.phone}` },
+              { session, phone_number: `0${data.phone}` },
               {
                 onSuccess: (res: any) => {
                   // console.log(res);
@@ -67,7 +76,7 @@ const InputPhone: React.FC = () => {
             );
           })}
         >
-          Selanjutnya
+          {isCheckingPhoneNumber ? '. . .' : 'Selanjutnya'}
         </Button>
       </div>
     </>

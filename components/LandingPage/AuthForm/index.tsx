@@ -5,6 +5,8 @@ import { useForm, FormProvider } from 'react-hook-form';
 import InputOTP from './InputOTP';
 import InputName from './InputName';
 
+import { AuthFormSession } from './types';
+
 export const AuthFormContext = createContext<{
   step: number;
   setStep: any;
@@ -12,8 +14,11 @@ export const AuthFormContext = createContext<{
   step: 0,
   setStep: null,
 });
+interface AuthFormProps {
+  session: AuthFormSession;
+}
 
-const AuthForm: React.FC = () => {
+const AuthForm: React.FC<AuthFormProps> = (props) => {
   const [step, setStep] = useState(1);
 
   const methods = useForm({
@@ -26,6 +31,8 @@ const AuthForm: React.FC = () => {
     },
   });
 
+  const { session } = props;
+
   return (
     <AuthFormContext.Provider
       value={{
@@ -36,9 +43,9 @@ const AuthForm: React.FC = () => {
       <div tw="flex flex-col text-left">
         <FormProvider {...methods}>
           <form tw="flex flex-col text-left text-xs">
-            {step == 1 && <InputPhone />}
-            {step == 2 && <InputOTP />}
-            {step == 3 && <InputName />}
+            {step == 1 && <InputPhone session={session} />}
+            {step == 2 && <InputOTP session={session} />}
+            {step == 3 && <InputName session={session} />}
           </form>
         </FormProvider>
       </div>

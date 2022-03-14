@@ -1,14 +1,32 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from 'twin.macro';
 import { Drawer } from '../../components/Drawer';
 import AuthForm from '../../components/LandingPage/AuthForm';
+import { AuthFormSession } from '../../components/LandingPage/AuthForm/types';
 import LandingWrapper from '../../components/LandingPage/LandingWrapper';
 import Button from '../../components/Utils/Button';
 
 const Auth: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [authFormSession, setAuthFormSession] =
+    useState<AuthFormSession | null>(null);
+
+  const onRegister = () => {
+    setIsOpen(true);
+    setAuthFormSession('register');
+  };
+
+  const onLogin = () => {
+    setIsOpen(true);
+    setAuthFormSession('login');
+  };
+
+  useEffect(() => {
+    if (isOpen) return;
+    setAuthFormSession(null);
+  }, [isOpen]);
 
   return (
     <LandingWrapper>
@@ -22,7 +40,7 @@ const Auth: React.FC = () => {
           margin-bottom: 60px;
         `}
       />
-      <img src="/images/landingPage/illustration-1.png" alt="illustration" />
+      <img src="/images/LandingPage/illustration-1.png" alt="illustration" />
       <div tw="mt-6 mb-8">
         <h1 tw="text-base font-bold mb-2">Cari tempat seru</h1>
         <p tw="text-xs">
@@ -30,25 +48,21 @@ const Auth: React.FC = () => {
         </p>
       </div>
       <div tw="grid grid-cols-3 gap-x-2">
-        <img src="/images/landingPage/ellipse.svg" alt="ellipse" />
-        <img src="/images/landingPage/ellipse.svg" alt="ellipse" />
-        <img src="/images/landingPage/ellipse.svg" alt="ellipse" />
+        <img src="/images/LandingPage/ellipse.svg" alt="ellipse" />
+        <img src="/images/LandingPage/ellipse.svg" alt="ellipse" />
+        <img src="/images/LandingPage/ellipse.svg" alt="ellipse" />
       </div>
       <div tw="my-6 w-full">
-        <Link href="/auth/login">
-          <a>
-            <Button>Login</Button>
-          </a>
-        </Link>
+        <Button onClick={() => onLogin()}>Login</Button>
       </div>
       <div tw="text-xs flex justify-center items-center">
         <p tw="font-normal mr-1">Belum ada akun?</p>
-        <button onClick={() => setIsOpen(true)}>
-          <p tw="font-bold color[#003366]">Register</p>
+        <button tw="font-bold color[#003366]" onClick={() => onRegister()}>
+          Register
         </button>
       </div>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-        <AuthForm />
+        {authFormSession !== null && <AuthForm session={authFormSession} />}
       </Drawer>
     </LandingWrapper>
   );

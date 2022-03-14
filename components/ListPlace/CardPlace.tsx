@@ -81,7 +81,7 @@ export default CardPlace;
 const StyledCardPlaceContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
-  margin: 1.5rem 1rem;
+  margin: 0.75rem 1rem;
   border-radius: 0.6rem;
   overflow: hidden;
   align-items: center;
