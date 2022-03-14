@@ -1,48 +1,84 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import tw, { css, styled } from 'twin.macro';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useGetListPlaces } from '../api/hooks/listPlacesHooks';
+import CardPlace from '../components/ListPlace/CardPlace';
+
 import { Layout } from '../components/Utils/Layout';
 
-// Example creating styled component
-const Title = styled.h1`
-  font-size: 4rem;
-`;
+export const handleScrollRefetch = (refetch: any) => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    refetch();
+  }
+};
 
-const Home: React.FC = () => {
+interface IPlace {
+  id: number;
+  name: string;
+  description: string;
+  address: string;
+  distance: number;
+  rating: number;
+  review_count: number;
+  image: string;
+}
+
+const ListPlaces: React.FC = () => {
+  const [page, setPage] = useState(1);
+  const [places, setPlaces] = useState<Array<IPlace>>([]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => handleScrollRefetch(refetch));
+
+    return () => {
+      window.removeEventListener('scroll', () => handleScrollRefetch(refetch));
+    };
+  }, []);
+
+  const { status, refetch } = useGetListPlaces(
+    { limit: 5, page: page },
+    {
+      onSuccess: (res: any) => {
+        if (res.data.places.length !== 0) {
+          setPlaces((oldPlaces) => oldPlaces.concat(res.data.places));
+          setPage((oldPage) => oldPage + 1);
+        }
+      },
+      onError: (err: any) => {
+        toast.error(err.message, { position: 'top-right' });
+      },
+    }
+  );
+
   return (
     <Layout>
       <Head>
-        <title>Home</title>
+        <title>Beranda - Wave</title>
       </Head>
 
-      {/* Example styling with tailwind classes */}
-      <div tw="pt-8 pb-16 flex flex-col items-center justify-center min-h-screen w-full">
-        {/* Example styling with inline css/tailwind */}
-        <h1
-          css={[
-            css`
-              font-color: #f0f0f0;
-            `,
-            tw`text-xl font-bold`,
-          ]}
-        >
-          Next JS
-        </h1>
-
-        {/* Using previously made styled component*/}
-        <Title>Wave</Title>
-
-        <div tw="w-32 flex justify-between items-center">
-          <Link href="/example">
-            <button>Example</button>
-          </Link>
-          <Link href="/empty">
-            <button>Empty</button>
-          </Link>
-        </div>
+      <div
+        data-testid="wrapper"
+        tw="pt-8 pb-16 flex flex-col items-center justify-center min-h-screen w-full"
+      >
+        {status === 'loading' && <p tw="m-8">. . .</p>}
+        {status === 'success' &&
+          places.map((detail: any) => (
+            <div key={detail.id}>
+              <CardPlace
+                id={detail.id}
+                image={detail.image}
+                name={detail.name}
+                description={detail.description}
+                address={detail.address}
+                distance={detail.distance}
+                rating={detail.rating}
+                review_count={detail.review_count}
+              />
+            </div>
+          ))}
       </div>
     </Layout>
   );
 };
 
-export default Home;
+export default ListPlaces;
