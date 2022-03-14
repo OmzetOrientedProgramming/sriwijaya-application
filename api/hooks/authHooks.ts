@@ -1,9 +1,9 @@
 import { useMutation } from 'react-query';
 import {
-  registerCustomer,
+  registerUser,
   checkPhoneNumber,
   verifyOTP,
-} from '../services/registrationService';
+} from '../services/authService';
 
 export function useCheckPhoneNumber() {
   return useMutation(checkPhoneNumber);
@@ -13,6 +13,6 @@ export function useVerifyOTP() {
   return useMutation(verifyOTP);
 }
 
-export function useRegisterCustomer() {
-  return useMutation(registerCustomer);
+export function useRegisterUser() {
+  return useMutation(registerUser);
 }

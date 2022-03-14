@@ -5,8 +5,8 @@ import endpoint from '../../api/endpoint';
 import {
   checkPhoneNumber,
   verifyOTP,
-  registerCustomer,
-} from '../../api/services/registrationService';
+  registerUser,
+} from '../../api/services/authService';
 import {
   dummyCheckPhoneResponse,
   mockCheckPhoneResponse,
@@ -14,10 +14,10 @@ import {
   mockVerifyOTPResponse,
   verifyOTPParams,
   dummyVerifyOTPResponse,
-  mockRegisterCustomerResponse,
-  registerCustomerParams,
-  dummyRegisterCustomerResponse,
-} from '../../__mocks__/api/registrationMocks';
+  dummyRegisterUserResponse,
+  mockRegisterUserResponse,
+  registerUserParams,
+} from '../../__mocks__/api/authMocks';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -52,7 +52,6 @@ describe('checkPhoneNumber', () => {
 describe('verifyOTP', () => {
   test('verifyOTP return success', async () => {
     mockAxios.post.mockResolvedValueOnce(mockVerifyOTPResponse);
-
     expect(mockAxios.post).not.toHaveBeenCalled();
     const data = await verifyOTP(verifyOTPParams);
 
@@ -72,24 +71,23 @@ describe('verifyOTP', () => {
   });
 });
 
-describe('registerCustomer', () => {
-  test('registerCustomer return success', async () => {
-    mockAxios.post.mockResolvedValueOnce(mockRegisterCustomerResponse);
-
+describe('registerUser', () => {
+  test('registerUser return success', async () => {
+    mockAxios.post.mockResolvedValueOnce(mockRegisterUserResponse);
     expect(mockAxios.post).not.toHaveBeenCalled();
-    const data = await registerCustomer(registerCustomerParams);
+    const data = await registerUser(registerUserParams);
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(mockAxios.post).toHaveBeenCalledWith(
-      endpoint.register,
+      endpoint.registerUser,
       {
-        phone_number: registerCustomerParams.phone_number,
-        full_name: registerCustomerParams.full_name,
+        phone_number: registerUserParams.phone_number,
+        full_name: registerUserParams.full_name,
       },
       {
         headers: headers,
       }
     );
-    expect(data.data).toEqual(dummyRegisterCustomerResponse);
+    expect(data.data).toEqual(dummyRegisterUserResponse);
   });
 });

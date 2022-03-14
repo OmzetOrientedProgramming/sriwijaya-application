@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import 'twin.macro';
+
 import { useGetListPlaces } from '../api/hooks/listPlacesHooks';
 import CardPlace from '../components/ListPlace/CardPlace';
-
 import { Layout } from '../components/Utils/Layout';
 
 export const handleScrollRefetch = (refetch: any) => {
@@ -63,7 +64,7 @@ const ListPlaces: React.FC = () => {
         {status === 'loading' && <p tw="m-8">. . .</p>}
         {status === 'success' &&
           places.map((detail: any) => (
-            <div key={detail.id}>
+            <div tw="w-full" key={detail.id}>
               <CardPlace
                 id={detail.id}
                 image={detail.image}

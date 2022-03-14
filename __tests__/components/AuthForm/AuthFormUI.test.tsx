@@ -1,4 +1,10 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { act } from 'react-test-renderer';
 import AuthForm from '../../../components/LandingPage/AuthForm';
@@ -18,7 +24,7 @@ describe('InputPhone', () => {
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
-        <AuthForm />
+        <AuthForm session="register" />
       </QueryClientProvider>
     );
 
@@ -33,7 +39,7 @@ describe('InputPhone', () => {
     const queryClient = new QueryClient();
     render(
       <QueryClientProvider client={queryClient}>
-        <AuthForm />
+        <AuthForm session="register" />
       </QueryClientProvider>
     );
 
@@ -63,7 +69,7 @@ describe('InputOTP', () => {
   test('otp input field updates correctly', () => {
     render(
       <AuthFormWrapper>
-        <InputOTP />
+        <InputOTP session="register" />
       </AuthFormWrapper>
     );
 
@@ -89,7 +95,7 @@ describe('InputOTP', () => {
   test('error message displayed when invalid', async () => {
     render(
       <AuthFormWrapper>
-        <InputOTP />
+        <InputOTP session="register" />
       </AuthFormWrapper>
     );
 
@@ -108,7 +114,7 @@ describe('InputName', () => {
   test('name input field updates correctly', () => {
     render(
       <AuthFormWrapper>
-        <InputName />
+        <InputName session="register" />
       </AuthFormWrapper>
     );
 
@@ -122,7 +128,7 @@ describe('InputName', () => {
   test('error message displayed when invalid', async () => {
     render(
       <AuthFormWrapper>
-        <InputName />
+        <InputName session="register" />
       </AuthFormWrapper>
     );
     expect(screen.queryByText('*Name is required')).not.toBeInTheDocument();
@@ -143,7 +149,7 @@ describe('InputName', () => {
   test('error too long message displayed when invalid', async () => {
     render(
       <AuthFormWrapper>
-        <InputName />
+        <InputName session="register" />
       </AuthFormWrapper>
     );
 
