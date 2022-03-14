@@ -61,7 +61,7 @@ describe('useGetCatalog()', () => {
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(
       `${endpoint.place}/${getParams.id}/catalog`,
-      { headers: headers, params: { name: '', limit: '', page: '' } }
+      { headers: headers, params: { name: '', limit: 5, page: 1 } }
     );
   });
 });

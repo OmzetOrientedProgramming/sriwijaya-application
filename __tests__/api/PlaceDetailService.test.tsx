@@ -19,17 +19,17 @@ afterEach(() => {
 });
 
 describe('getPlaceDetail()', () => {
-    test('getPlaceDetail return correct data', async () => {
-      mockedAxios.get.mockResolvedValueOnce(mockedResponse);
-  
-      expect(mockedAxios.post).not.toHaveBeenCalled();
-      const data = await placeDetail(getParams);
-  
-      expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-      expect(mockedAxios.get).toHaveBeenCalledWith(
-        `${endpoint.place}/${getParams.id}`,
-        { headers: headers }
-      );
-      expect(data).toEqual(dummyResponse);
-    });
+  test('getPlaceDetail return correct data', async () => {
+    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
+
+    expect(mockedAxios.post).not.toHaveBeenCalled();
+    const data = await placeDetail(getParams);
+
+    expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+    expect(mockedAxios.get).toHaveBeenCalledWith(
+      `${endpoint.place}/${getParams.id}`,
+      { headers: headers }
+    );
+    expect(data).toEqual(dummyResponse);
+  });
 });

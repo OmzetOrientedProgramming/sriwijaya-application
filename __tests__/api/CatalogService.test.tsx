@@ -29,7 +29,7 @@ describe('getCatalog()', () => {
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(
       `${endpoint.place}/${getParams.id}/catalog`,
-      { headers: headers, params: { name: '', limit: '', page: '' } }
+      { headers: headers, params: { name: '', limit: 1, page: 1 } }
     );
     expect(data).toEqual(mockedResponse);
   });

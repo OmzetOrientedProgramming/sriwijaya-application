@@ -3,8 +3,9 @@ import tw, { theme, GlobalStyles as BaseStyles } from 'twin.macro'
 
 const customStyles = css({
   body: {
-    WebkitTapHighlightColor: theme`colors.purple.500`,
+    WebkitTapHighlightColor: theme`colors.blue.500`,
     ...tw`antialiased`,
+    // fontFamily: '"Open Sans"',
   },
 })
 
