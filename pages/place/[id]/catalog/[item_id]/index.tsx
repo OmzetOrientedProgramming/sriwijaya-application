@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import ItemDetailCard from '../../../../../components/ItemDetail/ItemDetailCard';
-import tw from 'twin.macro';
-import { itemDetailSuccessResponse } from '../../../../../__mocks__/api/itemDetailMocks';
+import 'twin.macro';
 
 import { Layout } from '../../../../../components/Utils/Layout';
 import { useRouter } from 'next/router';

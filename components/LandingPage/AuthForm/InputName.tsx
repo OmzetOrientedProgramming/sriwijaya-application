@@ -60,9 +60,9 @@ const InputName: React.FC<InputNameProps> = (props) => {
               },
               {
                 onSuccess: (res: any) => {
-                  let data = res.data;
-                  if (data.message !== 'success') return;
-                  const token = data.data.access_token;
+                  let resData = res.data;
+                  if (resData.message !== 'success') return;
+                  const token = resData.data.access_token;
                   nookies.set(null, 'token', token, {
                     path: '/',
                   });

@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import 'twin.macro';
 import { css, styled } from 'twin.macro';
-import endpoint from '../../api/endpoint';
 
 interface CardCatalogProps {
   placeID: string;
