@@ -35,7 +35,7 @@ const ItemDetail: React.FC = () => {
   console.log('data detail item: ', data);
   return (
     <>
-      <Layout>
+      <Layout title="Detail Item" back={true}>
         <Head>
           <title>Catalog</title>
         </Head>

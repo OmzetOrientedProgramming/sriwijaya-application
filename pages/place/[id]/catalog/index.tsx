@@ -213,7 +213,7 @@ const Catalog: React.FC = () => {
   console.log('items: ', items);
   return (
     <>
-      <Layout>
+      <Layout title="Katalog" back={true}>
         <Head>
           <title>Catalog</title>
         </Head>

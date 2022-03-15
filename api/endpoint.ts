@@ -10,7 +10,7 @@ const endpoint = {
   checkPhoneNumber: `${baseUrl}/auth/check-phone-number`,
   verifyOTP: `${baseUrl}/auth/verify-otp`,
   registerUser: `${baseUrl}/auth/register`,
-  place: `${baseUrl}/place`,
+  place: `${localURL}/place`,
 };
 
 export default endpoint;
