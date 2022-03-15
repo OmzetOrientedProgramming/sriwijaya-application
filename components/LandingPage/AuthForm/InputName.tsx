@@ -2,18 +2,27 @@ import Router from 'next/router';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import nookies from 'nookies';
 import 'twin.macro';
-import { useRegisterCustomer } from '../../../api/hooks/registrationHooks';
-import Button from '../../Utils/Button';
 
-const InputName: React.FC = () => {
+import { useRegisterUser } from '../../../api/hooks/authHooks';
+import Button from '../../Utils/Button';
+import { AuthFormSession } from './types';
+
+interface InputNameProps {
+  session: AuthFormSession;
+}
+
+const InputName: React.FC<InputNameProps> = (props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useFormContext();
 
-  const { mutate: registerCustomer } = useRegisterCustomer();
+  const { mutate: registerUser, isLoading } = useRegisterUser();
+
+  const { session } = props;
 
   return (
     <>
@@ -44,28 +53,32 @@ const InputName: React.FC = () => {
       <div tw="mt-6">
         <Button
           onClick={handleSubmit((data: any) => {
-            return registerCustomer(
+            return registerUser(
               {
                 phone_number: `0${data.phone}`,
                 full_name: data.name,
               },
               {
                 onSuccess: (res: any) => {
-                  // console.log(res);
+                  let data = res.data;
+                  if (data.message !== 'success') return;
+                  const token = data.data.access_token;
+                  nookies.set(null, 'token', token, {
+                    path: '/',
+                  });
                   Router.push({
                     pathname: '/auth/success',
-                    query: { session: 'Register' },
+                    query: { session },
                   });
                 },
                 onError: (err: any) => {
-                  // console.log(err);
                   toast.error(err.message, { position: 'top-right' });
                 },
               }
             );
           })}
         >
-          Selanjutnya
+          {isLoading ? '. . .' : 'Selanjutnya'}
         </Button>
       </div>
     </>

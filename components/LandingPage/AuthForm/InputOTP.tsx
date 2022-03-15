@@ -2,9 +2,13 @@ import React, { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import tw, { css } from 'twin.macro';
-import { AuthFormContext } from '.';
-import { useVerifyOTP } from '../../../api/hooks/registrationHooks';
+import nookies from 'nookies';
+import Router from 'next/router';
+
+import { useVerifyOTP } from '../../../api/hooks/authHooks';
 import Button from '../../Utils/Button';
+import { AuthFormContext } from '.';
+import { AuthFormSession } from './types';
 
 export const handleRef = (e: any) => {
   if (e.target.value !== '') {
@@ -18,11 +22,15 @@ export const handleRef = (e: any) => {
 
 export const combineArrayToString = (otpData: string[]) => {
   let res = '';
-  otpData.forEach((kode: string) => (res = res + kode));
+  otpData.map((kode: string) => (res = res + kode));
   return res;
 };
 
-const InputOTP: React.FC = () => {
+interface InputOTPProps {
+  session: AuthFormSession;
+}
+
+const InputOTP: React.FC<InputOTPProps> = (props) => {
   const { setStep } = useContext(AuthFormContext);
   const {
     register,
@@ -33,7 +41,9 @@ const InputOTP: React.FC = () => {
   } = useFormContext();
   const otpData = watch('otpArr');
 
-  const { mutate: verifyOTP } = useVerifyOTP();
+  const { mutate: verifyOTP, isLoading: isVerifyingOTP } = useVerifyOTP();
+
+  const { session } = props;
 
   return (
     <>
@@ -80,24 +90,35 @@ const InputOTP: React.FC = () => {
           onClick={handleSubmit((data: any) => {
             return verifyOTP(
               {
-                session: 'register',
+                session,
                 phone_number: `0${data.phone}`,
                 otp: data.otp,
               },
               {
                 onSuccess: (res: any) => {
-                  // console.log(res);
-                  setStep((step: number) => step + 1);
+                  console.log(res);
+                  let data = res?.data;
+                  if (data.message !== 'success') return;
+                  if (session === 'register')
+                    return setStep((step: number) => step + 1);
+
+                  const token = data.data.access_token;
+                  nookies.set(null, 'token', token, {
+                    path: '/',
+                  });
+                  Router.push({
+                    pathname: 'auth/success',
+                    query: { session },
+                  });
                 },
                 onError: (err: any) => {
-                  // console.log(err);
                   toast.error(err.message, { position: 'top-right' });
                 },
               }
             );
           })}
         >
-          Selanjutnya
+          {isVerifyingOTP ? '. . .' : 'Selanjutnya'}
         </Button>
       </div>
     </>

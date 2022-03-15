@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Drawer } from '../../components/Drawer';
 
 import { click } from '../../__mocks__/test-utils/interactions';

@@ -14,7 +14,7 @@ export const checkPhoneNumber = async ({
 }: checkPhoneNumberParams) => {
   const options = {
     headers,
-    params: { session: session },
+    params: { session },
   };
   const data = {
     phone_number,
@@ -37,33 +37,37 @@ export const verifyOTP = async ({
 }: verifyOTPParams) => {
   const options = {
     headers,
-    params: { session: session },
+    params: { session },
   };
+
   const data = {
     phone_number,
     otp,
   };
+
   const response = await axios.post(endpoint.verifyOTP, data, options);
   return response;
 };
 
-// Register Customer
-export interface registerCustomerParams {
+// Register user
+export interface registerUserParams {
   phone_number: string;
   full_name: string;
 }
 
-export const registerCustomer = async ({
+export const registerUser = async ({
   phone_number,
   full_name,
-}: registerCustomerParams) => {
+}: registerUserParams) => {
   const options = {
     headers,
   };
+
   const data = {
     phone_number,
     full_name,
   };
-  const response = await axios.post(endpoint.register, data, options);
+
+  const response = await axios.post(endpoint.registerUser, data, options);
   return response;
 };

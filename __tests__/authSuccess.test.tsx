@@ -12,7 +12,7 @@ afterEach(() => {
 
 test('renders correct status and redirects after some time', async () => {
   const mockRouter = createMockRouter({
-    query: { session: 'Register' },
+    query: { session: 'register' },
   });
 
   render(
@@ -21,7 +21,8 @@ test('renders correct status and redirects after some time', async () => {
     </RouterContext.Provider>
   );
 
-  expect(screen.getByText('Register berhasil!')).toBeInTheDocument();
+  expect(screen.getByText('register')).toBeInTheDocument();
+  expect(screen.getByText('berhasil!')).toBeInTheDocument();
 
   await act(async () => {
     await new Promise<void>((res) =>

@@ -39,14 +39,14 @@ export const verifyOTPParams = {
   otp: '068823',
 };
 
-// Register Customer
-export const dummyRegisterCustomerResponse = {
+// Register user
+export const dummyRegisterUserResponse = {
   status: 201,
   message: 'success',
   data: {
     id: 1,
-    full_name: 'budi budiman',
-    phone_number: '08136289317',
+    full_name: '',
+    phone_number: '',
     email: '',
     is_active: true,
     created_at: '2006-01-02T15:04:05Z07:00',
@@ -56,15 +56,15 @@ export const dummyRegisterCustomerResponse = {
   },
 };
 
-export const mockRegisterCustomerResponse: AxiosResponse = {
-  data: dummyRegisterCustomerResponse,
-  status: 200,
+export const mockRegisterUserResponse: AxiosResponse = {
+  data: dummyRegisterUserResponse,
+  status: 201,
   statusText: 'OK',
   headers: {},
   config: {},
 };
 
-export const registerCustomerParams = {
-  phone_number: '08136289317',
-  full_name: 'budi budiman',
+export const registerUserParams = {
+  phone_number: '087748176534',
+  full_name: 'Muhammad Mario Daloma',
 };

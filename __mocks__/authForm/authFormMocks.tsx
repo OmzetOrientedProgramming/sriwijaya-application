@@ -1,6 +1,9 @@
 import React, { createContext, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { AxiosResponse } from 'axios';
+
+import { AuthFormSession } from '../../components/LandingPage/AuthForm/types';
 
 interface AuthFormWrapperProps {
   phone_number?: string;
@@ -28,7 +31,7 @@ export const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
   const methods = useForm({
     mode: 'onChange',
     defaultValues: {
-      phone_number: phone_number,
+      phone_number: phone_number || '',
       otp: otp || '',
       otpArr: [...Array(6)],
       name: name || '',
@@ -50,3 +53,6 @@ export const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
     </QueryClientProvider>
   );
 };
+
+export const registerSession = 'register' as AuthFormSession;
+export const loginSession = 'login' as AuthFormSession;

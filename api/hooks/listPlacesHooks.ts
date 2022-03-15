@@ -5,5 +5,5 @@ import {
 } from '../services/listPlacesService';
 
 export function useGetListPlaces(params: getListPlacesParams, handler?: any) {
-  return useQuery('get_place_detail', () => getListPlaces(params), handler);
+  return useQuery('get_query_places', () => getListPlaces(params), handler);
 }

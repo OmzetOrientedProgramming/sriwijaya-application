@@ -15,7 +15,7 @@ const Success: React.FC = () => {
     }
 
     setTimeout(() => {
-      setRedirectSeconds((prevRedirectSeconds) => prevRedirectSeconds - 1);
+      setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
     }, 1000);
   }, [redirectSeconds]);
 
@@ -26,7 +26,9 @@ const Success: React.FC = () => {
       </Head>
       <div tw="flex flex-col justify-center items-center my-auto min-h-screen w-full">
         <img src="/images/LandingPage/success.svg" alt="success" />
-        <h1 tw="text-base font-bold mt-6 mb-3">{session} berhasil!</h1>
+        <h1 tw="text-base font-bold mt-6 mb-3">
+          <span tw="capitalize">{session}</span> berhasil!
+        </h1>
         <p tw="text-xs font-normal">Kamu akan dialihkan ke homepage...</p>
       </div>
     </>
