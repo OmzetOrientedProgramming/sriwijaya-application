@@ -10,6 +10,7 @@ import Button from '../../components/Utils/Button';
 import { useGetPlaceDetail } from '../../api/hooks/placeDetailHooks';
 import Card from '../../components/PlaceDetail/card';
 import ReviewCard from '../../components/PlaceDetail/reviewCard';
+import Link from 'next/link';
 
 const PlaceDetail: React.FC = () => {
   const router = useRouter();
@@ -77,7 +78,9 @@ const PlaceDetail: React.FC = () => {
 
           <div tw="px-4 w-full flex items-center">
             <Button>Booking</Button>
-            <img tw="ml-2" src="/images/PlaceDetail/Katalog.svg" alt="" />
+            <Link href={`/place/${id}/catalog`}>
+              <img tw="ml-2" src="/images/PlaceDetail/Katalog.svg" alt="" />
+            </Link>
           </div>
 
           <div tw="px-4 pt-10 w-full flex-col items-center">
