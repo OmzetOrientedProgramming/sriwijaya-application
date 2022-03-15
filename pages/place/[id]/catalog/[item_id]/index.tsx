@@ -15,24 +15,18 @@ const ItemDetail: React.FC = () => {
 
   let stringID1: string = (id as string) || '';
   let stringID2: string = (item_id as string) || '';
-  console.log('id1: ', stringID1);
-  console.log('id2: ', stringID2);
   const { data, status, error } = useGetItemDetail(
     {
       placeID: stringID1,
       itemID: stringID2,
     },
     {
-      onSuccess: (res: any) => {
-        // console.log('res:', res);
-        // console.log('status:', status);
-      },
+      onSuccess: (res: any) => {},
       onError: (err: any) => {
         toast.error(err.message, { position: 'top-right' });
       },
     }
   );
-  console.log('data detail item: ', data);
   return (
     <>
       <Layout title="Detail Item" back={true}>
