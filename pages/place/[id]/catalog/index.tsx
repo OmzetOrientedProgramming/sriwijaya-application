@@ -73,7 +73,6 @@ const Catalog: React.FC = () => {
     },
     {
       onSuccess: (res: any) => {
-        console.log('res:', res);
         if (res.data.data.items.length !== 0) {
           setInfo(res.data.data.info[0]);
           if (paginationState.isSearch === true) {
