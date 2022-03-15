@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="310" lines-covered="215" line-rate="0.6934999999999999" branches-valid="131" branches-covered="77" branch-rate="0.5877" timestamp="1647310413774" complexity="0" version="0.1">
+<coverage lines-valid="306" lines-covered="210" line-rate="0.6862" branches-valid="131" branches-covered="77" branch-rate="0.5877" timestamp="1647314210619" complexity="0" version="0.1">
   <sources>
     <source>C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application</source>
   </sources>
@@ -27,7 +27,7 @@
         </class>
       </classes>
     </package>
-    <package name="api.hooks" line-rate="0.7" branch-rate="1">
+    <package name="api.hooks" line-rate="0.6666" branch-rate="1">
       <classes>
         <class name="authHooks.ts" filename="api\hooks\authHooks.ts" line-rate="0" branch-rate="1">
           <methods>
@@ -62,30 +62,29 @@
             </method>
             <method name="(anonymous_1)" hits="1" signature="()V">
               <lines>
+                <line number="6" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="2" branch="false"/>
+          </lines>
+        </class>
+        <class name="detailItemHooks.ts" filename="api\hooks\detailItemHooks.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="useGetItemDetail" hits="3" signature="()V">
+              <lines>
+                <line number="6" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_1)" hits="1" signature="()V">
+              <lines>
                 <line number="7" hits="1"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="7" hits="2" branch="false"/>
-          </lines>
-        </class>
-        <class name="detailItemHooks.ts" filename="api\hooks\detailItemHooks.ts" line-rate="1" branch-rate="1">
-          <methods>
-            <method name="useGetItemDetail" hits="2" signature="()V">
-              <lines>
-                <line number="6" hits="2"/>
-              </lines>
-            </method>
-            <method name="(anonymous_1)" hits="1" signature="()V">
-              <lines>
-                <line number="8" hits="1"/>
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="7" hits="2" branch="false"/>
-            <line number="8" hits="2" branch="false"/>
+            <line number="7" hits="3" branch="false"/>
           </lines>
         </class>
         <class name="exampleHooks.ts" filename="api\hooks\exampleHooks.ts" line-rate="1" branch-rate="1">
@@ -201,7 +200,7 @@
           <lines>
             <line number="13" hits="2" branch="false"/>
             <line number="14" hits="2" branch="false"/>
-            <line number="19" hits="2" branch="false"/>
+            <line number="18" hits="2" branch="false"/>
           </lines>
         </class>
         <class name="exampleService.ts" filename="api\services\exampleService.ts" line-rate="1" branch-rate="1">
@@ -228,18 +227,16 @@
         </class>
         <class name="itemDetailService.ts" filename="api\services\itemDetailService.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="(anonymous_0)" hits="4" signature="()V">
+            <method name="(anonymous_0)" hits="2" signature="()V">
               <lines>
-                <line number="11" hits="4"/>
+                <line number="11" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="11" hits="2" branch="false"/>
-            <line number="12" hits="4" branch="false"/>
-            <line number="15" hits="4" branch="false"/>
-            <line number="16" hits="4" branch="false"/>
-            <line number="17" hits="4" branch="false"/>
+            <line number="12" hits="2" branch="false"/>
+            <line number="15" hits="2" branch="false"/>
           </lines>
         </class>
         <class name="listPlacesService.ts" filename="api\services\listPlacesService.ts" line-rate="1" branch-rate="1">
@@ -366,19 +363,19 @@
         </class>
       </classes>
     </package>
-    <package name="components.ItemDetail" line-rate="1" branch-rate="1">
+    <package name="components.ItemDetail" line-rate="0.6666" branch-rate="1">
       <classes>
-        <class name="ItemDetailCard.tsx" filename="components\ItemDetail\ItemDetailCard.tsx" line-rate="1" branch-rate="1">
+        <class name="ItemDetailCard.tsx" filename="components\ItemDetail\ItemDetailCard.tsx" line-rate="0.6666" branch-rate="1">
           <methods>
-            <method name="(anonymous_0)" hits="3" signature="()V">
+            <method name="(anonymous_0)" hits="0" signature="()V">
               <lines>
-                <line number="16" hits="3"/>
+                <line number="16" hits="0"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="16" hits="1" branch="false"/>
-            <line number="17" hits="3" branch="false"/>
+            <line number="17" hits="0" branch="false"/>
             <line number="41" hits="1" branch="false"/>
           </lines>
         </class>
@@ -674,9 +671,9 @@
         </class>
         <class name="Layout.tsx" filename="components\Utils\Layout.tsx" line-rate="1" branch-rate="1">
           <methods>
-            <method name="(anonymous_0)" hits="15" signature="()V">
+            <method name="(anonymous_0)" hits="14" signature="()V">
               <lines>
-                <line number="78" hits="15"/>
+                <line number="78" hits="14"/>
               </lines>
             </method>
             <method name="(anonymous_1)" hits="10" signature="()V">
@@ -694,24 +691,24 @@
                 <line number="105" hits="10"/>
               </lines>
             </method>
-            <method name="(anonymous_4)" hits="15" signature="()V">
+            <method name="(anonymous_4)" hits="14" signature="()V">
               <lines>
-                <line number="114" hits="15"/>
+                <line number="114" hits="14"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="9" hits="6" branch="false"/>
             <line number="78" hits="6" branch="false"/>
-            <line number="83" hits="15" branch="false"/>
-            <line number="90" hits="15" branch="false"/>
-            <line number="92" hits="15" branch="false"/>
-            <line number="94" hits="15" branch="false"/>
+            <line number="83" hits="14" branch="false"/>
+            <line number="90" hits="14" branch="false"/>
+            <line number="92" hits="14" branch="false"/>
+            <line number="94" hits="14" branch="false"/>
             <line number="95" hits="10" branch="false"/>
             <line number="99" hits="30" branch="false"/>
-            <line number="105" hits="15" branch="false"/>
-            <line number="107" hits="15" branch="false"/>
-            <line number="115" hits="15" branch="false"/>
+            <line number="105" hits="14" branch="false"/>
+            <line number="107" hits="14" branch="false"/>
+            <line number="115" hits="14" branch="false"/>
           </lines>
         </class>
         <class name="StarRating.tsx" filename="components\Utils\StarRating.tsx" line-rate="1" branch-rate="1">
@@ -845,9 +842,9 @@
       <classes>
         <class name="MainHeader.tsx" filename="components\Utils\Header\MainHeader\MainHeader.tsx" line-rate="0.8332999999999999" branch-rate="1">
           <methods>
-            <method name="(anonymous_0)" hits="15" signature="()V">
+            <method name="(anonymous_0)" hits="14" signature="()V">
               <lines>
-                <line number="12" hits="15"/>
+                <line number="12" hits="14"/>
               </lines>
             </method>
             <method name="(anonymous_1)" hits="0" signature="()V">
@@ -858,9 +855,9 @@
           </methods>
           <lines>
             <line number="12" hits="6" branch="false"/>
-            <line number="13" hits="15" branch="false"/>
-            <line number="14" hits="15" branch="false"/>
-            <line number="15" hits="15" branch="false"/>
+            <line number="13" hits="14" branch="false"/>
+            <line number="14" hits="14" branch="false"/>
+            <line number="15" hits="14" branch="false"/>
             <line number="28" hits="0" branch="false"/>
             <line number="42" hits="6" branch="false"/>
           </lines>
@@ -887,51 +884,51 @@
       <classes>
         <class name="MainNavbar.tsx" filename="components\Utils\Navbar\MainNavbar\MainNavbar.tsx" line-rate="1" branch-rate="1">
           <methods>
-            <method name="(anonymous_0)" hits="15" signature="()V">
+            <method name="(anonymous_0)" hits="14" signature="()V">
               <lines>
-                <line number="11" hits="15"/>
+                <line number="11" hits="14"/>
               </lines>
             </method>
-            <method name="(anonymous_1)" hits="45" signature="()V">
+            <method name="(anonymous_1)" hits="42" signature="()V">
               <lines>
-                <line number="15" hits="45"/>
+                <line number="15" hits="42"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="11" hits="6" branch="false"/>
-            <line number="12" hits="15" branch="false"/>
-            <line number="13" hits="15" branch="false"/>
-            <line number="16" hits="45" branch="false"/>
+            <line number="12" hits="14" branch="false"/>
+            <line number="13" hits="14" branch="false"/>
+            <line number="16" hits="42" branch="false"/>
             <line number="28" hits="6" branch="false"/>
           </lines>
         </class>
         <class name="MainNavbarItem.tsx" filename="components\Utils\Navbar\MainNavbar\MainNavbarItem.tsx" line-rate="1" branch-rate="1">
           <methods>
-            <method name="(anonymous_0)" hits="45" signature="()V">
+            <method name="(anonymous_0)" hits="42" signature="()V">
               <lines>
-                <line number="12" hits="45"/>
+                <line number="12" hits="42"/>
               </lines>
             </method>
-            <method name="(anonymous_1)" hits="45" signature="()V">
+            <method name="(anonymous_1)" hits="42" signature="()V">
               <lines>
-                <line number="28" hits="45"/>
+                <line number="28" hits="42"/>
               </lines>
             </method>
-            <method name="(anonymous_2)" hits="45" signature="()V">
+            <method name="(anonymous_2)" hits="42" signature="()V">
               <lines>
-                <line number="33" hits="45"/>
+                <line number="33" hits="42"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="12" hits="6" branch="false"/>
-            <line number="13" hits="45" branch="false"/>
-            <line number="14" hits="45" branch="false"/>
+            <line number="13" hits="42" branch="false"/>
+            <line number="14" hits="42" branch="false"/>
             <line number="26" hits="6" branch="false"/>
-            <line number="28" hits="45" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="28" hits="42" branch="true" condition-coverage="100% (2/2)"/>
             <line number="32" hits="6" branch="false"/>
-            <line number="33" hits="45" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="33" hits="42" branch="true" condition-coverage="100% (2/2)"/>
           </lines>
         </class>
         <class name="index.ts" filename="components\Utils\Navbar\MainNavbar\index.ts" line-rate="0" branch-rate="0">
@@ -1236,9 +1233,9 @@
         </class>
       </classes>
     </package>
-    <package name="pages.place.[id].catalog" line-rate="0.6570999999999999" branch-rate="0.375">
+    <package name="pages.place.[id].catalog" line-rate="0.647" branch-rate="0.375">
       <classes>
-        <class name="index.tsx" filename="pages\place\[id]\catalog\index.tsx" line-rate="0.6570999999999999" branch-rate="0.375">
+        <class name="index.tsx" filename="pages\place\[id]\catalog\index.tsx" line-rate="0.647" branch-rate="0.375">
           <methods>
             <method name="(anonymous_0)" hits="0" signature="()V">
               <lines>
@@ -1287,32 +1284,32 @@
             </method>
             <method name="(anonymous_9)" hits="0" signature="()V">
               <lines>
-                <line number="81" hits="0"/>
+                <line number="80" hits="0"/>
               </lines>
             </method>
             <method name="(anonymous_10)" hits="0" signature="()V">
               <lines>
-                <line number="86" hits="0"/>
+                <line number="85" hits="0"/>
               </lines>
             </method>
             <method name="(anonymous_11)" hits="0" signature="()V">
               <lines>
-                <line number="88" hits="0"/>
+                <line number="87" hits="0"/>
               </lines>
             </method>
             <method name="(anonymous_12)" hits="0" signature="()V">
               <lines>
-                <line number="94" hits="0"/>
+                <line number="93" hits="0"/>
               </lines>
             </method>
             <method name="(anonymous_13)" hits="0" signature="()V">
               <lines>
-                <line number="116" hits="0"/>
+                <line number="115" hits="0"/>
               </lines>
             </method>
             <method name="(anonymous_14)" hits="0" signature="()V">
               <lines>
-                <line number="125" hits="0"/>
+                <line number="124" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -1339,19 +1336,18 @@
             <line number="62" hits="1" branch="false"/>
             <line number="63" hits="1" branch="false"/>
             <line number="67" hits="2" branch="false"/>
-            <line number="76" hits="1" branch="false"/>
-            <line number="77" hits="1" branch="true" condition-coverage="0% (0/2)"/>
-            <line number="78" hits="0" branch="false"/>
-            <line number="79" hits="0" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="76" hits="1" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="77" hits="0" branch="false"/>
+            <line number="78" hits="0" branch="true" condition-coverage="0% (0/2)"/>
+            <line number="79" hits="0" branch="false"/>
             <line number="80" hits="0" branch="false"/>
-            <line number="81" hits="0" branch="false"/>
-            <line number="86" hits="0" branch="false"/>
-            <line number="88" hits="0" branch="false"/>
-            <line number="95" hits="0" branch="false"/>
-            <line number="99" hits="2" branch="false"/>
-            <line number="117" hits="0" branch="false"/>
-            <line number="121" hits="0" branch="false"/>
-            <line number="126" hits="0" branch="false"/>
+            <line number="85" hits="0" branch="false"/>
+            <line number="87" hits="0" branch="false"/>
+            <line number="94" hits="0" branch="false"/>
+            <line number="98" hits="2" branch="false"/>
+            <line number="116" hits="0" branch="false"/>
+            <line number="120" hits="0" branch="false"/>
+            <line number="125" hits="0" branch="false"/>
           </lines>
         </class>
       </classes>
@@ -1360,9 +1356,9 @@
       <classes>
         <class name="index.tsx" filename="pages\place\[id]\catalog\[item_id]\index.tsx" line-rate="0.8887999999999999" branch-rate="0.8">
           <methods>
-            <method name="(anonymous_0)" hits="3" signature="()V">
+            <method name="(anonymous_0)" hits="4" signature="()V">
               <lines>
-                <line number="11" hits="3"/>
+                <line number="11" hits="4"/>
               </lines>
             </method>
             <method name="(anonymous_1)" hits="1" signature="()V">
@@ -1378,14 +1374,14 @@
           </methods>
           <lines>
             <line number="11" hits="1" branch="false"/>
-            <line number="12" hits="3" branch="false"/>
-            <line number="13" hits="2" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="14" hits="2" branch="false"/>
-            <line number="16" hits="2" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="17" hits="2" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="18" hits="2" branch="false"/>
+            <line number="12" hits="4" branch="false"/>
+            <line number="13" hits="3" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="14" hits="3" branch="false"/>
+            <line number="16" hits="3" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="17" hits="3" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="18" hits="3" branch="false"/>
             <line number="26" hits="0" branch="false"/>
-            <line number="30" hits="2" branch="false"/>
+            <line number="30" hits="3" branch="false"/>
           </lines>
         </class>
       </classes>
