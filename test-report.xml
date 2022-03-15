@@ -1,86 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\landingPage.test.tsx">
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\authSuccess.test.tsx">
+    <testCase name="renders correct status and redirects after some time" duration="5275"/>
   </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\AuthForm\AuthFormRequest.test.tsx">
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\placeDetail.test.tsx">
+    <testCase name="useGetPlaceDetail() page display place detail data" duration="969"/>
+    <testCase name="useGetPlaceDetail() post button request failed" duration="98"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\catalog.test.tsx">
+    <testCase name="useGetCatalog() page display catalog data" duration="905"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\ListPlacesUI.test.tsx">
+    <testCase name="Test UI For List Places  page display data requested" duration="1602"/>
+    <testCase name="Test UI For List Places  handleScrollRefetch works correctly" duration="16"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\example.test.tsx">
+    <testCase name="useGetExample() page display data requested" duration="503"/>
+    <testCase name="useGetExample() page failed to display data requested" duration="63"/>
+    <testCase name="usePostExample() post button request successful" duration="75"/>
+    <testCase name="usePostExample() post button request failed" duration="74"/>
+    <testCase name="user interface component button link exist" duration="44"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\index.test.tsx">
+    <testCase name="renders a title" duration="300"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\itemDetail.test.tsx">
+    <testCase name="useGetItemDetail() page display catalog data" duration="426"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\CatalogService.test.tsx">
+    <testCase name="getCatalog() getCatalog return correct data" duration="15"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\Layout.test.tsx">
+    <testCase name="Rendering Layout renders children properly" duration="206"/>
+    <testCase name="Rendering Offline should render popup when offline" duration="145"/>
+    <testCase name="Rendering Navigation renders home to be active when pathname is home" duration="247"/>
+    <testCase name="Rendering Navigation renders none to be active when pathname is not in any of the navbar" duration="88"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\Drawer.test.tsx">
+    <testCase name="Rendering Drawer shouldn&apos;t render portal root if Drawer is not opened" duration="60"/>
+    <testCase name="Rendering Drawer should render portal root if Drawer is opened" duration="162"/>
+    <testCase name="Rendering Drawer shouldn&apos;t render portal root if Overlay is clicked after portal opened" duration="108"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\_offline.test.tsx">
+    <testCase name="renders offline status" duration="84"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\ItemDetailService.test.tsx">
+    <testCase name="getItemDetail() getItemDetail return correct data" duration="23"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\catalog\cardCatalog.test.tsx">
+    <testCase name="Test UI For Card Catalog  page display data requested" duration="273"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\authService.test.tsx">
+    <testCase name="checkPhoneNumber checkPhoneNumber return success" duration="25"/>
+    <testCase name="verifyOTP verifyOTP return success" duration="2"/>
+    <testCase name="registerUser registerUser return success" duration="11"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\utils\StarSVG.tsx">
+    <testCase name="Test For Golden Star  renders StarFullGolden" duration="81"/>
+    <testCase name="Test For Golden Star  renders StarHalfGolden" duration="88"/>
+    <testCase name="Test For Golden Star  renders StarEmptyGolden" duration="105"/>
+    <testCase name="Test For Golden Star  renders StarFullBlack" duration="17"/>
+    <testCase name="Test For Golden Star  renders StarHalfBlack" duration="45"/>
+    <testCase name="Test For Golden Star  renders StarEmptyBlack" duration="14"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\listPlacesService.test.tsx">
+    <testCase name="getListPlaces() getListPlaces return correct list" duration="9"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\utils\StarRating.tsx">
+    <testCase name="Test For Star Component  renders StarFull" duration="77"/>
+    <testCase name="Test For Star Component  renders StarHalf" duration="26"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\PlaceDetailService.test.tsx">
+    <testCase name="getPlaceDetail() getPlaceDetail return correct data" duration="10"/>
+  </file>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\exampleService.test.tsx">
+    <testCase name="getExample() getExample return correct list" duration="35"/>
+    <testCase name="postExample() postExample return correct list" duration="32"/>
   </file>
   <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\AuthForm\AuthFormUI.test.tsx">
   </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\CatalogService.test.tsx">
-    <testCase name="getCatalog() getCatalog return correct data" duration="68"/>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\AuthForm\AuthFormRequest.test.tsx">
   </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\catalog.test.tsx">
-    <testCase name="useGetCatalog() page display catalog data" duration="1476"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\authSuccess.test.tsx">
-    <testCase name="renders correct status and redirects after some time" duration="5272"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\placeDetail.test.tsx">
-    <testCase name="useGetPlaceDetail() page display place detail data" duration="874"/>
-    <testCase name="useGetPlaceDetail() post button request failed" duration="131"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\example.test.tsx">
-    <testCase name="useGetExample() page display data requested" duration="338"/>
-    <testCase name="useGetExample() page failed to display data requested" duration="78"/>
-    <testCase name="usePostExample() post button request successful" duration="131"/>
-    <testCase name="usePostExample() post button request failed" duration="89"/>
-    <testCase name="user interface component button link exist" duration="65"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\itemDetail.test.tsx">
-    <testCase name="useGetItemDetail() page display catalog data" duration="461"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\Layout.test.tsx">
-    <testCase name="Rendering Layout renders children properly" duration="235"/>
-    <testCase name="Rendering Offline should render popup when offline" duration="55"/>
-    <testCase name="Rendering Navigation renders home to be active when pathname is home" duration="214"/>
-    <testCase name="Rendering Navigation renders none to be active when pathname is not in any of the navbar" duration="131"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\ListPlacesUI.test.tsx">
-    <testCase name="Test UI For List Places  page display data requested" duration="1092"/>
-    <testCase name="Test UI For List Places  handleScrollRefetch works correctly" duration="2"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\ItemDetailService.test.tsx">
-    <testCase name="getItemDetail() getItemDetail return correct data" duration="26"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\_offline.test.tsx">
-    <testCase name="renders offline status" duration="153"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\index.test.tsx">
-    <testCase name="renders a title" duration="471"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\authService.test.tsx">
-    <testCase name="checkPhoneNumber checkPhoneNumber return success" duration="10"/>
-    <testCase name="verifyOTP verifyOTP return success" duration="6"/>
-    <testCase name="registerUser registerUser return success" duration="5"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\catalog\cardCatalog.test.tsx">
-    <testCase name="Test UI For Card Catalog  page display data requested" duration="370"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\Drawer.test.tsx">
-    <testCase name="Rendering Drawer shouldn&apos;t render portal root if Drawer is not opened" duration="95"/>
-    <testCase name="Rendering Drawer should render portal root if Drawer is opened" duration="258"/>
-    <testCase name="Rendering Drawer shouldn&apos;t render portal root if Overlay is clicked after portal opened" duration="163"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\utils\StarRating.tsx">
-    <testCase name="Test For Star Component  renders StarFull" duration="155"/>
-    <testCase name="Test For Star Component  renders StarHalf" duration="27"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\exampleService.test.tsx">
-    <testCase name="getExample() getExample return correct list" duration="14"/>
-    <testCase name="postExample() postExample return correct list" duration="4"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\components\utils\StarSVG.tsx">
-    <testCase name="Test For Golden Star  renders StarFullGolden" duration="100"/>
-    <testCase name="Test For Golden Star  renders StarHalfGolden" duration="48"/>
-    <testCase name="Test For Golden Star  renders StarEmptyGolden" duration="37"/>
-    <testCase name="Test For Golden Star  renders StarFullBlack" duration="16"/>
-    <testCase name="Test For Golden Star  renders StarHalfBlack" duration="11"/>
-    <testCase name="Test For Golden Star  renders StarEmptyBlack" duration="21"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\listPlacesService.test.tsx">
-    <testCase name="getListPlaces() getListPlaces return correct list" duration="21"/>
-  </file>
-  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\api\PlaceDetailService.test.tsx">
-    <testCase name="getPlaceDetail() getPlaceDetail return correct data" duration="5"/>
+  <file path="C:\Users\IT\Documents\Semester 6\PPL\project\sriwijaya-application\__tests__\landingPage.test.tsx">
   </file>
 </testExecutions>
