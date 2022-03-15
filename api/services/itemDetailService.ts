@@ -12,8 +12,6 @@ export const getItemDetail = async (params: getItemDetailParams) => {
   const options = {
     headers,
   };
-  console.log('placeID: ', params.placeID);
-  console.log('itemID: ', params.itemID);
   return await axios.get(
     `${endpoint.place}/${params.placeID}/catalog/${params.itemID}`,
     options

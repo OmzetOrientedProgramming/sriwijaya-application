@@ -6,8 +6,6 @@ import { useRouter } from 'next/router';
 import { useGetCatalog } from '../../../../api/hooks/catalogHooks';
 import { Layout } from '../../../../components/Utils/Layout';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
-import endpoint from '../../../../api/endpoint';
 import { useEffect, useState } from 'react';
 import StyledImageDiv from '../../../../components/Utils/StyledImageDiv';
 
@@ -73,7 +71,7 @@ const Catalog: React.FC = () => {
     },
     {
       onSuccess: (res: any) => {
-        console.log('res:', res);
+        // console.log('res:', res);
         if (res.data.data.items.length !== 0) {
           setInfo(res.data.data.info[0]);
           if (paginationState.isSearch === true) {

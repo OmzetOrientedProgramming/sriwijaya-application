@@ -57,7 +57,7 @@ describe('useGetItemDetail()', () => {
       </Wrapper>
     );
 
-    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
+    expect(mockedAxios.get).toHaveBeenCalled();
     // expect(mockedAxios.get).toHaveBeenCalledWith(
     //   `${endpoint.place}/${getParams.placeID}/catalog/${getParams.itemID}`,
     //   { headers: headers }
