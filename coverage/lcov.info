@@ -707,7 +707,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:pages\place\[id].tsx
+SF:pages\place\[id]\index.tsx
 FN:15,(anonymous_0)
 FN:26,(anonymous_1)
 FN:27,(anonymous_2)
@@ -930,13 +930,13 @@ BRH:0
 end_of_record
 TN:
 SF:requests\hooks\detailItemHooks.ts
-FN:6,useGetItemDetail
-FN:7,(anonymous_1)
+FN:5,useGetItemDetail
+FN:6,(anonymous_1)
 FNF:2
 FNH:2
 FNDA:3,useGetItemDetail
 FNDA:1,(anonymous_1)
-DA:7,3
+DA:6,3
 LF:1
 LH:1
 BRF:0

@@ -4,12 +4,12 @@ import Head from 'next/head';
 import toast from 'react-hot-toast';
 
 import { useRouter } from 'next/router';
-import { Layout } from '../../components/Utils/Layout';
-import StyledImageDiv from '../../components/Utils/StyledImageDiv';
-import Button from '../../components/Utils/Button';
-import { useGetPlaceDetail } from '../../requests/hooks/placeDetailHooks';
-import Card from '../../components/PlaceDetail/card';
-import ReviewCard from '../../components/PlaceDetail/reviewCard';
+import { Layout } from '../../../components/Utils/Layout';
+import StyledImageDiv from '../../../components/Utils/StyledImageDiv';
+import Button from '../../../components/Utils/Button';
+import { useGetPlaceDetail } from '../../../requests/hooks/placeDetailHooks';
+import Card from '../../../components/PlaceDetail/card';
+import ReviewCard from '../../../components/PlaceDetail/reviewCard';
 import Link from 'next/link';
 
 const PlaceDetail: React.FC = () => {

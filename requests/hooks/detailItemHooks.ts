@@ -1,4 +1,3 @@
-import { get } from 'https';
 import { useQuery } from 'react-query';
 import { getItemDetailParams } from '../services/itemDetailService';
 import { getItemDetail } from '../services/itemDetailService';
