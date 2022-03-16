@@ -1,9 +1,13 @@
 import { cleanup } from '@testing-library/react';
 import axios from 'axios';
-import { headers } from '../../api/constants';
-import endpoint from '../../api/endpoint';
-import { getCatalog } from '../../api/services/catalogService';
-import { mockedResponse, getParams } from '../../__mocks__/api/catalogMocks';
+import { headers } from '../../requests/constants';
+import endpoint from '../../requests/endpoint';
+import { getCatalog } from '../../requests/services/catalogService';
+import {
+  catalogPaginationSuccessResponse,
+  mockedResponse,
+  getParams,
+} from '../../__mocks__/requests/catalogMocks';
 
 // Mock axios
 jest.mock('axios');
@@ -20,6 +24,7 @@ describe('getCatalog()', () => {
 
     expect(mockedAxios.post).not.toHaveBeenCalled();
     const data = await getCatalog(getParams);
+    // console.log('data: ', data);
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(

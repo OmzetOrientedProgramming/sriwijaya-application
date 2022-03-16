@@ -5,7 +5,7 @@ interface LandingWrapperProps {
   children: React.ReactNode;
 }
 
-const LandingWrapper: React.FC<LandingWrapperProps> = ({ children }) => {
+const AuthWrapper: React.FC<LandingWrapperProps> = ({ children }) => {
   return (
     <div
       css={[
@@ -23,4 +23,4 @@ const LandingWrapper: React.FC<LandingWrapperProps> = ({ children }) => {
   );
 };
 
-export default LandingWrapper;
+export default AuthWrapper;

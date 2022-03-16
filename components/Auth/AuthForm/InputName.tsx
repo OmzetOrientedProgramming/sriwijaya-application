@@ -5,9 +5,10 @@ import toast from 'react-hot-toast';
 import nookies from 'nookies';
 import 'twin.macro';
 
-import { useRegisterUser } from '../../../api/hooks/authHooks';
+import { useRegisterUser } from '../../../requests/hooks/authHooks';
 import Button from '../../Utils/Button';
 import { AuthFormSession } from './types';
+import capitalize from '../../../utils/capitalize';
 
 interface InputNameProps {
   session: AuthFormSession;
@@ -72,7 +73,9 @@ const InputName: React.FC<InputNameProps> = (props) => {
                   });
                 },
                 onError: (err: any) => {
-                  toast.error(err.message, { position: 'top-right' });
+                  toast.error(capitalize(err.response.data.message), {
+                    position: 'top-right',
+                  });
                 },
               }
             );

@@ -1,9 +1,13 @@
 import { cleanup } from '@testing-library/react';
 import axios from 'axios';
-import { headers } from '../../api/constants';
-import endpoint from '../../api/endpoint';
-import { getItemDetail } from '../../api/services/itemDetailService';
-import { mockedResponse, getParams } from '../../__mocks__/api/itemDetailMocks';
+import { headers } from '../../requests/constants';
+import endpoint from '../../requests/endpoint';
+import { getItemDetail } from '../../requests/services/itemDetailService';
+import {
+  itemDetailSuccessResponse,
+  mockedResponse,
+  getParams,
+} from '../../__mocks__/requests/itemDetailMocks';
 
 // Mock axios
 jest.mock('axios');
@@ -20,6 +24,7 @@ describe('getItemDetail()', () => {
 
     expect(mockedAxios.post).not.toHaveBeenCalled();
     const data = await getItemDetail(getParams);
+    // console.log('data: ', data);
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(

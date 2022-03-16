@@ -3,7 +3,7 @@ import CardCatalog from '../../../../components/Catalog/CardCatalog';
 import SearchBar from '../../../../components/Catalog/SearchBar';
 import 'twin.macro';
 import { useRouter } from 'next/router';
-import { useGetCatalog } from '../../../../api/hooks/catalogHooks';
+import { useGetCatalog } from '../../../../requests/hooks/catalogHooks';
 import { Layout } from '../../../../components/Utils/Layout';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
@@ -90,7 +90,7 @@ const Catalog: React.FC = () => {
         }
       },
       onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
+        toast.error(err.response.data.message, { position: 'top-right' });
       },
     }
   );

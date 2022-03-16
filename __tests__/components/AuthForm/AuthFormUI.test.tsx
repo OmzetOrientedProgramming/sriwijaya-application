@@ -7,11 +7,11 @@ import {
 } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { act } from 'react-test-renderer';
-import AuthForm from '../../../components/LandingPage/AuthForm';
-import InputName from '../../../components/LandingPage/AuthForm/InputName';
+import AuthForm from '../../../components/Auth/AuthForm';
+import InputName from '../../../components/Auth/AuthForm/InputName';
 import InputOTP, {
   combineArrayToString,
-} from '../../../components/LandingPage/AuthForm/InputOTP';
+} from '../../../components/Auth/AuthForm/InputOTP';
 import { AuthFormWrapper } from '../../../__mocks__/authForm/authFormMocks';
 
 afterEach(() => {

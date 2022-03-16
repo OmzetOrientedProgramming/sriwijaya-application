@@ -8,9 +8,12 @@ import {
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ItemDetail from '../pages/place/[id]/catalog/[item_id]';
-import { headers } from '../api/constants';
-import { getParams, mockedResponse } from '../__mocks__/api/itemDetailMocks';
-import endpoint from '../api/endpoint';
+import { headers } from '../requests/constants';
+import {
+  getParams,
+  mockedResponse,
+} from '../__mocks__/requests/itemDetailMocks';
+import endpoint from '../requests/endpoint';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 

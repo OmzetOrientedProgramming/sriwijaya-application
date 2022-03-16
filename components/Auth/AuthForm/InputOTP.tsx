@@ -5,10 +5,11 @@ import tw, { css } from 'twin.macro';
 import nookies from 'nookies';
 import Router from 'next/router';
 
-import { useVerifyOTP } from '../../../api/hooks/authHooks';
+import { useVerifyOTP } from '../../../requests/hooks/authHooks';
 import Button from '../../Utils/Button';
 import { AuthFormContext } from '.';
 import { AuthFormSession } from './types';
+import capitalize from '../../../utils/capitalize';
 
 export const handleRef = (e: any) => {
   if (e.target.value !== '') {
@@ -112,7 +113,9 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
                   });
                 },
                 onError: (err: any) => {
-                  toast.error(err.message, { position: 'top-right' });
+                  toast.error(capitalize(err.response.data.message), {
+                    position: 'top-right',
+                  });
                 },
               }
             );

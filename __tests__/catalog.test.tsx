@@ -8,12 +8,12 @@ import {
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Catalog from '../pages/place/[id]/catalog';
-import { headers } from '../api/constants';
-import { getParams, mockedResponse } from '../__mocks__/api/catalogMocks';
-import endpoint from '../api/endpoint';
+import { headers } from '../requests/constants';
+import { getParams, mockedResponse } from '../__mocks__/requests/catalogMocks';
+import endpoint from '../requests/endpoint';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { getCatalogParams } from '../api/services/catalogService';
+import { getCatalogParams } from '../requests/services/catalogService';
 
 // Mock axios
 jest.mock('axios');

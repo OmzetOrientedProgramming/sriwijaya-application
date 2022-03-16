@@ -4,7 +4,7 @@ import 'twin.macro';
 
 import { Layout } from '../../../../../components/Utils/Layout';
 import { useRouter } from 'next/router';
-import { useGetItemDetail } from '../../../../../api/hooks/detailItemHooks';
+import { useGetItemDetail } from '../../../../../requests/hooks/detailItemHooks';
 import toast from 'react-hot-toast';
 
 const ItemDetail: React.FC = () => {
@@ -22,7 +22,7 @@ const ItemDetail: React.FC = () => {
     {
       onSuccess: (res: any) => {},
       onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
+        toast.error(err.response.data.message, { position: 'top-right' });
       },
     }
   );

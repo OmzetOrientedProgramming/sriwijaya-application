@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { Layout } from '../../components/Utils/Layout';
 import StyledImageDiv from '../../components/Utils/StyledImageDiv';
 import Button from '../../components/Utils/Button';
-import { useGetPlaceDetail } from '../../api/hooks/placeDetailHooks';
+import { useGetPlaceDetail } from '../../requests/hooks/placeDetailHooks';
 import Card from '../../components/PlaceDetail/card';
 import ReviewCard from '../../components/PlaceDetail/reviewCard';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ const PlaceDetail: React.FC = () => {
     {
       onSuccess: (res: any) => {},
       onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
+        toast.error(err.response.data.message, { position: 'top-right' });
       },
     }
   );

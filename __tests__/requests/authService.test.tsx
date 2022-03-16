@@ -1,12 +1,12 @@
 import { cleanup } from '@testing-library/react';
 import axios from 'axios';
-import { headers } from '../../api/constants';
-import endpoint from '../../api/endpoint';
+import { headers } from '../../requests/constants';
+import endpoint from '../../requests/endpoint';
 import {
   checkPhoneNumber,
   verifyOTP,
   registerUser,
-} from '../../api/services/authService';
+} from '../../requests/services/authService';
 import {
   dummyCheckPhoneResponse,
   mockCheckPhoneResponse,
@@ -17,7 +17,7 @@ import {
   dummyRegisterUserResponse,
   mockRegisterUserResponse,
   registerUserParams,
-} from '../../__mocks__/api/authMocks';
+} from '../../__mocks__/requests/authMocks';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
