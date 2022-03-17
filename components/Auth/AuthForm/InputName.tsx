@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import nookies from 'nookies';
 import 'twin.macro';
 
-import { useRegisterUser } from '../../../requests/hooks/authHooks';
+import { useRegisterUser } from '../../../apis/hooks/authHooks';
 import Button from '../../Utils/Button';
 import { AuthFormSession } from './types';
 import capitalize from '../../../utils/capitalize';

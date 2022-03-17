@@ -4,7 +4,7 @@ import 'twin.macro';
 
 import { Layout } from '../../../../../components/Utils/Layout';
 import { useRouter } from 'next/router';
-import { useGetItemDetail } from '../../../../../requests/hooks/detailItemHooks';
+import { useGetItemDetail } from '../../../../../apis/hooks/detailItemHooks';
 import toast from 'react-hot-toast';
 
 const ItemDetail: React.FC = () => {

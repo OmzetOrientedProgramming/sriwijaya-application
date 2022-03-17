@@ -3,7 +3,7 @@ import 'twin.macro';
 import { AuthFormContext } from '.';
 import Button from '../../Utils/Button';
 import { useFormContext } from 'react-hook-form';
-import { useCheckPhoneNumber } from '../../../requests/hooks/authHooks';
+import { useCheckPhoneNumber } from '../../../apis/hooks/authHooks';
 import toast from 'react-hot-toast';
 
 import { AuthFormSession } from './types';

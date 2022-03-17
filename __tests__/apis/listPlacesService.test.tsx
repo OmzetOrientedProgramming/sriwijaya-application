@@ -1,9 +1,9 @@
 import { cleanup } from '@testing-library/react';
 import axios from 'axios';
-import { headers } from '../../requests/constants';
-import endpoint from '../../requests/endpoint';
-import { getListPlaces } from '../../requests/services/listPlacesService';
-import { placePaginationSuccessResponse } from '../../__mocks__/requests/listPlacesMocks';
+import { headers } from '../../apis/constants';
+import endpoint from '../../apis/endpoint';
+import { getListPlaces } from '../../apis/services/listPlacesService';
+import { placePaginationSuccessResponse } from '../../__mocks__/apis/listPlacesMocks';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;

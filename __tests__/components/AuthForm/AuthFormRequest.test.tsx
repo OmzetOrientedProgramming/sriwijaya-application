@@ -5,14 +5,14 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { headers } from '../../../requests/constants';
+import { headers } from '../../../apis/constants';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import {
   mockCheckPhoneResponse,
   checkPhoneParams,
   verifyOTPParams,
   mockVerifyOTPResponse,
-} from '../../../__mocks__/requests/authMocks';
+} from '../../../__mocks__/apis/authMocks';
 import InputPhone from '../../../components/Auth/AuthForm/InputPhone';
 import {
   AuthFormWrapper,
@@ -21,7 +21,7 @@ import {
 } from '../../../__mocks__/authForm/authFormMocks';
 import axios from 'axios';
 import React from 'react';
-import endpoint from '../../../requests/endpoint';
+import endpoint from '../../../apis/endpoint';
 import InputName from '../../../components/Auth/AuthForm/InputName';
 import AuthForm from '../../../components/Auth/AuthForm';
 import { AuthFormSession } from '../../../components/Auth/AuthForm/types';

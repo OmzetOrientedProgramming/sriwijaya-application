@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import 'twin.macro';
 
-import { useGetListPlaces } from '../requests/hooks/listPlacesHooks';
+import { useGetListPlaces } from '../apis/hooks/listPlacesHooks';
 import CardPlace from '../components/ListPlace/CardPlace';
 import { Layout } from '../components/Utils/Layout';
 

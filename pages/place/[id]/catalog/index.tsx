@@ -3,7 +3,7 @@ import CardCatalog from '../../../../components/Catalog/CardCatalog';
 import SearchBar from '../../../../components/Catalog/SearchBar';
 import 'twin.macro';
 import { useRouter } from 'next/router';
-import { useGetCatalog } from '../../../../requests/hooks/catalogHooks';
+import { useGetCatalog } from '../../../../apis/hooks/catalogHooks';
 import { Layout } from '../../../../components/Utils/Layout';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';

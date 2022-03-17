@@ -1,13 +1,13 @@
 import { cleanup } from '@testing-library/react';
 import axios from 'axios';
-import { headers } from '../../requests/constants';
-import endpoint from '../../requests/endpoint';
-import { getCatalog } from '../../requests/services/catalogService';
+import { headers } from '../../apis/constants';
+import endpoint from '../../apis/endpoint';
+import { getCatalog } from '../../apis/services/catalogService';
 import {
   catalogPaginationSuccessResponse,
   mockedResponse,
   getParams,
-} from '../../__mocks__/requests/catalogMocks';
+} from '../../__mocks__/apis/catalogMocks';
 
 // Mock axios
 jest.mock('axios');

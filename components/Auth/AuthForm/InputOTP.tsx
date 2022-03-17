@@ -5,7 +5,7 @@ import tw, { css } from 'twin.macro';
 import nookies from 'nookies';
 import Router from 'next/router';
 
-import { useVerifyOTP } from '../../../requests/hooks/authHooks';
+import { useVerifyOTP } from '../../../apis/hooks/authHooks';
 import Button from '../../Utils/Button';
 import { AuthFormContext } from '.';
 import { AuthFormSession } from './types';

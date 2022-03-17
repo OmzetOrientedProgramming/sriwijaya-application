@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import axios from 'axios';
-import { mockedResponse } from '../__mocks__/requests/listPlacesMocks';
+import { mockedResponse } from '../__mocks__/apis/listPlacesMocks';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
