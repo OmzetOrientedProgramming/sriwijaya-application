@@ -14,6 +14,7 @@ import endpoint from '../api/endpoint';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { getCatalogParams } from '../api/services/catalogService';
+import { handleScrollRefetch } from '../pages';
 
 // Mock axios
 jest.mock('axios');
@@ -63,5 +64,12 @@ describe('useGetCatalog()', () => {
       `${endpoint.place}/${getParams.id}/catalog`,
       { headers: headers, params: { name: '', limit: 5, page: 1 } }
     );
+  });
+  test('handleScrollRefetch works correctly', async () => {
+    const refetch = jest.fn();
+
+    handleScrollRefetch(refetch);
+
+    expect(refetch).toHaveBeenCalledTimes(1);
   });
 });
