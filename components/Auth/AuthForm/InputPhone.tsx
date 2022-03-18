@@ -3,10 +3,11 @@ import 'twin.macro';
 import { AuthFormContext } from '.';
 import Button from '../../Utils/Button';
 import { useFormContext } from 'react-hook-form';
-import { useCheckPhoneNumber } from '../../../api/hooks/authHooks';
+import { useCheckPhoneNumber } from '../../../apis/hooks/authHooks';
 import toast from 'react-hot-toast';
 
 import { AuthFormSession } from './types';
+import capitalize from '../../../utils/capitalize';
 
 interface InputPhoneProps {
   session: AuthFormSession;
@@ -69,8 +70,10 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
                   setStep((step: number) => step + 1);
                 },
                 onError: (err: any) => {
-                  // console.log(err);
-                  toast.error(err.message, { position: 'top-right' });
+                  // console.log(err)
+                  toast.error(capitalize(err.response.data.message), {
+                    position: 'top-right',
+                  });
                 },
               }
             );

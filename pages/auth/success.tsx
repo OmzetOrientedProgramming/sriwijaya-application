@@ -15,7 +15,7 @@ const Success: React.FC = () => {
     }
 
     setTimeout(() => {
-      setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
+      setRedirectSeconds((prevRedirectSeconds) => prevRedirectSeconds - 1);
     }, 1000);
   }, [redirectSeconds]);
 

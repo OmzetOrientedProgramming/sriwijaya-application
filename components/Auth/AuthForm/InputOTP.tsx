@@ -5,10 +5,11 @@ import tw, { css } from 'twin.macro';
 import nookies from 'nookies';
 import Router from 'next/router';
 
-import { useVerifyOTP } from '../../../api/hooks/authHooks';
+import { useVerifyOTP } from '../../../apis/hooks/authHooks';
 import Button from '../../Utils/Button';
 import { AuthFormContext } from '.';
 import { AuthFormSession } from './types';
+import capitalize from '../../../utils/capitalize';
 
 export const handleRef = (e: any) => {
   if (e.target.value !== '') {
@@ -22,7 +23,7 @@ export const handleRef = (e: any) => {
 
 export const combineArrayToString = (otpData: string[]) => {
   let res = '';
-  otpData.map((kode: string) => (res = res + kode));
+  otpData.forEach((kode: string) => (res = res + kode));
   return res;
 };
 
@@ -96,13 +97,13 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
               },
               {
                 onSuccess: (res: any) => {
-                  console.log(res);
-                  let data = res?.data;
-                  if (data.message !== 'success') return;
+                  // console.log(res);
+                  let resData = res?.data;
+                  if (resData.message !== 'success') return;
                   if (session === 'register')
                     return setStep((step: number) => step + 1);
 
-                  const token = data.data.access_token;
+                  const token = resData.data.access_token;
                   nookies.set(null, 'token', token, {
                     path: '/',
                   });
@@ -112,7 +113,9 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
                   });
                 },
                 onError: (err: any) => {
-                  toast.error(err.message, { position: 'top-right' });
+                  toast.error(capitalize(err.response.data.message), {
+                    position: 'top-right',
+                  });
                 },
               }
             );

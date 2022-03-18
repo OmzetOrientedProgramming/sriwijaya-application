@@ -1,8 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import 'twin.macro';
-import tw from 'twin.macro';
-import { css, styled } from 'twin.macro';
+import { styled } from 'twin.macro';
 import StyledImageDiv from '../Utils/StyledImageDiv';
 
 interface ItemDetailCardProps {

@@ -3,11 +3,9 @@ import CardCatalog from '../../../../components/Catalog/CardCatalog';
 import SearchBar from '../../../../components/Catalog/SearchBar';
 import 'twin.macro';
 import { useRouter } from 'next/router';
-import { useGetCatalog } from '../../../../api/hooks/catalogHooks';
+import { useGetCatalog } from '../../../../apis/hooks/catalogHooks';
 import { Layout } from '../../../../components/Utils/Layout';
 import toast from 'react-hot-toast';
-import Link from 'next/link';
-import endpoint from '../../../../api/endpoint';
 import { useEffect, useState } from 'react';
 import StyledImageDiv from '../../../../components/Utils/StyledImageDiv';
 import { handleScrollRefetch } from '../../..';
@@ -71,7 +69,6 @@ const Catalog: React.FC = () => {
         setInfo(res.data.data.info[0]);
         if (paginationState.isSearch === true) {
           setItems(res.data.data.items);
-          console.log('items: ', items);
           setPaginationState((prev) => ({
             isSearch: false,
             page: prev.page,
@@ -85,7 +82,7 @@ const Catalog: React.FC = () => {
         }));
       },
       onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
+        toast.error(err.response.data.message, { position: 'top-right' });
       },
     }
   );

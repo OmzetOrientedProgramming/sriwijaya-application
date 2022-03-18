@@ -1,16 +1,8 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ItemDetail from '../pages/place/[id]/catalog/[item_id]';
-import { headers } from '../api/constants';
-import { getParams, mockedResponse } from '../__mocks__/api/itemDetailMocks';
-import endpoint from '../api/endpoint';
+import { mockedResponse } from '../__mocks__/apis/itemDetailMocks';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 

@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import ItemDetailCard from '../../../../../components/ItemDetail/ItemDetailCard';
-import tw from 'twin.macro';
-import { itemDetailSuccessResponse } from '../../../../../__mocks__/api/itemDetailMocks';
+import 'twin.macro';
 
 import { Layout } from '../../../../../components/Utils/Layout';
 import { useRouter } from 'next/router';
-import { useGetItemDetail } from '../../../../../api/hooks/detailItemHooks';
+import { useGetItemDetail } from '../../../../../apis/hooks/detailItemHooks';
 import toast from 'react-hot-toast';
 
 const ItemDetail: React.FC = () => {
@@ -23,7 +22,7 @@ const ItemDetail: React.FC = () => {
     {
       onSuccess: (res: any) => {},
       onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
+        toast.error(err.response.data.message, { position: 'top-right' });
       },
     }
   );

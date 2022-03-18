@@ -5,7 +5,6 @@ import 'twin.macro';
 import GlobalStyles from './../styles/GlobalStyles';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
-// import { OnlineStatusProvider } from '../components/Utils/useOnlineStatus';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +26,18 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
-        <link rel="icon" type="image/png" href="/icon-192x192.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
       </Head>
       <GlobalStyles />
       <Toaster position="top-center" />

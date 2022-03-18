@@ -5,15 +5,15 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { headers } from '../../../api/constants';
+import { headers } from '../../../apis/constants';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import {
   mockCheckPhoneResponse,
   checkPhoneParams,
   verifyOTPParams,
   mockVerifyOTPResponse,
-} from '../../../__mocks__/api/authMocks';
-import InputPhone from '../../../components/LandingPage/AuthForm/InputPhone';
+} from '../../../__mocks__/apis/authMocks';
+import InputPhone from '../../../components/Auth/AuthForm/InputPhone';
 import {
   AuthFormWrapper,
   registerSession,
@@ -21,10 +21,10 @@ import {
 } from '../../../__mocks__/authForm/authFormMocks';
 import axios from 'axios';
 import React from 'react';
-import endpoint from '../../../api/endpoint';
-import InputName from '../../../components/LandingPage/AuthForm/InputName';
-import AuthForm from '../../../components/LandingPage/AuthForm';
-import { AuthFormSession } from '../../../components/LandingPage/AuthForm/types';
+import endpoint from '../../../apis/endpoint';
+import InputName from '../../../components/Auth/AuthForm/InputName';
+import AuthForm from '../../../components/Auth/AuthForm';
+import { AuthFormSession } from '../../../components/Auth/AuthForm/types';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

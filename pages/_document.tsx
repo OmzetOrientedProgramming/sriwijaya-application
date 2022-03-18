@@ -33,6 +33,9 @@ export default class extends Document {
     return (
       <Html lang="en" dir="ltr">
         <Head>
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+
           <meta name="application-name" content={APP_NAME} />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
@@ -47,11 +50,15 @@ export default class extends Document {
 
           <link
             rel="apple-touch-icon"
-            sizes="192x192"
-            href="/icon-192x192.png"
+            sizes="152x152"
+            href="/apple-touch-icon.png"
           />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="shortcut icon" type="image/png" href="/icon-192x192.png" />
+          <link
+            rel="shortcut icon"
+            type="image/png"
+            href="/android-chrome-144x144.png"
+          />
         </Head>
         <body>
           <Main />

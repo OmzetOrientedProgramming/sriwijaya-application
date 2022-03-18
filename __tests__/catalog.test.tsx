@@ -1,19 +1,12 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Catalog from '../pages/place/[id]/catalog';
-import { headers } from '../api/constants';
-import { getParams, mockedResponse } from '../__mocks__/api/catalogMocks';
-import endpoint from '../api/endpoint';
+import { headers } from '../apis/constants';
+import { getParams, mockedResponse } from '../__mocks__/apis/catalogMocks';
+import endpoint from '../apis/endpoint';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { getCatalogParams } from '../api/services/catalogService';
 import { handleScrollRefetch } from '../pages';
 
 // Mock axios

@@ -8,7 +8,7 @@ const Title = styled.h1`
   font-size: 4rem;
 `;
 
-const Home: React.FC = () => {
+const OldIndex: React.FC = () => {
   return (
     <Layout>
       <Head>
@@ -45,4 +45,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default OldIndex;

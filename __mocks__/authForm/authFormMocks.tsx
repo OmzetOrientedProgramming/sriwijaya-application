@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AxiosResponse } from 'axios';
 
-import { AuthFormSession } from '../../components/LandingPage/AuthForm/types';
+import { AuthFormSession } from '../../components/Auth/AuthForm/types';
 
 interface AuthFormWrapperProps {
   phone_number?: string;

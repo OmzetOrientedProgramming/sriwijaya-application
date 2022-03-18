@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import 'twin.macro';
 
-import { useGetListPlaces } from '../api/hooks/listPlacesHooks';
+import { useGetListPlaces } from '../apis/hooks/listPlacesHooks';
 import CardPlace from '../components/ListPlace/CardPlace';
 import { Layout } from '../components/Utils/Layout';
 
 export const handleScrollRefetch = (refetch: any) => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5) {
     refetch();
   }
 };

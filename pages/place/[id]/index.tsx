@@ -4,12 +4,12 @@ import Head from 'next/head';
 import toast from 'react-hot-toast';
 
 import { useRouter } from 'next/router';
-import { Layout } from '../../components/Utils/Layout';
-import StyledImageDiv from '../../components/Utils/StyledImageDiv';
-import Button from '../../components/Utils/Button';
-import { useGetPlaceDetail } from '../../api/hooks/placeDetailHooks';
-import Card from '../../components/PlaceDetail/card';
-import ReviewCard from '../../components/PlaceDetail/reviewCard';
+import { Layout } from '../../../components/Utils/Layout';
+import StyledImageDiv from '../../../components/Utils/StyledImageDiv';
+import Button from '../../../components/Utils/Button';
+import { useGetPlaceDetail } from '../../../apis/hooks/placeDetailHooks';
+import Card from '../../../components/PlaceDetail/card';
+import ReviewCard from '../../../components/PlaceDetail/reviewCard';
 import Link from 'next/link';
 
 const PlaceDetail: React.FC = () => {
@@ -25,7 +25,7 @@ const PlaceDetail: React.FC = () => {
     {
       onSuccess: (res: any) => {},
       onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
+        toast.error(err.response.data.message, { position: 'top-right' });
       },
     }
   );
@@ -79,7 +79,11 @@ const PlaceDetail: React.FC = () => {
           <div tw="px-4 w-full flex items-center">
             <Button>Booking</Button>
             <Link href={`/place/${id}/catalog`}>
-              <img tw="ml-2" src="/images/PlaceDetail/Katalog.svg" alt="" />
+              <img
+                tw="ml-2 hover:cursor-pointer"
+                src="/images/PlaceDetail/Katalog.svg"
+                alt=""
+              />
             </Link>
           </div>
 

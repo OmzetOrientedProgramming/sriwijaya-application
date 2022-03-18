@@ -1,13 +1,13 @@
 import { cleanup } from '@testing-library/react';
 import axios from 'axios';
-import { headers } from '../../api/constants';
-import endpoint from '../../api/endpoint';
-import { placeDetail } from '../../api/services/placeDetailService';
+import { headers } from '../../apis/constants';
+import endpoint from '../../apis/endpoint';
+import { placeDetail } from '../../apis/services/placeDetailService';
 import {
   dummyResponse,
   mockedResponse,
   getParams,
-} from '../../__mocks__/api/placeDetailMocks';
+} from '../../__mocks__/apis/placeDetailMocks';
 
 // Mock axios
 jest.mock('axios');

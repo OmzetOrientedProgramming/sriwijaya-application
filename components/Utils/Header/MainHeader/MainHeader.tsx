@@ -23,6 +23,7 @@ const MainHeader: React.FC<MainHeaderProps> = (props) => {
           <div tw="flex-1">
             {back === true && (
               <img
+                tw="hover:cursor-pointer"
                 src="/images/bx-arrow-back.svg"
                 alt="back"
                 onClick={() => router.back()}
