@@ -10,12 +10,7 @@ import Link from 'next/link';
 import endpoint from '../../../../api/endpoint';
 import { useEffect, useState } from 'react';
 import StyledImageDiv from '../../../../components/Utils/StyledImageDiv';
-
-export const handleScrollRefetch = (refetch: any) => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    refetch();
-  }
-};
+import { handleScrollRefetch } from '../../..';
 
 interface IItem {
   id: number;
@@ -73,22 +68,21 @@ const Catalog: React.FC = () => {
     },
     {
       onSuccess: (res: any) => {
-        if (res.data.data.items.length !== 0) {
-          setInfo(res.data.data.info[0]);
-          if (paginationState.isSearch === true) {
-            setItems(res.data.data.items);
-            setPaginationState((prev) => ({
-              isSearch: false,
-              page: prev.page,
-            }));
-          } else {
-            setItems((oldItems) => oldItems.concat(res.data.data.items));
-          }
+        setInfo(res.data.data.info[0]);
+        if (paginationState.isSearch === true) {
+          setItems(res.data.data.items);
+          console.log('items: ', items);
           setPaginationState((prev) => ({
             isSearch: false,
-            page: prev.page + 1,
+            page: prev.page,
           }));
+        } else {
+          setItems((oldItems) => oldItems.concat(res.data.data.items));
         }
+        setPaginationState((prev) => ({
+          isSearch: false,
+          page: prev.page + 1,
+        }));
       },
       onError: (err: any) => {
         toast.error(err.message, { position: 'top-right' });
@@ -120,6 +114,7 @@ const Catalog: React.FC = () => {
               refetch();
             }}
             setInputText={setInputText}
+            setPagination={setPaginationState}
           />
           {items.map((detail: any) => (
             <div key={detail.id}>
