@@ -1,55 +1,34 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import 'twin.macro';
 
 import { useGetListPlaces } from '../apis/hooks/listPlacesHooks';
 import CardPlace from '../components/ListPlace/CardPlace';
 import { Layout } from '../components/Utils/Layout';
 
-export const handleScrollRefetch = (refetch: any) => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5) {
-    refetch();
+export const handleScrollRefetch = (fetchNextPage: any) => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1) {
+    fetchNextPage();
   }
 };
 
-interface IPlace {
-  id: number;
-  name: string;
-  description: string;
-  address: string;
-  distance: number;
-  rating: number;
-  review_count: number;
-  image: string;
-}
-
 const ListPlaces: React.FC = () => {
-  const [page, setPage] = useState(1);
-  const [places, setPlaces] = useState<Array<IPlace>>([]);
+  const router = useRouter();
+  if (!router.isReady) return <></>;
+
+  const { data, fetchNextPage, hasNextPage, isFetching, status } =
+    useGetListPlaces();
 
   useEffect(() => {
-    window.addEventListener('scroll', () => handleScrollRefetch(refetch));
+    window.addEventListener('scroll', () => handleScrollRefetch(fetchNextPage));
 
     return () => {
-      window.removeEventListener('scroll', () => handleScrollRefetch(refetch));
+      window.removeEventListener('scroll', () =>
+        handleScrollRefetch(fetchNextPage)
+      );
     };
   }, []);
-
-  const { status, refetch } = useGetListPlaces(
-    { limit: 5, page: page },
-    {
-      onSuccess: (res: any) => {
-        if (res.data.places.length !== 0) {
-          setPlaces((oldPlaces) => oldPlaces.concat(res.data.places));
-          setPage((oldPage) => oldPage + 1);
-        }
-      },
-      onError: (err: any) => {
-        toast.error(err.message, { position: 'top-right' });
-      },
-    }
-  );
 
   return (
     <Layout>
@@ -59,24 +38,28 @@ const ListPlaces: React.FC = () => {
 
       <div
         data-testid="wrapper"
-        tw="pt-8 pb-16 flex flex-col items-center justify-center min-h-screen w-full"
+        tw="mt-8 flex flex-col items-center justify-center w-full"
       >
-        {status === 'loading' && <p tw="m-8">. . .</p>}
         {status === 'success' &&
-          places.map((detail: any) => (
-            <div tw="w-full" key={detail.id}>
-              <CardPlace
-                id={detail.id}
-                image={detail.image}
-                name={detail.name}
-                description={detail.description}
-                address={detail.address}
-                distance={detail.distance}
-                rating={detail.rating}
-                review_count={detail.review_count}
-              />
-            </div>
-          ))}
+          data?.pages.map((page: any) => {
+            return page.data.places.map((detail: any) => {
+              return (
+                <div tw="w-full" key={detail.id}>
+                  <CardPlace
+                    id={detail.id}
+                    image={detail.image}
+                    name={detail.name}
+                    description={detail.description}
+                    address={detail.address}
+                    distance={detail.distance}
+                    rating={detail.rating}
+                    review_count={detail.review_count}
+                  />
+                </div>
+              );
+            });
+          })}
+        {isFetching && hasNextPage && <p tw="m-8">Loading . . .</p>}
       </div>
     </Layout>
   );
