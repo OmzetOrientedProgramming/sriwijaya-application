@@ -1,4 +1,4 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, screen, render } from '@testing-library/react';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Catalog from '../pages/place/[id]/catalog';
@@ -8,6 +8,7 @@ import endpoint from '../apis/endpoint';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { handleScrollRefetch } from '../pages';
+import React from 'react';
 
 // Mock axios
 jest.mock('axios');
@@ -52,7 +53,14 @@ describe('useGetCatalog()', () => {
       </Wrapper>
     );
 
-    expect(mockedAxios.get).toHaveBeenCalledTimes(1);
+    const searchInput = screen.getByPlaceholderText('Search...');
+    fireEvent.change(searchInput, {
+      target: { value: 'test search 1' },
+    });
+
+    fireEvent.click(screen.getByTestId('search'));
+
+    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
     expect(mockedAxios.get).toHaveBeenCalledWith(
       `${endpoint.place}/${getParams.id}/catalog`,
       { headers: headers, params: { name: '', limit: 5, page: 1 } }
