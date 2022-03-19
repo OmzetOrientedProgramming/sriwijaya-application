@@ -26,12 +26,10 @@ interface IInfoPlace {
 const Catalog: React.FC = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
-  // var page = 1;
   const [items, setItems] = useState<Array<IItem>>([]);
   const { id } = router.query;
   const [inputText, setInputText] = useState('');
   const [info, setInfo] = useState<IInfoPlace>();
-  // var isSearch = false;
   const [paginationState, setPaginationState] = useState({
     page: 1,
     isSearch: false,
@@ -66,7 +64,9 @@ const Catalog: React.FC = () => {
     },
     {
       onSuccess: (res: any) => {
-        setInfo(res.data.data.info[0]);
+        setInfo(() => {
+          return res.data.data.info[0];
+        });
         if (paginationState.isSearch === true) {
           setItems(res.data.data.items);
           setPaginationState((prev) => ({
