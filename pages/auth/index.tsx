@@ -1,6 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
 import { css } from 'twin.macro';
+
 import { Drawer } from '../../components/Drawer';
 import AuthForm from '../../components/Auth/AuthForm';
 import { AuthFormSession } from '../../components/Auth/AuthForm/types';
