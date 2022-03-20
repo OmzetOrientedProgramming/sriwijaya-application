@@ -1,47 +1,46 @@
 import axios from 'axios';
+import nookies from 'nookies';
+
 import endpoint from '../endpoint';
 import { headers } from '../constants';
 
 // Check Phone Number
-export interface checkPhoneNumberParams {
+export interface checkPhoneNumberParamsType {
   session: string;
   phone_number: string;
+  recaptcha_token: string;
 }
 
 export const checkPhoneNumber = async ({
   session,
   phone_number,
-}: checkPhoneNumberParams) => {
+  recaptcha_token,
+}: checkPhoneNumberParamsType) => {
   const options = {
     headers,
     params: { session },
   };
   const data = {
     phone_number,
+    recaptcha_token,
   };
   const response = await axios.post(endpoint.checkPhoneNumber, data, options);
   return response;
 };
 
-export interface verifyOTPParams {
-  session: string;
-  phone_number: string;
+export interface verifyOTPParamsType {
+  session_info: string;
   otp: string;
 }
 
 // Verify OTP
-export const verifyOTP = async ({
-  session,
-  phone_number,
-  otp,
-}: verifyOTPParams) => {
+export const verifyOTP = async ({ session_info, otp }: verifyOTPParamsType) => {
   const options = {
     headers,
-    params: { session },
   };
 
   const data = {
-    phone_number,
+    session_info,
     otp,
   };
 
@@ -50,21 +49,21 @@ export const verifyOTP = async ({
 };
 
 // Register user
-export interface registerUserParams {
-  phone_number: string;
+export interface registerUserParamsType {
   full_name: string;
 }
 
-export const registerUser = async ({
-  phone_number,
-  full_name,
-}: registerUserParams) => {
+export const registerUser = async ({ full_name }: registerUserParamsType) => {
+  const accessToken = nookies.get(null).accessToken;
+
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${accessToken}`,
+    },
   };
 
   const data = {
-    phone_number,
     full_name,
   };
 

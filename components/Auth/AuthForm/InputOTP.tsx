@@ -91,30 +91,34 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
           onClick={handleSubmit((data: any) => {
             return verifyOTP(
               {
-                session,
-                phone_number: `0${data.phone}`,
                 otp: data.otp,
+                session_info: data.session_info,
               },
               {
                 onSuccess: (res: any) => {
-                  // console.log(res);
                   let resData = res?.data;
                   if (resData.message !== 'success') return;
-                  if (session === 'register')
-                    return setStep((step: number) => step + 1);
-
-                  const token = resData.data.access_token;
-                  nookies.set(null, 'token', token, {
+                  const accessToken = resData.data.access_token;
+                  const refreshToken = resData.data.refresh_token;
+                  nookies.set(null, 'accessToken', accessToken, {
                     path: '/',
                   });
-                  Router.push({
-                    pathname: 'auth/success',
-                    query: { session },
+                  nookies.set(null, 'refreshToken', refreshToken, {
+                    path: '/',
                   });
+                  if (session === 'register')
+                    return setStep((step: number) => step + 1);
+                  else
+                    return Router.push({
+                      pathname: 'auth/success',
+                      query: { session },
+                    });
                 },
                 onError: (err: any) => {
-                  toast.error(capitalize(err.response.data.message), {
-                    position: 'top-right',
+                  err.response.data.errors?.forEach((response: string) => {
+                    toast.error(capitalize(response), {
+                      position: 'top-right',
+                    });
                   });
                 },
               }

@@ -14,6 +14,23 @@ import InputOTP, {
 } from '../../../components/Auth/AuthForm/InputOTP';
 import { AuthFormWrapper } from '../../../__mocks__/authForm/authFormMocks';
 
+jest.mock('firebase/auth', () => {
+  return {
+    RecaptchaVerifier: jest.fn(() => ({
+      verify: jest.fn(
+        () =>
+          new Promise((resolve, _) => {
+            resolve(
+              '03AGdBq26BCUD_6p0OPBZ-q62arVJRuvev8HGKRNOnK_aMBSqGStypYSx1hzu45mqFEhnpETyWUUXqkS1b8BQ7E0K-hhJ42MlQSTOR0bUNjwcFYWEfc0YlqQzndgGeHxVBL9T6TbHO_bZGTmipSS7RVTFE4vNUbBj24hXzUPacLAXw-3Yj5YDl8D23jLGkx8gnJPQOzPMQ_B29pI_Sxkpgw2uXdWOpExXwLEb7pO-CJKXO4aGQ6I3sHFrL6upsP3QCZwgOZpSf6yt3Kmqpxz3IkiEKeZbH6eyEE5379kPr3MfKNw_XPKk-IMHY96TZ857zH4vIx1V6RsN1nd3FC6mjjbyiM8QSgdP2w7-ISAgQ2-XBsW5l5csiJvjgIFCVEZqXpbUjwW5EIA4Gc_ITf7H3YHD5Qd98f_SxET_CH9iYLqI6XR2UVO8QCN1ppJFTj-1eoYmVtEdBK9GE2vQ1IvYGoAaOSmDDp5BGNg'
+            );
+          })
+      ),
+      clear: jest.fn(),
+    })),
+    getAuth: jest.fn(),
+  };
+});
+
 afterEach(() => {
   cleanup();
   jest.clearAllMocks();
@@ -33,35 +50,6 @@ describe('InputPhone', () => {
 
     fireEvent.change(phoneInput, { target: { value: '8123456789' } });
     expect(phoneInput).toHaveValue(8123456789);
-  });
-
-  test('error message displayed when invalid', async () => {
-    const queryClient = new QueryClient();
-    render(
-      <QueryClientProvider client={queryClient}>
-        <AuthForm session="register" />
-      </QueryClientProvider>
-    );
-
-    expect(
-      screen.queryByText('*Phone number is required')
-    ).not.toBeInTheDocument();
-    const nextButton = screen.getByText('Selanjutnya');
-
-    act(() => {
-      fireEvent.click(nextButton);
-    });
-
-    expect(
-      await screen.findByText('*Phone number is required')
-    ).toBeInTheDocument();
-
-    const phoneInput = screen.getByLabelText('Nomor HP*');
-    fireEvent.change(phoneInput, { target: { value: '812345678987654321' } });
-
-    expect(
-      await screen.findByText('*Phone number is invalid')
-    ).toBeInTheDocument();
   });
 });
 

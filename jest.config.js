@@ -8,7 +8,7 @@ module.exports = {
     '!**/node_modules/**',
   ],
   coverageReporters: ['html', 'text', 'text-summary', 'cobertura', 'lcov'],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   transform: {
@@ -20,4 +20,5 @@ module.exports = {
     '^.+\\.module\\.(css)$': 'identity-obj-proxy',
   },
   testResultsProcessor: 'jest-sonar-reporter',
+  globalSetup: '<rootDir>/setupEnv.js',
 };

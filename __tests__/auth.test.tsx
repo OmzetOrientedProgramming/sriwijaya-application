@@ -1,0 +1,66 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import Auth from '../pages/auth';
+import { AuthWrapper } from '../__mocks__/auth/authMocks';
+
+// @ts-expect-error
+global.IntersectionObserver = class FakeIntersectionObserver {
+  observe() {}
+  disconnect() {}
+};
+
+jest.mock('firebase/auth', () => {
+  return {
+    RecaptchaVerifier: jest.fn(() => ({
+      verify: jest.fn(
+        () =>
+          new Promise((resolve, _) => {
+            resolve(
+              '03AGdBq26BCUD_6p0OPBZ-q62arVJRuvev8HGKRNOnK_aMBSqGStypYSx1hzu45mqFEhnpETyWUUXqkS1b8BQ7E0K-hhJ42MlQSTOR0bUNjwcFYWEfc0YlqQzndgGeHxVBL9T6TbHO_bZGTmipSS7RVTFE4vNUbBj24hXzUPacLAXw-3Yj5YDl8D23jLGkx8gnJPQOzPMQ_B29pI_Sxkpgw2uXdWOpExXwLEb7pO-CJKXO4aGQ6I3sHFrL6upsP3QCZwgOZpSf6yt3Kmqpxz3IkiEKeZbH6eyEE5379kPr3MfKNw_XPKk-IMHY96TZ857zH4vIx1V6RsN1nd3FC6mjjbyiM8QSgdP2w7-ISAgQ2-XBsW5l5csiJvjgIFCVEZqXpbUjwW5EIA4Gc_ITf7H3YHD5Qd98f_SxET_CH9iYLqI6XR2UVO8QCN1ppJFTj-1eoYmVtEdBK9GE2vQ1IvYGoAaOSmDDp5BGNg'
+            );
+          })
+      ),
+      clear: jest.fn(),
+    })),
+    getAuth: jest.fn(),
+  };
+});
+
+test('renders login button', () => {
+  render(<Auth />);
+
+  expect(screen.getByText('Login')).toBeInTheDocument();
+});
+
+test('renders register button', () => {
+  render(<Auth />);
+
+  expect(screen.getByText('Register')).toBeInTheDocument();
+});
+
+test('onLogin()', async () => {
+  render(
+    <AuthWrapper>
+      <Auth />
+    </AuthWrapper>
+  );
+
+  fireEvent.click(screen.getByText('Login'));
+
+  await waitFor(() => {
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+  });
+});
+
+test('onRegister()', async () => {
+  render(
+    <AuthWrapper>
+      <Auth />
+    </AuthWrapper>
+  );
+
+  fireEvent.click(screen.getByText('Register'));
+
+  await waitFor(() => {
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+  });
+});

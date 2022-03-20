@@ -5,9 +5,15 @@ interface ButtonProps {
   children: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, type, onClick }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  type,
+  onClick,
+  disabled = false,
+}) => {
   return (
     <button
       type={type}
@@ -19,8 +25,9 @@ const Button: React.FC<ButtonProps> = ({ children, type, onClick }) => {
           font-size: 18px;
           border-radius: 10px;
         `,
-        tw`w-full h-9 font-bold background[#003366] text-white`,
+        tw`w-full h-9 font-bold background[#003366] text-white disabled:(shadow-none background[#888888] border[2px solid #888888])`,
       ]}
+      disabled={disabled}
     >
       {children}
     </button>
