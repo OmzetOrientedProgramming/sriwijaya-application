@@ -8,12 +8,7 @@ import { Layout } from '../../../../components/Utils/Layout';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import StyledImageDiv from '../../../../components/Utils/StyledImageDiv';
-
-export const handleScrollRefetch = (refetch: any) => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    refetch();
-  }
-};
+import { handleScrollRefetch } from '../../..';
 
 interface IItem {
   id: number;
@@ -31,12 +26,10 @@ interface IInfoPlace {
 const Catalog: React.FC = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
-  // var page = 1;
   const [items, setItems] = useState<Array<IItem>>([]);
   const { id } = router.query;
   const [inputText, setInputText] = useState('');
   const [info, setInfo] = useState<IInfoPlace>();
-  // var isSearch = false;
   const [paginationState, setPaginationState] = useState({
     page: 1,
     isSearch: false,
@@ -71,23 +64,22 @@ const Catalog: React.FC = () => {
     },
     {
       onSuccess: (res: any) => {
-        // console.log('res:', res);
-        if (res.data.data.items.length !== 0) {
-          setInfo(res.data.data.info[0]);
-          if (paginationState.isSearch === true) {
-            setItems(res.data.data.items);
-            setPaginationState((prev) => ({
-              isSearch: false,
-              page: prev.page,
-            }));
-          } else {
-            setItems((oldItems) => oldItems.concat(res.data.data.items));
-          }
+        setInfo(() => {
+          return res.data.data.info[0];
+        });
+        if (paginationState.isSearch === true) {
+          setItems(res.data.data.items);
           setPaginationState((prev) => ({
             isSearch: false,
-            page: prev.page + 1,
+            page: prev.page,
           }));
+        } else {
+          setItems((oldItems) => oldItems.concat(res.data.data.items));
         }
+        setPaginationState((prev) => ({
+          isSearch: false,
+          page: prev.page + 1,
+        }));
       },
       onError: (err: any) => {
         toast.error(err.response.data.message, { position: 'top-right' });
@@ -119,6 +111,7 @@ const Catalog: React.FC = () => {
               refetch();
             }}
             setInputText={setInputText}
+            setPagination={setPaginationState}
           />
           {items.map((detail: any) => (
             <div key={detail.id}>

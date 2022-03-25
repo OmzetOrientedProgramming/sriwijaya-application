@@ -4,6 +4,7 @@ import 'twin.macro';
 interface SearchBarFunctionProps {
   onClick: any;
   setInputText: any;
+  setPagination: any;
 }
 
 const SearchBar: React.FC<SearchBarFunctionProps> = (props) => {
@@ -11,6 +12,10 @@ const SearchBar: React.FC<SearchBarFunctionProps> = (props) => {
     //convert input text to lower case
     var lowerCase = e.target.value.toLowerCase();
     props.setInputText(lowerCase);
+    props.setPagination({
+      isSearch: true,
+      page: 1,
+    });
   };
 
   return (
@@ -24,6 +29,7 @@ const SearchBar: React.FC<SearchBarFunctionProps> = (props) => {
             onChange={inputHandler}
           />
           <button
+            data-testid="search"
             tw="w-2/12 flex items-center justify-center border-l"
             onClick={props.onClick}
           >

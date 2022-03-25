@@ -1,16 +1,8 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ItemDetail from '../pages/place/[id]/catalog/[item_id]';
-import { headers } from '../apis/constants';
-import { getParams, mockedResponse } from '../__mocks__/apis/itemDetailMocks';
-import endpoint from '../apis/endpoint';
+import { mockedResponse } from '../__mocks__/apis/itemDetailMocks';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 
@@ -58,9 +50,5 @@ describe('useGetItemDetail()', () => {
     );
 
     expect(mockedAxios.get).toHaveBeenCalled();
-    // expect(mockedAxios.get).toHaveBeenCalledWith(
-    //   `${endpoint.place}/${getParams.placeID}/catalog/${getParams.itemID}`,
-    //   { headers: headers }
-    // );
   });
 });
