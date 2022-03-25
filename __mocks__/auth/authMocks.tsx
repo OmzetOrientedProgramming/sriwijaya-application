@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-export const LandingPageWrapper: React.FC = ({ children }) => {
+export const AuthWrapper: React.FC = ({ children }) => {
   const queryClient = new QueryClient();
 
   return (

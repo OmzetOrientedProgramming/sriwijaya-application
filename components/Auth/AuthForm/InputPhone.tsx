@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
-import 'twin.macro';
-import { AuthFormContext } from '.';
-import Button from '../../Utils/Button';
-import { useFormContext } from 'react-hook-form';
-import { useCheckPhoneNumber } from '../../../apis/hooks/authHooks';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import toast from 'react-hot-toast';
+import { useFormContext } from 'react-hook-form';
+import { RecaptchaVerifier } from 'firebase/auth';
+import 'twin.macro';
 
+import { AuthFormContext } from '.';
 import { AuthFormSession } from './types';
+import { auth } from '../../../firebase';
+import Button from '../../Utils/Button';
+import { useCheckPhoneNumber } from '../../../apis/hooks/authHooks';
 import capitalize from '../../../utils/capitalize';
 
 interface InputPhoneProps {
@@ -15,16 +17,48 @@ interface InputPhoneProps {
 
 const InputPhone: React.FC<InputPhoneProps> = (props) => {
   const { setStep } = useContext(AuthFormContext);
+  const [recaptchaVerifier, setRecaptchaVerifier] = useState<any>();
+  const recaptchaValidatorWrapperRef = useRef<HTMLDivElement>(null);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    watch,
   } = useFormContext();
 
   const { mutate: checkPhoneNumber, isLoading: isCheckingPhoneNumber } =
     useCheckPhoneNumber();
 
   const { session } = props;
+
+  const recaptchaToken = watch('recaptchaToken');
+
+  useEffect(
+    () =>
+      setRecaptchaVerifier(
+        new RecaptchaVerifier(
+          'recaptcha-validator',
+          { size: 'invisible' },
+          auth
+        )
+      ),
+    []
+  );
+
+  useEffect(() => {
+    if (!recaptchaToken)
+      toast.loading('Please wait while we prepare captcha...', {
+        duration: 3000,
+      });
+  }, [recaptchaToken]);
+
+  useEffect(() => {
+    if (!recaptchaVerifier) return;
+    recaptchaVerifier
+      .verify()
+      .then((token: string) => setValue('recaptchaToken', token));
+  }, [recaptchaVerifier]);
 
   return (
     <>
@@ -53,6 +87,9 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
           })}
           tw="inline-block w-full h-8 px-2 border border-black rounded"
         />
+        <div ref={recaptchaValidatorWrapperRef}>
+          <div id="recaptcha-validator" />
+        </div>
       </div>
       <p tw="mt-2 ml-2 color[#FE3131]">
         {errors.phone?.type === 'required' && '*Phone number is required'}
@@ -61,23 +98,44 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
 
       <div tw="mt-6">
         <Button
-          onClick={handleSubmit((data: any) => {
+          onClick={handleSubmit(async (data: any) => {
             return checkPhoneNumber(
-              { session, phone_number: `0${data.phone}` },
+              {
+                session,
+                phone_number: `0${data.phone}`,
+                recaptcha_token: data.recaptchaToken,
+              },
               {
                 onSuccess: (res: any) => {
-                  // console.log(res);
+                  const data = res?.data;
+                  if (!data || data.status !== 200) return;
+
+                  setValue('session_info', data.data.session_info);
                   setStep((step: number) => step + 1);
                 },
                 onError: (err: any) => {
-                  // console.log(err)
-                  toast.error(capitalize(err.response.data.message), {
-                    position: 'top-right',
+                  recaptchaVerifier.clear();
+                  if (recaptchaValidatorWrapperRef.current) {
+                    recaptchaValidatorWrapperRef.current.innerHTML =
+                      '<div id="recaptcha-validator"></div>';
+                    setRecaptchaVerifier(
+                      new RecaptchaVerifier(
+                        'recaptcha-validator',
+                        { size: 'invisible' },
+                        auth
+                      )
+                    );
+                  }
+                  err.response.data.errors?.forEach((response: string) => {
+                    toast.error(capitalize(response), {
+                      position: 'top-right',
+                    });
                   });
                 },
               }
             );
           })}
+          disabled={isCheckingPhoneNumber || !recaptchaToken}
         >
           {isCheckingPhoneNumber ? '. . .' : 'Selanjutnya'}
         </Button>

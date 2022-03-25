@@ -2,7 +2,6 @@ import Router from 'next/router';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import nookies from 'nookies';
 import 'twin.macro';
 
 import { useRegisterUser } from '../../../apis/hooks/authHooks';
@@ -56,17 +55,12 @@ const InputName: React.FC<InputNameProps> = (props) => {
           onClick={handleSubmit((data: any) => {
             return registerUser(
               {
-                phone_number: `0${data.phone}`,
                 full_name: data.name,
               },
               {
                 onSuccess: (res: any) => {
                   let resData = res.data;
-                  if (resData.message !== 'success') return;
-                  const token = resData.data.access_token;
-                  nookies.set(null, 'token', token, {
-                    path: '/',
-                  });
+                  if (resData.message !== 'created') return;
                   Router.push({
                     pathname: '/auth/success',
                     query: { session },

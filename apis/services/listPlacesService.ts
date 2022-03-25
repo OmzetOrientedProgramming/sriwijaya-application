@@ -2,10 +2,10 @@ import axios from 'axios';
 import endpoint from '../endpoint';
 import { headers } from '../constants';
 
-export interface getListPlacesParams {
+export type getListPlacesParams = {
   limit: number;
   page: number;
-}
+};
 
 export const getListPlaces = async (params: getListPlacesParams) => {
   const options = {

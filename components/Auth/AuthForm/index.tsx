@@ -36,8 +36,8 @@ const AuthForm: React.FC<AuthFormProps> = (props) => {
   return (
     <AuthFormContext.Provider
       value={{
-        step: step,
-        setStep: setStep,
+        step,
+        setStep,
       }}
     >
       <div tw="flex flex-col text-left">
