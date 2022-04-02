@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { NextPage } from 'next';
 import 'twin.macro';
 
 import { useGetListPlaces } from '../apis/hooks/listPlacesHooks';
+import withAuth from '../components/Utils/AuthHOC/withAuth';
 import CardPlace from '../components/ListPlace/CardPlace';
 import { Layout } from '../components/Utils/Layout';
 
@@ -13,7 +15,7 @@ export const handleScrollRefetch = (fetchNextPage: any) => {
   }
 };
 
-const ListPlaces: React.FC = () => {
+const ListPlaces: NextPage = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
 
@@ -65,4 +67,4 @@ const ListPlaces: React.FC = () => {
   );
 };
 
-export default ListPlaces;
+export default withAuth(ListPlaces);

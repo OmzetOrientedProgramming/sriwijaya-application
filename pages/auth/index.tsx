@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { css } from 'twin.macro';
 
+import withoutAuth from '../../components/Utils/AuthHOC/withoutAuth';
 import { Drawer } from '../../components/Drawer';
 import AuthForm from '../../components/Auth/AuthForm';
 import { AuthFormSession } from '../../components/Auth/AuthForm/types';
-import LandingWrapper from '../../components/Auth/AuthWrapper';
+import AuthWrapper from '../../components/Auth/AuthWrapper';
 import Button from '../../components/Utils/Button';
 
 const Auth: React.FC = () => {
@@ -30,7 +31,7 @@ const Auth: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <LandingWrapper>
+    <AuthWrapper>
       <Head>
         <title>Auth - Wave</title>
       </Head>
@@ -65,8 +66,8 @@ const Auth: React.FC = () => {
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         {authFormSession !== null && <AuthForm session={authFormSession} />}
       </Drawer>
-    </LandingWrapper>
+    </AuthWrapper>
   );
 };
 
-export default Auth;
+export default withoutAuth(Auth);
