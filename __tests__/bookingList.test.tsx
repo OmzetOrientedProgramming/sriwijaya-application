@@ -31,7 +31,7 @@ const setupWrapper = () => {
   return Wrapper;
 };
 
-describe('Test UI For List Places ', () => {
+describe('Test UI For Booking List ', () => {
   console.error = jest.fn();
 
   test('page display data requested', async () => {
@@ -45,8 +45,6 @@ describe('Test UI For List Places ', () => {
     );
 
     expect(await screen.findByText('Terkonfirmasi')).toBeInTheDocument();
-    // expect(await screen.findByText('Gagal')).toBeInTheDocument();
-    // expect(await screen.findByText('Selesai')).toBeInTheDocument();
   });
 
   test('handleScrollRefetch works correctly', async () => {
