@@ -1,9 +1,10 @@
+import React, { useEffect, useState } from 'react';
+import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
 import 'twin.macro';
 
-const Success: React.FC = () => {
+const Success: NextPage = () => {
   const [redirectSeconds, setRedirectSeconds] = useState(3);
   const router = useRouter();
   const session = router.query.session;

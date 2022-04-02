@@ -3,6 +3,7 @@ import 'twin.macro';
 import Head from 'next/head';
 import toast from 'react-hot-toast';
 
+import withAuth from '../../../components/Utils/AuthHOC/withAuth';
 import { useRouter } from 'next/router';
 import { Layout } from '../../../components/Utils/Layout';
 import StyledImageDiv from '../../../components/Utils/StyledImageDiv';
@@ -110,4 +111,4 @@ const PlaceDetail: React.FC = () => {
   );
 };
 
-export default PlaceDetail;
+export default withAuth(PlaceDetail);
