@@ -2,8 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import tw, { styled, css } from 'twin.macro';
 
-import StarRating from '../Utils/StarRating';
-
 interface BookingCardProps {
   bookingId: number;
   placeId: number;
@@ -23,16 +21,23 @@ function moneySeparator(amount : number) {
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
 
 function formatDate(date : string){
-  let day = date.slice(0, 2)
-  let month: string;
-  if (date[3] === '0'){
-    month = months[parseInt(date[4]) - 1]
+  let day = date.slice(8, 10)
+  let month : string;
+  if (date[5] === '0'){
+    month = months[parseInt(date[6]) - 1]
   } else {
-    month = months[parseInt(date.slice(3, 5)) - 1]
+    month = months[parseInt(date.slice(5, 7)) - 1]
   }
-  let year = date.slice(6, 10)
+  let year = date.slice(0, 4)
 
   return (day + " " + month + " " + year)
+}
+
+function formatHour(hour : string){
+  let hourOfHour = hour.slice(11, 13);
+  let minuteOfHour = hour.slice(14, 16);
+
+  return (hourOfHour + ":" + minuteOfHour)
 }
 
 const mockBookingRating : number = -1;
@@ -144,20 +149,7 @@ function getStateCard(state: number, bookingRating: number, propsId: number){
 const BookingCard: React.FC<BookingCardProps> = (props) => {  
   return (
     <StyledBookingCardContainer tw="shadow-md align-top">
-      <div
-      css={css`
-      margin: 0 0.375rem 0 auto;
-      width: 100%;
-      height: 120px;
-      border-radius: 0.625rem;
-      background-image: url('/apple-touch-icon.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      -webkit-box-shadow:inset 0px 0px 0px 2px #003366;
-      -moz-box-shadow:inset 0px 0px 0px 2px #003366;
-      box-shadow:inset 0px 0px 0px 2px #003366;
-      `} />
+      <StyledCardImageDiv src={props.placeImage}/>
       <div tw="flex flex-col justify-between leading-normal pt-1 pb-4 px-2">
         <div tw="mb-2">
           <div tw="mb-1">
@@ -178,7 +170,7 @@ const BookingCard: React.FC<BookingCardProps> = (props) => {
                 margin-bottom: 0.25rem;
               `}
             >
-              {formatDate(props.date)} &nbsp;•&nbsp; {props.startTime} - {props.endTime}
+              {formatDate(props.date)} &nbsp;•&nbsp; {formatHour(props.startTime)} - {formatHour(props.endTime)}
             </p>
           </div>
 
@@ -219,11 +211,13 @@ interface StyledCardImageDivProps {
 
 const StyledCardImageDiv = styled.div<StyledCardImageDivProps>`
   margin: 0 0.375rem 0 auto;
-  width: auto;
+  width: 100%;
   height: 120px;
   border-radius: 0.625rem;
   background-image: url(${(props) => props.src});
-  background-size: 120px 120px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-box-shadow:inset 0px 0px 0px 2px #003366;
   -moz-box-shadow:inset 0px 0px 0px 2px #003366;
   box-shadow:inset 0px 0px 0px 2px #003366;
