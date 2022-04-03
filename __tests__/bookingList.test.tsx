@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import axios from 'axios';
+import { mockedResponse, mockedResponse2 } from '../__mocks__/apis/bookingsListMocks';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -33,8 +34,8 @@ const setupWrapper = () => {
 
 describe('Test UI For Booking List ', () => {
   console.error = jest.fn();
-
-  test('page display data requested', async () => {
+  test('page display previous bookings', async () => {
+    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
 
     const Wrapper = setupWrapper();
 
@@ -44,8 +45,12 @@ describe('Test UI For Booking List ', () => {
       </Wrapper>
     );
 
-    expect(await screen.findByText('Terkonfirmasi')).toBeInTheDocument();
+    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
+    expect(await screen.findByText('place_name_mock_0')).toBeInTheDocument();
   });
+
+
+
 
   test('handleScrollRefetch works correctly', async () => {
     const refetch = jest.fn();

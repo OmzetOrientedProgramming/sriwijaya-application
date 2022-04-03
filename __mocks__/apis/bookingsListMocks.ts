@@ -1,0 +1,127 @@
+import { AxiosResponse } from "axios";
+
+export const previousBookingsPaginationSuccessResponse = {
+    status: 200,
+    message: 'success',
+    data: {
+      pagination: {
+        limit: 5,
+        page: 1,
+        first_url: 'string',
+        last_url: 'string',
+        next_url: 'string',
+        previous_url: 'string',
+        total_page: 2,
+      },
+      bookings: [
+        {
+            date: "2022-04-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 1,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "place_name_mock_0",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 0,
+            total_price: 15000,
+        },
+        {
+            date: "2022-12-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 2,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "Starbucks AEON Mall Jakarta Garden City",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 1,
+            total_price: 15000,
+        },
+        {
+            date: "2022-04-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 3,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "Starbucks AEON Mall Jakarta Garden City",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 2,
+            total_price: 15000,
+        },
+        {
+            date: "2022-04-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 4,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "Starbucks AEON Mall Jakarta Garden City",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 3,
+            total_price: 15000,
+        },
+        {
+            date: "2022-04-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 5,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "Starbucks AEON Mall Jakarta Garden City",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 4,
+            total_price: 15000,
+        },
+        {
+            date: "2022-04-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 6,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "Starbucks AEON Mall Jakarta Garden City",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 5,
+            total_price: 15000,
+        },
+        {
+            date: "2022-04-06T00:00:00Z",
+            end_time: "0000-01-01T15:00:00Z",
+            id: 7,
+            place_id: 3,
+            place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+            place_name: "Starbucks AEON Mall Jakarta Garden City",
+            start_time: "0000-01-01T12:00:00Z",
+            status: 0,
+            total_price: 15000,
+        },
+      ],
+    },
+  };
+export const ongoingBookingsSuccessResponse = {
+    status: 200,
+    message: 'success',
+    data: [{
+        date: "2022-04-06T00:00:00Z",
+        end_time: "0000-01-01T15:00:00Z",
+        id: 5,
+        place_id: 3,
+        place_image: "https://contents.file-server.net/store/6/tenant-item-image/225/044f5c08-306e-474b-97c2-fd3313109f5f-web.jpg",
+        place_name: "place_name_mock_0",
+        start_time: "0000-01-01T12:00:00Z",
+        status: 0,
+        total_price: 15000,
+    },]
+}
+
+export const mockedResponse: AxiosResponse = {
+    data: previousBookingsPaginationSuccessResponse,
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {},
+};
+
+export const mockedResponse2: AxiosResponse = {
+    data: ongoingBookingsSuccessResponse,
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {},
+};

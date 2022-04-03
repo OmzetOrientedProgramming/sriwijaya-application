@@ -9,6 +9,8 @@ const endpoint = {
   verifyOTP: `${baseUrl}/auth/verify-otp`,
   registerUser: `${baseUrl}/auth/register`,
   place: `${baseUrl}/place`,
+  ongoingBookings: `${baseUrl}/booking/ongoing`,
+  previousBookings: `${baseUrl}/booking/previous`,
 };
 
 export default endpoint;
