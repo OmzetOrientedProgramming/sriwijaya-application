@@ -98,7 +98,6 @@ const BookingList: NextPage = () => {
 
           {prevStatus === 'success' &&
             prevData?.pages.map((page: any) => {
-              console.log(prevData);
               return page.data.bookings.map((detail: any) => {
                 return (
                   <div tw="w-full">
