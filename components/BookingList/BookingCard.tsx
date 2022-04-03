@@ -25,20 +25,25 @@ function getStateCard(state: number, bookingRating: number, propsId: number){
     return (
       <div tw="flex flex-row space-x-1">
         <div css={css`
-        height = 24px;
+        height:32px;
+        display:table;
         `}>
-        <img src="icons/time-icon-blue.png" width="24" height="auto" css={css`float: left;`}/>
+          <div css={css`display:table-cell; vertical-align:middle;`}>
+            <img src="icons/time-icon-blue.png" width="20" height="auto" css={css`float: left;`}/>
+          </div>
+          <div css={css`display:table-cell; vertical-align:middle; padding-left: 4px`}>
+            <p               
+              tw="w-full text-[12px] leading-normal font-bold"
+              css={css`
+                word-wrap: break-word;
+                color:#003366;
+                vertical-align:middle;
+              `}
+              >
+              Menunggu Konfirmasi
+            </p>
+          </div>
         </div>
-      <p               
-      tw="w-full text-[12px] leading-normal font-bold"
-      css={css`
-        word-wrap: break-word;
-        margin-bottom: 0.5rem;
-        color:#003366;
-      `}
-      >
-      Menunggu Konfirmasi
-      </p>
       </div>
       )
   }
@@ -61,10 +66,11 @@ function getStateCard(state: number, bookingRating: number, propsId: number){
 
           <div css={css`
           height = 24px;
+          vertical-align: middle;
           `}>
-          <img src="icons/time-icon-red.png" width="24" height="auto" css={css` position: relative; float: left;`}/>
+          <img src="icons/time-icon-red.png" width="18" height="auto" css={css` position: relative; float: left;`}/>
           <p 
-          tw="w-full text-[16px] leading-normal font-bold"
+          tw="w-full text-[12px] leading-normal font-bold"
           css={css`
             word-wrap: break-word;
             margin-left: 0.25rem;
@@ -79,7 +85,7 @@ function getStateCard(state: number, bookingRating: number, propsId: number){
         </div>
         <div css={css`display: table-cell; vertical-align: middle; padding-left:16px`}>
           <BookingButton>
-            Detail Bayar
+            Detail
           </BookingButton>
         </div>
       </div>
