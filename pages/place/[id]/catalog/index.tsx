@@ -8,6 +8,7 @@ import { Layout } from '../../../../components/Utils/Layout';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import StyledImageDiv from '../../../../components/Utils/StyledImageDiv';
+import withAuth from '../../../../components/Utils/AuthHOC/withAuth';
 import { handleScrollRefetch } from '../../..';
 
 interface IItem {
@@ -131,4 +132,4 @@ const Catalog: React.FC = () => {
   );
 };
 
-export default Catalog;
+export default withAuth(Catalog);

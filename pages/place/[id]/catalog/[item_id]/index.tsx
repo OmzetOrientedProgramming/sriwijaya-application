@@ -6,6 +6,7 @@ import { Layout } from '../../../../../components/Utils/Layout';
 import { useRouter } from 'next/router';
 import { useGetItemDetail } from '../../../../../apis/hooks/detailItemHooks';
 import toast from 'react-hot-toast';
+import withAuth from '../../../../../components/Utils/AuthHOC/withAuth';
 
 const ItemDetail: React.FC = () => {
   const router = useRouter();
@@ -52,4 +53,4 @@ const ItemDetail: React.FC = () => {
   );
 };
 
-export default ItemDetail;
+export default withAuth(ItemDetail);
