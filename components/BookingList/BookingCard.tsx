@@ -21,6 +21,70 @@ function moneySeparator(x : number) {
 }
 
 function getStateCard(state: number, bookingRating: number, propsId: number){
+  if (state === 0){
+    return (
+      <div tw="flex flex-row space-x-1">
+        <div css={css`
+        height = 24px;
+        `}>
+        <img src="icons/time-icon-blue.png" width="24" height="auto" css={css`float: left;`}/>
+        </div>
+      <p               
+      tw="w-full text-[12px] leading-normal font-bold"
+      css={css`
+        word-wrap: break-word;
+        margin-bottom: 0.5rem;
+        color:#003366;
+      `}
+      >
+      Menunggu Konfirmasi
+      </p>
+      </div>
+      )
+  }
+  if (state === 1){
+    return(
+      <div tw="flex flex-row space-x-1" css={css`display: table;`}>
+        <div css={css`
+            display: table-cell;
+            vertical-align: middle;
+        `}>
+          <p 
+          tw="w-full text-[12px] leading-normal font-bold"
+          css={css`
+            word-wrap: break-word;
+            margin-bottom: 0.25rem;
+            color:#FE3131;
+          `}>
+            Pembayaran
+          </p>
+
+          <div css={css`
+          height = 24px;
+          `}>
+          <img src="icons/time-icon-red.png" width="24" height="auto" css={css` position: relative; float: left;`}/>
+          <p 
+          tw="w-full text-[16px] leading-normal font-bold"
+          css={css`
+            word-wrap: break-word;
+            margin-left: 0.25rem;
+            margin-bottom: 0.25rem;
+            color:#FE3131;
+            position: relative;
+            left: 4px;
+          `}>
+            00:00
+          </p>
+          </div>
+        </div>
+        <div css={css`display: table-cell; vertical-align: middle; padding-left:16px`}>
+          <BookingButton>
+            Detail Bayar
+          </BookingButton>
+        </div>
+      </div>
+    )
+  }
   if (state === 2){
     return (
     <div tw="flex flex-row space-x-1">
@@ -29,16 +93,16 @@ function getStateCard(state: number, bookingRating: number, propsId: number){
       </BasicStateCard>
     </div>
     )
-  } else if (state === 3 && bookingRating > 0){
+  } else if (state === 5){
     return (
       <div tw="flex flex-row space-x-2 items-center">
         <BasicStateCard hexColor='#03BD36'>
           Selesai
-          </BasicStateCard>
-        <StarRating rating={bookingRating} type='black' size='16' />
+        </BasicStateCard>
+        {/* Add stars */}
       </div>
     )
-  } else if (state === 3 && bookingRating === 0){
+  } else if (state === 3){
     return (
       <Link href={`/place/${propsId}`}>
         <BookingButton>

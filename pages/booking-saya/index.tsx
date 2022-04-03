@@ -28,6 +28,32 @@ const BookingList: React.FC = () => {
       `}>
         Booking Terjadwal
       </div>
+      <div tw="w-full">
+        <BookingCard
+            placeId = {1}
+            image = {"string"}
+            placeName= {"Skyrink Ice Skating Rink, Taman Anggrek"}
+            totalPrice = {1625000}
+            rating = {0}
+            status = {1}
+            date = {new Date("2015-03-25T12:00:00Z")}
+            endTime = {new Date("2015-03-25T12:00:00Z")}
+            startTime = {new Date("2015-03-25T12:00:00Z")}
+        />
+      </div>
+      <div tw="w-full">
+        <BookingCard
+            placeId = {1}
+            image = {"string"}
+            placeName= {"Skyrink Ice Skating Rink, Taman Anggrek"}
+            totalPrice = {1625000}
+            rating = {0}
+            status = {0}
+            date = {new Date("2015-03-25T12:00:00Z")}
+            endTime = {new Date("2015-03-25T12:00:00Z")}
+            startTime = {new Date("2015-03-25T12:00:00Z")}
+        />
+        </div>
         <div tw="w-full">
           <BookingCard
               placeId = {1}
@@ -87,7 +113,7 @@ const BookingList: React.FC = () => {
               placeName= {"Skyrink Ice Skating Rink, Taman Anggrek"}
               totalPrice = {1625000}
               rating = {4}
-              status = {3}
+              status = {5}
               date = {new Date("2015-03-25T12:00:00Z")}
               endTime = {new Date("2015-03-25T12:00:00Z")}
               startTime = {new Date("2015-03-25T12:00:00Z")}
