@@ -78,7 +78,9 @@ const PlaceDetail: React.FC = () => {
           </div>
 
           <div tw="px-4 w-full flex items-center">
-            <Button>Booking</Button>
+            <Link href={`/booking/${id}`}>
+              <Button>Booking</Button>
+            </Link>
             <Link href={`/place/${id}/catalog`}>
               <img
                 tw="ml-2 hover:cursor-pointer"
