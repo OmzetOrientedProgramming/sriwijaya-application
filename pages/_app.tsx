@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import 'twin.macro';
+import 'react-calendar/dist/Calendar.css';
 
 import GlobalStyles from './../styles/GlobalStyles';
 import { QueryClient, QueryClientProvider } from 'react-query';
