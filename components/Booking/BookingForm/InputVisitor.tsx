@@ -70,6 +70,7 @@ const InputVisitor: React.FC<InputVisitorProps> = (props) => {
               tw="m-0"
               min={minVisitor}
               max={maxVisitor}
+              onKeyDown={(e: React.KeyboardEvent) => validateKeyDown(e)}
               {...register('count', {
                 required: true,
                 valueAsNumber: true,
@@ -149,3 +150,14 @@ const StyledButton = styled.button`
   width: 1.5rem;
   height: 1.5rem;
 `;
+
+const validateKeyDown = (e: React.KeyboardEvent) => {
+  const isArrow = /^[Arrow]/i.test(e.key);
+  const isNumber = /^[0-9]$/i.test(e.key);
+  const isBackspace = /^[Backspace]/i.test(e.key);
+  const isDelete = /^[Delete]/i.test(e.key);
+
+  if (!isNumber && !isArrow && !isBackspace && !isDelete) {
+    e.preventDefault();
+  }
+};
