@@ -1,4 +1,5 @@
 import axios from 'axios';
+import nookies from 'nookies';
 import endpoint from '../endpoint';
 import { headers } from '../constants';
 
@@ -8,7 +9,10 @@ export interface getPlaceDetailParams {
 
 export const placeDetail = async (params: getPlaceDetailParams) => {
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
   };
 
   const axiosData = await axios.get(`${endpoint.place}/${params.id}`, options);
@@ -22,7 +26,10 @@ export interface getPlaceTimeSlotsParams {
 
 export const getPlaceTimeSlots = async (params: getPlaceTimeSlotsParams) => {
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
     params: {
       date: params.date,
     },

@@ -27,7 +27,7 @@ const InputResult: React.FC<InputResultProps> = (props) => {
   const { step } = useContext(BookingFormContext);
   const router = useRouter();
 
-  const { mutateAsync } = usePostCreateBooking();
+  const { mutateAsync, isLoading } = usePostCreateBooking();
 
   const [count, date, startTime, endTime] = watch([
     'count',
@@ -106,7 +106,7 @@ const InputResult: React.FC<InputResultProps> = (props) => {
           </div>
           <Button
             type="submit"
-            disabled={isDisabled}
+            disabled={isDisabled || isLoading}
             onClick={handleSubmit(onSubmit)}
           >
             Selanjutnya

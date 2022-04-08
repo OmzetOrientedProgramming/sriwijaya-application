@@ -1,4 +1,5 @@
 import axios from 'axios';
+import nookies from 'nookies';
 import endpoint from '../endpoint';
 import { headers } from '../constants';
 
@@ -10,7 +11,10 @@ export interface getItemDetailParams {
 
 export const getItemDetail = async (params: getItemDetailParams) => {
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
   };
   return await axios.get(
     `${endpoint.place}/${params.placeID}/catalog/${params.itemID}`,
