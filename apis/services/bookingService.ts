@@ -1,4 +1,5 @@
 import axios from 'axios';
+import nookies from 'nookies';
 import endpoint from '../endpoint';
 import { headers } from '../constants';
 
@@ -12,7 +13,10 @@ export interface getBookingDateParams {
 export const getBookingDate = async (params: getBookingDateParams) => {
   const { placeId, ...axiosParams } = params;
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
     params: axiosParams,
   };
   const axiosData = await axios.get(
@@ -33,7 +37,10 @@ export interface getBookingTimeParams {
 export const getBookingTime = async (params: getBookingTimeParams) => {
   const { placeId, ...axiosParams } = params;
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
     params: axiosParams,
   };
 
@@ -57,7 +64,10 @@ export interface postCreateBookingParams {
 export const postCreateBooking = async (params: postCreateBookingParams) => {
   const { placeId, ...data } = params;
   const options = {
-    headers,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
   };
 
   const axiosData = await axios.post(
