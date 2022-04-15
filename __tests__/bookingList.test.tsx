@@ -49,6 +49,22 @@ describe('Test UI For Booking List ', () => {
     expect(await screen.findByText('place_name_mock_0')).toBeInTheDocument();
   });
 
+  test('page display ongoing bookings', async () => {
+    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
+    mockedAxios.get.mockResolvedValueOnce(mockedResponse2);
+
+    const Wrapper = setupWrapper();
+
+    render(
+      <Wrapper>
+        <BookingList />
+      </Wrapper>
+    );
+
+    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
+    // expect(await screen.queryByText('place_name_mock_0')).toBeInTheDocument();
+  });
+
 
 
 

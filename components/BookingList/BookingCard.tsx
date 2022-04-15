@@ -182,7 +182,7 @@ const BookingCard: React.FC<BookingCardProps> = (props) => {
                 margin-bottom: 0.5rem
               `}
             >
-              {moneySeparator(props.totalPrice)}
+              Rp{moneySeparator(props.totalPrice)}
             </p>
           </div>
 
