@@ -127,12 +127,14 @@ const BookingList: NextPage = () => {
                   </div>
                 );
               });
-            })}
+            })
+          }
           {/* LOOPING */}
 
-          {isFetching && hasNextPage && <p tw="m-8">sedang memuat...</p>}
+          {isFetching && hasNextPage && <p tw="m-8">sedang memuat...</p>}          
         </div>
       </div>
+
     </Layout>
   );
 };
