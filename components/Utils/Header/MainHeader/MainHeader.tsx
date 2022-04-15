@@ -7,10 +7,11 @@ export interface MainHeaderProps {
   alt: string;
   title?: string;
   back?: boolean;
+  onBack?: () => void;
 }
 
 const MainHeader: React.FC<MainHeaderProps> = (props) => {
-  const { src, alt, title, back } = props;
+  const { src, alt, title, back, onBack = () => router.back() } = props;
   const router = useRouter();
   return (
     <StyledMainHeader id="wave-main-header">
@@ -26,7 +27,7 @@ const MainHeader: React.FC<MainHeaderProps> = (props) => {
                 tw="hover:cursor-pointer"
                 src="/images/bx-arrow-back.svg"
                 alt="back"
-                onClick={() => router.back()}
+                onClick={onBack}
               />
             )}
           </div>
@@ -42,6 +43,7 @@ export default MainHeader;
 
 const StyledMainHeader = styled.div`
   position: fixed;
+  z-index: 50;
   top: 0;
 
   // display: flex;

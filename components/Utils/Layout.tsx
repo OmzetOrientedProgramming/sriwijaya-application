@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { Detector } from 'react-detect-offline';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 
 import { MainNavbar, MainNavbarProps } from './Navbar';
 import { MainHeader, MainHeaderProps } from './Header';
@@ -73,12 +73,16 @@ const layoutMainNavbarProps = {
 interface LayoutProps {
   title?: string;
   back?: boolean;
+  onBack?: () => void;
+  hasNavbar?: boolean;
 }
 
 export const Layout: React.FC<LayoutProps> = ({
   title,
   back = false,
   children,
+  onBack,
+  hasNavbar = true,
 }) => {
   const layoutMainHeaderProps = {
     src: '/header/logo.png',
@@ -106,10 +110,8 @@ export const Layout: React.FC<LayoutProps> = ({
 
   return (
     <div tw="min-h-screen flex flex-col items-center justify-center">
-      <MainHeader {...mainHeaderProps} />
-      <div tw="w-full border[1px solid #CDCCCC] pt-[70px] pb-[calc(66px + 24px)] max-w-screen-md">
-        {children}
-      </div>
+      <MainHeader onBack={onBack} {...mainHeaderProps} />
+      <ChildrenWrapper hasNavbar={hasNavbar}>{children}</ChildrenWrapper>
       <Detector
         render={({ online }) => (
           <div
@@ -124,7 +126,20 @@ export const Layout: React.FC<LayoutProps> = ({
           </div>
         )}
       />
-      <MainNavbar {...mainNavbarProps} />
+      {hasNavbar && <MainNavbar {...mainNavbarProps} />}
     </div>
   );
 };
+
+interface ChildrenWrapperProps {
+  hasNavbar?: boolean;
+}
+
+const ChildrenWrapper = styled.div<ChildrenWrapperProps>`
+  width: 100%;
+  border: 1px solid #cdcccc;
+  min-height: ${(props) => (props.hasNavbar ? 'calc(100vh - 66px)' : '100vh')};
+  margin-top: 70px;
+  margin-bottom: ${(props) => (props.hasNavbar ? 'calc(66px + 24px)' : '0px')};
+  max-width: 768px;
+`;

@@ -54,12 +54,10 @@ export interface registerUserParamsType {
 }
 
 export const registerUser = async ({ full_name }: registerUserParamsType) => {
-  const accessToken = nookies.get(null).accessToken;
-
   const options = {
     headers: {
       ...headers,
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
     },
   };
 

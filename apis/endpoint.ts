@@ -9,6 +9,9 @@ const endpoint = {
   verifyOTP: `${baseUrl}/auth/verify-otp`,
   registerUser: `${baseUrl}/auth/register`,
   place: `${baseUrl}/place`,
+  booking: `${baseUrl}/booking`,
+  bookingDate: `${baseUrl}/booking/date`,
+  bookingTime: `${baseUrl}/booking/time`,
   ongoingBookings: `${baseUrl}/booking/ongoing`,
   previousBookings: `${baseUrl}/booking/previous`,
 };
