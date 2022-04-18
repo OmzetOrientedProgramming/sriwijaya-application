@@ -21,7 +21,7 @@ const Booking: NextPage = () => {
     id,
   };
 
-  const { data, isLoading, isError } = useGetPlaceDetail(params, {
+  const { data } = useGetPlaceDetail(params, {
     onError: (err: any) => {
       toast.error(err.response.data.message, { position: 'top-right' });
     },

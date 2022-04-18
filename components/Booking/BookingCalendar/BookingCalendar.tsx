@@ -30,7 +30,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = (props) => {
           const isYesterday = moment(formattedDate).isBefore(today, 'D');
           return isFullyBooked || isYesterday;
         }}
-        formatShortWeekday={(_, date) => parseCalendarDay(date)}
+        formatShortWeekday={(_, myDate) => parseCalendarDay(myDate)}
         prevLabel={<PrevLabel />}
         nextLabel={<NextLabel />}
         prev2Label={null}

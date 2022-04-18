@@ -5,7 +5,6 @@ import {
   getBookingTime,
   getBookingTimeParams,
   postCreateBooking,
-  postCreateBookingParams,
 } from '../services/bookingService';
 
 export const useGetBookingDate = (

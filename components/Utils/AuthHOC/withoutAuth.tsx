@@ -1,8 +1,7 @@
 import React from 'react';
 import { NextPage, NextPageContext } from 'next';
-import Router from 'next/router';
 import nookies from 'nookies';
-import jwtDecode from 'jwt-decode';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 import ErrorPage from 'next/error';
 
 const loginURL = '/auth';
@@ -20,7 +19,8 @@ const withoutAuth: (WrappedComponent: NextPage) => NextPage = (
     const accessToken = nookies.get(ctx)?.accessToken;
 
     const flag =
-      accessToken && Date.now() >= (jwtDecode(accessToken) as any)?.exp;
+      accessToken &&
+      Date.now() >= (jwtDecode<JwtPayload>(accessToken).exp ?? Date.now() + 1);
 
     if (flag) {
       return { statusCode: 404 };

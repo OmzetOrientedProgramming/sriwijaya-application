@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import tw, { styled, css } from 'twin.macro';
+import { css } from 'twin.macro';
 
 import { Layout } from '../../components/Utils/Layout';
 import BookingCard from '../../components/BookingList/BookingCard';
@@ -27,13 +27,8 @@ const BookingList: NextPage = () => {
     hasNextPage,
     isFetching,
     status: prevStatus,
-    error: prevError,
   } = useGetPreviousBookings();
-  const {
-    data: ongoData,
-    status: ongoStatus,
-    error: ongoError,
-  } = useGetOngoingBookings({
+  const { data: ongoData, status: ongoStatus } = useGetOngoingBookings({
     onSuccess: (res: any) => {},
     onError: (err: any) => {
       toast.error(err.response.data.message, { position: 'top-right' });
@@ -127,14 +122,12 @@ const BookingList: NextPage = () => {
                   </div>
                 );
               });
-            })
-          }
+            })}
           {/* LOOPING */}
 
-          {isFetching && hasNextPage && <p tw="m-8">sedang memuat...</p>}          
+          {isFetching && hasNextPage && <p tw="m-8">sedang memuat...</p>}
         </div>
       </div>
-
     </Layout>
   );
 };
