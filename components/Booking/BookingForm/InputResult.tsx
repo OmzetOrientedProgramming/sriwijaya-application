@@ -10,6 +10,10 @@ import { BookingFormContext } from '.';
 import BackgroundWrapper from './BackgroundWrapper';
 import Button from '../../Utils/Button';
 import { usePostCreateBooking } from '../../../apis/hooks/bookingHooks';
+import { headers } from '../../../apis/constants';
+import axios from 'axios';
+import endpoint from '../../../apis/endpoint';
+import nookies from 'nookies';
 
 interface InputResultProps {
   placeId: number;
@@ -26,6 +30,13 @@ const InputResult: React.FC<InputResultProps> = (props) => {
   } = useFormContext();
   const { step } = useContext(BookingFormContext);
   const router = useRouter();
+
+  const options = {
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
+    },
+  };
 
   const { mutateAsync, isLoading } = usePostCreateBooking();
 
@@ -47,6 +58,18 @@ const InputResult: React.FC<InputResultProps> = (props) => {
       try {
         const bookingResponse = await mutateAsync(postCreateBookingParams);
         if (bookingResponse.message === 'success') {
+          setTimeout(function () {
+            console.log('setTimeout');
+            axios.get(endpoint.ongoingBookings, options).then((res) => {
+              console.log(res.data[6]);
+              if (res.data[6].status === 0) {
+                console.log('Expired Gagal');
+              } else {
+                console.log('Confirmed!');
+              }
+            });
+          }, 30 * 1000);
+
           toast.success('Sukses membuat booking!');
           router.push('/booking-saya');
         }

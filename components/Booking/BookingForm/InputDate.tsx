@@ -40,13 +40,13 @@ const InputDate: React.FC<InputDateProps> = (props) => {
     interval: 30,
   };
 
-  const { data, isLoading, isError } = useGetBookingDate(params);
+  const { data } = useGetBookingDate(params);
 
   let availableDates = data?.data ?? [];
   availableDates = availableDates.filter(
-    (date: any) => date.status === 'available'
+    (myDate: any) => myDate.status === 'available'
   );
-  availableDates = availableDates.map((date: any) => date.date);
+  availableDates = availableDates.map((myDate: any) => myDate.date);
 
   useEffect(() => {
     register('date', {
