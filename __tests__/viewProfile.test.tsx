@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import CustomerProfile from '../pages/profil';
+import CustomerProfile from '../pages/profil/index'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { RouterContext } from 'next/dist/shared/lib/router-context';
