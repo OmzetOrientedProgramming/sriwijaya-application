@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import CustomerProfileForm from '../pages/profil/edit/index'
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import axios from 'axios';

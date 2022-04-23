@@ -1,6 +1,6 @@
 // components/Profile/profileCard.tsx
+import { filterProps } from 'framer-motion';
 import React from 'react';
-import Link from 'next/link';
 import tw, { styled, css } from 'twin.macro';
 
 interface ProfileCardProps {
@@ -29,7 +29,10 @@ function formatProfileSex(sex : string){
 const ProfileCard: React.FC<ProfileCardProps> = (props) => {  
   return (
     <StyledProfileCardContainer tw="justify-center align-top">
-        <StyledProfileCardImageDiv src={props.customerProfilePicture}/>
+        <StyledProfileCardImageDiv>
+            <StyledProfileCardImage src={props.customerProfilePicture}/>
+        </StyledProfileCardImageDiv>
+
         <div tw="w-full">
             <div tw="mb-0.5 w-full text-[12px] leading-normal" css={css`color: #003366;`}>
                 Nama
@@ -79,16 +82,12 @@ const StyledProfileCardContainer = styled.div`
   padding: 0 0 2rem 0;
 `;
 
-interface StyledProfileCardImageDivProps {
-  src?: string;
-}
-
-const StyledProfileCardImageDiv = styled.div<StyledProfileCardImageDivProps>`
+const StyledProfileCardImageDiv = styled.div`
   margin: 0 auto 2rem;
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  background-image: url(${(props) => props.src});
+  background-image: url(${("../icons/user-circle-dark.png")});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -97,9 +96,21 @@ const StyledProfileCardImageDiv = styled.div<StyledProfileCardImageDivProps>`
   box-shadow:inset 0px 0px 0px 2px #003366;
 `;
 
+interface StyledProfileCardImageProps {
+    src?: string;
+  }
 
-
-
-
-
-  
+const StyledProfileCardImage = styled.div<StyledProfileCardImageProps>`
+    margin: 0 auto 2rem;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    background-image: url(${(props) => props.src});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-box-shadow:inset 0px 0px 0px 2px #003366;
+    -moz-box-shadow:inset 0px 0px 0px 2px #003366;
+    box-shadow:inset 0px 0px 0px 2px #003366;
+`;

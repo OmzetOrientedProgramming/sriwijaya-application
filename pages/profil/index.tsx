@@ -48,7 +48,8 @@ const CustomerProfile: React.FC = () => {
           </div>
         </div>
         <ProfileCard
-          customerProfilePicture='images/dummy.jpg'
+          // images/dummy.jpg
+          customerProfilePicture="images/dummy.jpg"
           customerName='Teofanus Gary'
           customerDateOfBirth={ new Date("2001-08-01") }
           customerSex='M'
