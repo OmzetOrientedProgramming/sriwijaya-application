@@ -49,11 +49,11 @@ const CustomerProfile: React.FC = () => {
         </div>
         <ProfileCard
           // images/dummy.jpg
-          customerProfilePicture="images/dummy.jpg"
-          customerName='Teofanus Gary'
-          customerDateOfBirth={ new Date("2001-08-01") }
-          customerSex='M'
-          customerPhoneNumber='081234567890'
+          customerProfilePicture=""
+          customerName="test full name"
+          customerDateOfBirth={ new Date("0001-01-01T00:00:00Z") }
+          customerSex="0"
+          customerPhoneNumber="+62123456789"
         />
 
         <div tw="w-full flex justify-center">
@@ -90,9 +90,6 @@ const CustomerProfile: React.FC = () => {
             </button>
           </Link>
         </div>
-
-
-
       </Layout>
     </>
   );

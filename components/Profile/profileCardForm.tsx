@@ -12,8 +12,26 @@ interface ProfileCardFormProps {
 
 const options: Intl.DateTimeFormatOptions = { year: "numeric", month: 'long', day: 'numeric' };
 
+function formatDateOfBirthField(dateOfBirth : Date){
+    if (!(dateOfBirth.getTime() === new Date("0001-01-01T00:00:00Z").getTime())){
+        return(
+            <input
+                id="date-of-birth" type="date"
+                tw="w-full py-2 px-3 border border-[#003366] rounded-lg" css={css`color: #003366;`}
+                defaultValue={dateOfBirth.toISOString().substr(0, 10)}
+                />
+        )
+    }
+    return(
+        <input
+            id="date-of-birth" type="date"
+            tw="w-full py-2 px-3 border border-[#003366] rounded-lg" css={css`color: #003366;`}
+        />
+    )
+}
+
 function formatPhoneNumber(phoneNumber : string){
-    return phoneNumber.slice(0, 4) + "-" + phoneNumber.slice(4, 8) + "-" + phoneNumber.slice(8)
+    return "(" + phoneNumber.slice(0, 3) + ") " + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 10) + "-" + phoneNumber.slice(10)
 }
 
 const ProfileCardForm: React.FC<ProfileCardFormProps> = (props) => {  
@@ -43,11 +61,7 @@ const ProfileCardForm: React.FC<ProfileCardFormProps> = (props) => {
                 Tanggal Lahir<span tw="color[#FE3131]">*</span>
             </label>
             <div tw="mt-1 mb-4 flex">
-                <input
-                id="date-of-birth" type="date"
-                tw="w-full py-2 px-3 border border-[#003366] rounded-lg" css={css`color: #003366;`}
-                defaultValue={props.customerDateOfBirth.toISOString().substr(0, 10)}
-                />
+                {formatDateOfBirthField(props.customerDateOfBirth)}
             </div>
 
             <div id="sex" tw="w-full text-[16px] leading-normal" css={css`color: #003366;`}>
@@ -55,10 +69,10 @@ const ProfileCardForm: React.FC<ProfileCardFormProps> = (props) => {
             </div>
             <div tw="mt-1 mb-4 flex space-x-3">
                 <label tw="w-full py-2 px-3 border border-[#003366] text-[#003366] rounded-lg ">
-                    <input type="radio" className="form-radio h-5 w-5" value="M" name="sex" defaultChecked={props.customerSex ==="M"}/> Laki-laki
+                    <input type="radio" className="form-radio h-5 w-5" value="M" name="sex" defaultChecked={props.customerSex ==="1"}/> Laki-laki
                 </label>
                 <label tw="w-full py-2 px-3 border border-[#003366] text-[#003366] rounded-lg ">
-                    <input type="radio" className="form-radio h-5 w-5" value="F" name="sex" defaultChecked={props.customerSex ==="F"}/> Perempuan
+                    <input type="radio" className="form-radio h-5 w-5" value="F" name="sex" defaultChecked={props.customerSex ==="2"}/> Perempuan
                 </label>
             </div>
 

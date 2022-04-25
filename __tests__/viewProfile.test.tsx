@@ -44,7 +44,7 @@ describe('Test UI For View Profile ', () => {
     );
 
     expect(await screen.queryByText("Personal Data")).toBeInTheDocument();
-    expect(await screen.queryByText("Teofanus Gary")).toBeInTheDocument();
+    expect(await screen.queryByText("test full name")).toBeInTheDocument();
   });
 
 

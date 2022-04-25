@@ -13,25 +13,28 @@ interface ProfileCardProps {
 
 const options: Intl.DateTimeFormatOptions = { year: "numeric", month: 'long', day: 'numeric' };
 
-function formatDate(date : Date){
-    return date.toLocaleDateString("id-ID", options);
+function formatDateOfBirth(dateOfBirth : Date){
+    if (dateOfBirth.getTime() === new Date("0001-01-01T00:00:00Z").getTime()){
+        return "-"
+    }
+    return dateOfBirth.toLocaleDateString("id-ID", options);
 }
 
 function formatPhoneNumber(phoneNumber : string){
-    return phoneNumber.slice(0, 4) + "-" + phoneNumber.slice(4, 8) + "-" + phoneNumber.slice(8)
+    return "(" + phoneNumber.slice(0, 3) + ") " + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 10) + "-" + phoneNumber.slice(10)
 }
 
 function formatProfileSex(sex : string){
-    if (sex === "M") return "Laki-laki";
+    if (sex === "0") return "-"
+    if (sex === "1") return "Laki-laki";
     else return "Perempuan";
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = (props) => {  
   return (
     <StyledProfileCardContainer tw="justify-center align-top">
-        <StyledProfileCardImageDiv>
-            <StyledProfileCardImage src={props.customerProfilePicture}/>
-        </StyledProfileCardImageDiv>
+        <StyledProfileCardImage src={props.customerProfilePicture}/>
+
 
         <div tw="w-full">
             <div tw="mb-0.5 w-full text-[12px] leading-normal" css={css`color: #003366;`}>
@@ -49,7 +52,7 @@ const ProfileCard: React.FC<ProfileCardProps> = (props) => {
             <div tw="mb-4 w-full text-[16px] leading-normal" 
                 css={css`color: #003366; word-wrap: break-word;`}
             >
-                {formatDate(props.customerDateOfBirth)}
+                {formatDateOfBirth(props.customerDateOfBirth)}
             </div>
 
             <div tw="mb-0.5 w-full text-[12px] leading-normal" css={css`color: #003366;`}>
@@ -106,7 +109,7 @@ const StyledProfileCardImage = styled.div<StyledProfileCardImageProps>`
     height: 110px;
     border-radius: 50%;
     background-color: #FFFFFF;
-    background-image: url(${(props) => props.src});
+    background-image: url(${(props) => props.src}), url(${("../icons/user-circle-dark.png")});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

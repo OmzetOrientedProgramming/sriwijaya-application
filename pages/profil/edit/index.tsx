@@ -20,11 +20,11 @@ const CustomerProfileForm: React.FC = () => {
       </Head>
       <Layout title="Edit Profile" hasNavbar={false} back>
         <ProfileCardForm
-            customerProfilePicture='../images/dummy.jpg'
-            customerName='Teofanus Gary'
-            customerDateOfBirth={ new Date("2001-08-01") }
-            customerSex='M'
-            customerPhoneNumber='081234567890'>
+            customerProfilePicture=""
+            customerName="test full name"
+            customerDateOfBirth={ new Date("0001-01-01T00:00:00Z") }
+            customerSex="0"
+            customerPhoneNumber="+62123456789">
 
         </ProfileCardForm>
 
