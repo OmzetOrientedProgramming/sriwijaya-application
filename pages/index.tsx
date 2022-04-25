@@ -1,13 +1,16 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import 'twin.macro';
 
 import { useGetListPlaces } from '../apis/hooks/listPlacesHooks';
-import withAuth from '../components/Utils/AuthHOC/withAuth';
 import CardPlace from '../components/ListPlace/CardPlace';
 import { Layout } from '../components/Utils/Layout';
+import FilterForm from '../components/ListPlace/FilterForm';
+import SortForm from '../components/ListPlace/SortForm';
+import withAuth from '../components/Utils/AuthHOC/withAuth';
+import CategoryForm from '../components/ListPlace/CategoryForm';
 
 export const handleScrollRefetch = (fetchNextPage: any) => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1) {
@@ -15,12 +18,34 @@ export const handleScrollRefetch = (fetchNextPage: any) => {
   }
 };
 
+export interface FilterData {
+  people: string[];
+  price: string[];
+  rating: string[];
+}
+
+export interface Location {
+  lat: number;
+  lng: number;
+}
+
 const ListPlaces: NextPage = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
 
   const { data, fetchNextPage, hasNextPage, isFetching, status } =
     useGetListPlaces();
+  const [filter, setFilter] = useState<FilterData>({
+    price: [],
+    rating: [],
+    people: [],
+  });
+  const [sort, setSort] = useState<string>('recommended');
+  const [location, setLocation] = useState<Location>({
+    lat: 0,
+    lng: 0,
+  });
+  const [category, setCategory] = useState<string>('');
 
   useEffect(() => {
     window.addEventListener('scroll', () => handleScrollRefetch(fetchNextPage));
@@ -40,8 +65,18 @@ const ListPlaces: NextPage = () => {
 
       <div
         data-testid="wrapper"
-        tw="mt-8 flex flex-col items-center justify-center w-full"
+        tw="flex flex-col items-center justify-center w-full"
       >
+        <div tw="flex flex-initial w-full p-4 gap-x-3">
+          <FilterForm filter={filter} setFilter={setFilter} />
+          <SortForm
+            sort={sort}
+            setSort={setSort}
+            location={location}
+            setLocation={setLocation}
+          />
+          <CategoryForm category={category} setCategory={setCategory} />
+        </div>
         {status === 'success' &&
           data?.pages.map((page: any) => {
             return page.data.places.map((detail: any) => {
