@@ -7,11 +7,20 @@ import { useRouter } from 'next/router';
 import { Layout } from '../../components/Utils/Layout';
 import Link from 'next/link';
 import ProfileCard from '../../components/Profile/profileCard';
+import { useGetViewProfile } from '../../apis/hooks/viewProfileHooks';
+import toast from 'react-hot-toast';
 
 
 const CustomerProfile: React.FC = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
+
+  const { data: viewData, status: viewStatus } = useGetViewProfile({
+    onSuccess: (res: any) => {},
+    onError: (err: any) => {
+      toast.error(err.response.data.message, { position: 'top-right' });
+    },
+  });
 
   return (
     <>
@@ -47,14 +56,15 @@ const CustomerProfile: React.FC = () => {
             </div>
           </div>
         </div>
+        {viewStatus === 'success' &&
         <ProfileCard
-          // images/dummy.jpg
-          customerProfilePicture=""
-          customerName="test full name"
-          customerDateOfBirth={ new Date("0001-01-01T00:00:00Z") }
-          customerSex="0"
-          customerPhoneNumber="+62123456789"
+          customerProfilePicture={viewData?.data.image}
+          customerName={viewData?.data.name}
+          customerDateOfBirth={ new Date(viewData?.data.date_of_birth) }
+          customerSex={viewData?.data.gender}
+          customerPhoneNumber={viewData?.data.phone_number}
         />
+        }
 
         <div tw="w-full flex justify-center">
           <Link href={`/logout`}>

@@ -23,7 +23,7 @@ const CustomerProfileForm: React.FC = () => {
             customerProfilePicture=""
             customerName="test full name"
             customerDateOfBirth={ new Date("0001-01-01T00:00:00Z") }
-            customerSex="0"
+            customerSex={0}
             customerPhoneNumber="+62123456789">
 
         </ProfileCardForm>

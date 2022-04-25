@@ -7,7 +7,7 @@ interface ProfileCardProps {
   customerProfilePicture: string;  
   customerName: string;
   customerDateOfBirth: Date;
-  customerSex: string;
+  customerSex: number;
   customerPhoneNumber: string;
 }
 
@@ -21,12 +21,13 @@ function formatDateOfBirth(dateOfBirth : Date){
 }
 
 function formatPhoneNumber(phoneNumber : string){
+    console.log(typeof phoneNumber);
     return "(" + phoneNumber.slice(0, 3) + ") " + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 10) + "-" + phoneNumber.slice(10)
 }
 
-function formatProfileSex(sex : string){
-    if (sex === "0") return "-"
-    if (sex === "1") return "Laki-laki";
+function formatProfileSex(sex : number){
+    if (sex === 0) return "-"
+    if (sex === 1) return "Laki-laki";
     else return "Perempuan";
 }
 
