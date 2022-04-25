@@ -14,6 +14,8 @@ const endpoint = {
   bookingTime: `${baseUrl}/booking/time`,
   ongoingBookings: `${baseUrl}/booking/ongoing`,
   previousBookings: `${baseUrl}/booking/previous`,
+  upload: `${baseUrl}/upload`,
+  userProfile: `${baseUrl}/user`,
 };
 
 export default endpoint;
