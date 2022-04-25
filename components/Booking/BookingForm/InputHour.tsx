@@ -38,11 +38,7 @@ const InputHour: React.FC<InputHourProps> = (props) => {
     date,
   };
 
-  const {
-    data: placeTimeSlotsData,
-    isLoading: placeTimeSlotsLoading,
-    isError,
-  } = useGetPlaceTimeSlots(timeSlotsParams);
+  const { data: placeTimeSlotsData } = useGetPlaceTimeSlots(timeSlotsParams);
 
   const timeSlotsData = placeTimeSlotsData?.data;
 
@@ -53,8 +49,7 @@ const InputHour: React.FC<InputHourProps> = (props) => {
     date,
   };
 
-  const { data: checkOutData, isLoading: checkOutLoading } =
-    useGetBookingTime(checkOutParams);
+  const { data: checkOutData } = useGetBookingTime(checkOutParams);
 
   const timeSlotsCheckoutData = checkOutData?.data;
 

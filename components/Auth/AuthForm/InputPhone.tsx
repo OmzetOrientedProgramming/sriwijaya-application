@@ -107,10 +107,10 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
               },
               {
                 onSuccess: (res: any) => {
-                  const data = res?.data;
-                  if (!data || data.status !== 200) return;
+                  const resData = res?.data;
+                  if (!resData || resData.status !== 200) return;
 
-                  setValue('session_info', data.data.session_info);
+                  setValue('session_info', resData.data.session_info);
                   setStep((step: number) => step + 1);
                 },
                 onError: (err: any) => {
@@ -126,11 +126,11 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
                       )
                     );
                   }
-                  err.response.data.errors?.forEach((response: string) => {
+                  err.response.data.errors?.forEach((response: string) =>
                     toast.error(capitalize(response), {
                       position: 'top-right',
-                    });
-                  });
+                    })
+                  );
                 },
               }
             );

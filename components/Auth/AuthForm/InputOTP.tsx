@@ -115,11 +115,11 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
                     });
                 },
                 onError: (err: any) => {
-                  err.response.data.errors?.forEach((response: string) => {
+                  err.response.data.errors?.forEach((response: string) =>
                     toast.error(capitalize(response), {
                       position: 'top-right',
-                    });
-                  });
+                    })
+                  );
                 },
               }
             );
