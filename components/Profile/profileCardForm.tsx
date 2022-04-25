@@ -6,7 +6,7 @@ interface ProfileCardFormProps {
   customerProfilePicture: string;  
   customerName: string;
   customerDateOfBirth: Date;
-  customerSex: number;
+  customerSex: string;
   customerPhoneNumber: string;
 }
 
@@ -69,10 +69,10 @@ const ProfileCardForm: React.FC<ProfileCardFormProps> = (props) => {
             </div>
             <div tw="mt-1 mb-4 flex space-x-3">
                 <label tw="w-full py-2 px-3 border border-[#003366] text-[#003366] rounded-lg ">
-                    <input type="radio" className="form-radio h-5 w-5" value="M" name="sex" defaultChecked={props.customerSex === 1}/> Laki-laki
+                    <input type="radio" className="form-radio h-5 w-5" value="M" name="sex" defaultChecked={props.customerSex ==="1"}/> Laki-laki
                 </label>
                 <label tw="w-full py-2 px-3 border border-[#003366] text-[#003366] rounded-lg ">
-                    <input type="radio" className="form-radio h-5 w-5" value="F" name="sex" defaultChecked={props.customerSex === 2}/> Perempuan
+                    <input type="radio" className="form-radio h-5 w-5" value="F" name="sex" defaultChecked={props.customerSex ==="2"}/> Perempuan
                 </label>
             </div>
 
