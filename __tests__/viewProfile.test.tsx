@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import axios from 'axios';
+import { mockedResponse } from '../__mocks__/apis/viewProfileMocks';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -32,10 +33,13 @@ const setupWrapper = () => {
 };
 
 describe('Test UI For View Profile ', () => {
-  console.error = jest.fn();
-  test('page display previous bookings', async () => {
+
+  test('View Profile Correctly', async () => {
+    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
 
     const Wrapper = setupWrapper();
+  
+    console.error = jest.fn();
 
     render(
       <Wrapper>
@@ -44,7 +48,6 @@ describe('Test UI For View Profile ', () => {
     );
 
     expect(await screen.queryByText("Personal Data")).toBeInTheDocument();
-    expect(await screen.queryByText("test full name")).toBeInTheDocument();
   });
 
 
