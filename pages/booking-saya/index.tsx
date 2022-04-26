@@ -10,6 +10,7 @@ import { useGetPreviousBookings } from '../../apis/hooks/previousBookingsHooks';
 import withAuth from '../../components/Utils/AuthHOC/withAuth';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 export const handleScrollRefetch = (fetchNextPage: any) => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1) {
@@ -73,19 +74,21 @@ const BookingList: NextPage = () => {
           {ongoStatus === 'success' &&
             ongoData?.data.map((detail: any) => {
               return (
-                <div tw="w-full">
-                  <BookingCard
-                    bookingId={detail.id}
-                    placeId={detail.place_id}
-                    placeName={detail.place_name}
-                    placeImage={detail.place_image}
-                    date={detail.date}
-                    endTime={detail.end_time}
-                    startTime={detail.start_time}
-                    totalPrice={detail.total_price}
-                    status={detail.status}
-                  />
-                </div>
+                <Link href={"/booking-saya/" + detail.id}>
+                  <div tw="w-full">
+                    <BookingCard
+                      bookingId={detail.id}
+                      placeId={detail.place_id}
+                      placeName={detail.place_name}
+                      placeImage={detail.place_image}
+                      date={detail.date}
+                      endTime={detail.end_time}
+                      startTime={detail.start_time}
+                      totalPrice={detail.total_price}
+                      status={detail.status}
+                    />
+                  </div>
+                </Link>
               );
             })}
         </div>
@@ -107,19 +110,21 @@ const BookingList: NextPage = () => {
             prevData?.pages.map((page: any) => {
               return page.data.bookings.map((detail: any) => {
                 return (
-                  <div tw="w-full">
-                    <BookingCard
-                      bookingId={detail.id}
-                      placeId={detail.place_id}
-                      placeName={detail.place_name}
-                      placeImage={detail.place_image}
-                      date={detail.date}
-                      endTime={detail.end_time}
-                      startTime={detail.start_time}
-                      totalPrice={detail.total_price}
-                      status={detail.status}
-                    />
-                  </div>
+                    <Link href={"/booking-saya/" + detail.id}>
+                      <div tw="w-full">
+                        <BookingCard
+                          bookingId={detail.id}
+                          placeId={detail.place_id}
+                          placeName={detail.place_name}
+                          placeImage={detail.place_image}
+                          date={detail.date}
+                          endTime={detail.end_time}
+                          startTime={detail.start_time}
+                          totalPrice={detail.total_price}
+                          status={detail.status}
+                        />
+                      </div>
+                    </Link>
                 );
               });
             })}
