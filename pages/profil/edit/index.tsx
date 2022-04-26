@@ -1,17 +1,23 @@
 import React from 'react';
-import tw, {css} from 'twin.macro';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import moment from 'moment';
 
 import withAuth from '../../../components/Utils/AuthHOC/withAuth';
-import { useRouter } from 'next/router';
 import { Layout } from '../../../components/Utils/Layout';
-import Link from 'next/link';
 import ProfileCardForm from '../../../components/Profile/profileCardForm';
-
+import { useGetViewProfile } from '../../../apis/hooks/profilHooks';
 
 const CustomerProfileForm: React.FC = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
+
+  const { data: viewResponse, status: viewStatus } = useGetViewProfile({
+    onError: (err: any) => {
+      toast.error(err.response.data.message, { position: 'top-right' });
+    },
+  });
 
   return (
     <>
@@ -19,45 +25,17 @@ const CustomerProfileForm: React.FC = () => {
         <title>Edit Profil</title>
       </Head>
       <Layout title="Edit Profile" hasNavbar={false} back>
-        <ProfileCardForm
-            customerProfilePicture=""
-            customerName="test full name"
-            customerDateOfBirth={ new Date("0001-01-01T00:00:00Z") }
-            customerSex="0"
-            customerPhoneNumber="+62123456789">
-
-        </ProfileCardForm>
-
-        <div tw="w-full flex justify-center">
-          <Link href={`/profil`}>
-            <button
-              css={[
-                css`
-                  box-shadow: 0px 3px 0px 0px #888888;
-                  border: 2px solid #003366;
-                  font-size: 16px;
-                  border-radius: 10px;
-                  background-color: #003366;
-                `,
-                tw`w-1/2 mx-10 font-bold text-[#FFFFFF] border[2px solid #003366]`,
-              ]}
-            >
-              
-              <div
-                tw="w-full text-[16px] leading-normal flex justify-center items-center"
-                css={css`
-                  word-wrap: break-word;
-                  padding: 0.375rem 1.5rem;
-                  color:#FFFFFF;
-                `}
-              >
-                <div>
-                  Simpan
-                </div>
-              </div>
-            </button>
-          </Link>
-        </div>
+        {viewStatus === 'success' && (
+          <ProfileCardForm
+            customerProfilePicture={viewResponse?.data.image}
+            customerName={viewResponse?.data.name}
+            customerDateOfBirth={moment(
+              viewResponse?.data.date_of_birth
+            ).toDate()}
+            customerSex={viewResponse?.data.gender}
+            customerPhoneNumber={viewResponse?.data.phone_number}
+          />
+        )}
       </Layout>
     </>
   );

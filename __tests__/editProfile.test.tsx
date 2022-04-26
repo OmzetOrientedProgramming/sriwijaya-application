@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import CustomerProfileForm from '../pages/profil/edit/index'
+import CustomerProfileForm from '../pages/profil/edit/index';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
 import axios from 'axios';
@@ -33,7 +33,6 @@ const setupWrapper = () => {
 describe('Test UI For Edit Profile ', () => {
   console.error = jest.fn();
   test('page displays edit profile form', async () => {
-
     const Wrapper = setupWrapper();
 
     render(
@@ -42,9 +41,6 @@ describe('Test UI For Edit Profile ', () => {
       </Wrapper>
     );
 
-    expect(await screen.queryByText("Edit Profile")).toBeInTheDocument();
-    expect(await screen.queryByText("Simpan")).toBeInTheDocument();
+    expect(await screen.queryByText('Edit Profile')).toBeInTheDocument();
   });
-
-
 });
