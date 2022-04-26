@@ -13,6 +13,11 @@ import Card from '../../../components/PlaceDetail/card';
 import ReviewCard from '../../../components/PlaceDetail/reviewCard';
 import Link from 'next/link';
 
+import moment from 'moment';
+import 'moment/locale/id';
+moment.locale('id');
+
+
 const PlaceDetail: React.FC = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
@@ -50,8 +55,8 @@ const PlaceDetail: React.FC = () => {
                 title={data.data.name}
                 distance={data.data.distance}
                 address={data.data.address}
-                openHour={data.data.open_hour}
-                closeHour={data.data.close_hour}
+                openHour={moment(data.data.open_hour, "YYYY-MM-DDTHH:mm:ss").format('HH:mm')}
+                closeHour={moment(data.data.close_hour, "YYYY-MM-DDTHH:mm:ss").format('HH:mm')}
                 rating={data.data.average_rating}
               />
             )}
