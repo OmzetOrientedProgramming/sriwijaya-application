@@ -72,9 +72,9 @@ const BookingList: NextPage = () => {
           </div>
           {/* LOOPING */}
           {ongoStatus === 'success' &&
-            ongoData?.data.map((detail: any) => {
+            ongoData?.data.map((detail: any, key: any) => {
               return (
-                <Link href={"/booking-saya/" + detail.id}>
+                <Link href={'/booking-saya/' + detail.id} key={key}>
                   <div tw="w-full">
                     <BookingCard
                       bookingId={detail.id}
@@ -86,6 +86,7 @@ const BookingList: NextPage = () => {
                       startTime={detail.start_time}
                       totalPrice={detail.total_price}
                       status={detail.status}
+                      expiredTime={detail.expired_at}
                     />
                   </div>
                 </Link>
@@ -108,23 +109,23 @@ const BookingList: NextPage = () => {
 
           {prevStatus === 'success' &&
             prevData?.pages.map((page: any) => {
-              return page.data.bookings.map((detail: any) => {
+              return page.data.bookings.map((detail: any, key: any) => {
                 return (
-                    <Link href={"/booking-saya/" + detail.id}>
-                      <div tw="w-full">
-                        <BookingCard
-                          bookingId={detail.id}
-                          placeId={detail.place_id}
-                          placeName={detail.place_name}
-                          placeImage={detail.place_image}
-                          date={detail.date}
-                          endTime={detail.end_time}
-                          startTime={detail.start_time}
-                          totalPrice={detail.total_price}
-                          status={detail.status}
-                        />
-                      </div>
-                    </Link>
+                  <Link href={'/booking-saya/' + detail.id} key={key}>
+                    <div tw="w-full">
+                      <BookingCard
+                        bookingId={detail.id}
+                        placeId={detail.place_id}
+                        placeName={detail.place_name}
+                        placeImage={detail.place_image}
+                        date={detail.date}
+                        endTime={detail.end_time}
+                        startTime={detail.start_time}
+                        totalPrice={detail.total_price}
+                        status={detail.status}
+                      />
+                    </div>
+                  </Link>
                 );
               });
             })}
