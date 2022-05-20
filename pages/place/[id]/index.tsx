@@ -17,7 +17,6 @@ import moment from 'moment';
 import 'moment/locale/id';
 moment.locale('id');
 
-
 const PlaceDetail: React.FC = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
@@ -55,8 +54,14 @@ const PlaceDetail: React.FC = () => {
                 title={data.data.name}
                 distance={data.data.distance}
                 address={data.data.address}
-                openHour={moment(data.data.open_hour, "YYYY-MM-DDTHH:mm:ss").format('HH:mm')}
-                closeHour={moment(data.data.close_hour, "YYYY-MM-DDTHH:mm:ss").format('HH:mm')}
+                openHour={moment(
+                  data.data.open_hour,
+                  'YYYY-MM-DDTHH:mm:ss'
+                ).format('HH:mm')}
+                closeHour={moment(
+                  data.data.close_hour,
+                  'YYYY-MM-DDTHH:mm:ss'
+                ).format('HH:mm')}
                 rating={data.data.average_rating}
               />
             )}
@@ -76,7 +81,7 @@ const PlaceDetail: React.FC = () => {
                   <p>
                     Slot Booking: {data.data.min_slot} - {data.data.max_slot}
                   </p>
-                  <p>Biaya Bookin: Rp.{data.data.booking_price}/orang</p>
+                  <p>Biaya Booking: Rp.{data.data.booking_price}/orang</p>
                 </div>
               </div>
             )}

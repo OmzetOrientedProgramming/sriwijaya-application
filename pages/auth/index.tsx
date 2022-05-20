@@ -8,6 +8,8 @@ import AuthForm from '../../components/Auth/AuthForm';
 import { AuthFormSession } from '../../components/Auth/AuthForm/types';
 import AuthWrapper from '../../components/Auth/AuthWrapper';
 import Button from '../../components/Utils/Button';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const Auth: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +32,24 @@ const Auth: React.FC = () => {
     setAuthFormSession(null);
   }, [isOpen]);
 
+  const carouselData: any = [
+    {
+      image: '/images/LandingPage/illustration-1.png',
+      title: 'Cari tempat seru',
+      desc: 'Semua tempat buat seru-seruan, sendirian, atau sama temen kamu.',
+    },
+    {
+      image: '/images/LandingPage/illustration-2.png',
+      title: 'Booking dari jauh hari',
+      desc: 'Ga usah pusing mikirin penuh atau enggak, karena udah dari jauh hari.',
+    },
+    {
+      image: '/images/LandingPage/illustration-3.png',
+      title: 'Nongkrong sepuasnya',
+      desc: 'Sepuasnya nongkrong sesuai sama waktu yang kamu tentuin.',
+    },
+  ];
+
   return (
     <AuthWrapper>
       <Head>
@@ -42,19 +62,46 @@ const Auth: React.FC = () => {
           margin-bottom: 60px;
         `}
       />
-      <img src="/images/LandingPage/illustration-1.png" alt="illustration" />
-      <div tw="mt-6 mb-8">
-        <h1 tw="text-base font-bold mb-2">Cari tempat seru</h1>
-        <p tw="text-xs">
-          Semua tempat buat seru-seruan, sendirian, atau sama temen kamu.
-        </p>
+
+      {/* Carousel */}
+      <div tw="w-full">
+        <Carousel
+          autoPlay={true}
+          infiniteLoop={true}
+          showStatus={false}
+          showArrows={false}
+          showThumbs={false}
+        >
+          {carouselData.map((data: any, key: any) => (
+            <div key={key}>
+              <div tw="w-[264px] h-[240px] inline">
+                <img
+                  src={data.image}
+                  alt="illustration"
+                  css={[
+                    css`
+                      width: 264px !important;
+                      height: 240px !important;
+                    `,
+                  ]}
+                />
+              </div>
+              <div tw="mt-6 mb-14">
+                <h1 tw="text-base font-bold mb-2">{data.title}</h1>
+                <p tw="text-xs">{data.desc}</p>
+              </div>
+            </div>
+          ))}
+        </Carousel>
       </div>
-      <div tw="grid grid-cols-3 gap-x-2">
+
+      {/* <div tw="grid grid-cols-3 gap-x-2">
         <img src="/images/LandingPage/ellipse.svg" alt="ellipse" />
         <img src="/images/LandingPage/ellipse.svg" alt="ellipse" />
         <img src="/images/LandingPage/ellipse.svg" alt="ellipse" />
-      </div>
-      <div tw="my-6 w-full">
+      </div> */}
+
+      <div tw="mt-4 mb-6 w-full">
         <Button onClick={() => onLogin()}>Login</Button>
       </div>
       <div tw="text-xs flex justify-center items-center">

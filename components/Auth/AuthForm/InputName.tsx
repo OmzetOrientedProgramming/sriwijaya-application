@@ -74,6 +74,7 @@ const InputName: React.FC<InputNameProps> = (props) => {
               }
             );
           })}
+          disabled={isLoading}
         >
           {isLoading ? '. . .' : 'Selanjutnya'}
         </Button>

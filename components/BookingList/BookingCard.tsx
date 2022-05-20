@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import tw, { styled, css } from 'twin.macro';
+import Countdown from './Countdown';
 
 interface BookingCardProps {
   bookingId: number;
@@ -12,6 +13,7 @@ interface BookingCardProps {
   date: string;
   startTime: string;
   endTime: string;
+  expiredTime?: string;
 }
 
 function moneySeparator(amount: number) {
@@ -53,9 +55,16 @@ function formatHour(hour: string) {
   return hourOfHour + ':' + minuteOfHour;
 }
 
+// Dummy data
 const mockBookingRating: number = -1;
+const mockExpiredTime = '2022-05-20T01:00:00Z';
 
-function getStateCard(state: number, bookingRating: number, propsId: number) {
+function getStateCard(
+  state: number,
+  bookingRating: number,
+  propsId: number,
+  expiredTime: string = ''
+) {
   if (state === 0) {
     return (
       <div tw="flex flex-row space-x-1">
@@ -153,7 +162,7 @@ function getStateCard(state: number, bookingRating: number, propsId: number) {
                 left: 4px;
               `}
             >
-              00:00
+              <Countdown expiredTime={expiredTime} />
             </p>
           </div>
         </div>
@@ -235,7 +244,12 @@ const BookingCard: React.FC<BookingCardProps> = (props) => {
           </div>
 
           <div tw="flex flex-row space-x-1">
-            {getStateCard(props.status, mockBookingRating, props.placeId)}
+            {getStateCard(
+              props.status,
+              mockBookingRating,
+              props.placeId,
+              props.expiredTime
+            )}
           </div>
         </div>
       </div>

@@ -124,6 +124,7 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
               }
             );
           })}
+          disabled={isVerifyingOTP}
         >
           {isVerifyingOTP ? '. . .' : 'Selanjutnya'}
         </Button>
