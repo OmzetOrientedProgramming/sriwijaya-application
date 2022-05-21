@@ -20,7 +20,7 @@ const withoutAuth: (WrappedComponent: NextPage) => NextPage = (
 
     const flag =
       accessToken &&
-      Date.now() >= (jwtDecode<JwtPayload>(accessToken).exp ?? Date.now() + 1);
+      Date.now() < (jwtDecode<JwtPayload>(accessToken).exp ?? Date.now() + 1);
 
     if (flag) {
       return { statusCode: 404 };

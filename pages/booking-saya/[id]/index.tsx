@@ -12,6 +12,7 @@ import { useGetBookingDetail } from '../../../apis/hooks/bookingDetailHooks';
 import toast from 'react-hot-toast';
 import Countdown from '../../../components/BookingList/Countdown';
 import { css } from 'twin.macro';
+import withAuth from '../../../components/Utils/AuthHOC/withAuth';
 
 moment.locale('id');
 
@@ -177,7 +178,7 @@ const DetailBookingSaya: React.FC = () => {
   );
 };
 
-export default DetailBookingSaya;
+export default withAuth(DetailBookingSaya);
 
 const parseBookingStatus: (status: number) => React.ReactNode = (status) => {
   switch (status) {

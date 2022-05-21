@@ -17,10 +17,13 @@ const withAuth: (WrappedComponent: NextPage) => NextPage = (
     const accessToken = nookies.get(ctx)?.accessToken;
     const refreshToken = nookies.get(ctx)?.refreshToken;
 
-    const flag = !(
-      accessToken &&
-      Date.now() >= (jwtDecode<JwtPayload>(accessToken).exp ?? Date.now() + 1)
-    );
+    // console.log(jwtDecode<JwtPayload>(accessToken));
+
+    const flag =
+      !accessToken ||
+      (accessToken &&
+        Date.now() >=
+          (jwtDecode<JwtPayload>(accessToken).exp! * 1000 ?? Date.now() + 1));
 
     const returnProps = {
       accessToken,
