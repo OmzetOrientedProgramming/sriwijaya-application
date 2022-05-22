@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import tw, { styled, css } from 'twin.macro';
 import Router from 'next/router';
 import { useQueryClient } from 'react-query';
+import moment from 'moment';
 
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -218,6 +219,16 @@ const ProfileCardForm: React.FC<ProfileCardFormProps> = (props) => {
             `}
             {...register('date_of_birth', {
               required: 'Date of birth is required',
+              validate: (date: string) => {
+                const currentDate = moment();
+                const toValidateDate = moment(date, 'YYYY-MM-DD');
+
+                if (toValidateDate.isAfter(currentDate)) {
+                  return 'Date of birth cannot be in the present';
+                }
+
+                return;
+              },
             })}
           />
           <p tw="mt-1 color[#FE3131]">{errors.date_of_birth?.message}</p>
