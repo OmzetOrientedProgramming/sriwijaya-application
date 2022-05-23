@@ -2,12 +2,12 @@ import { cleanup } from '@testing-library/react';
 import axios from 'axios';
 import { headers } from '../../apis/constants';
 import endpoint from '../../apis/endpoint';
-import { placeDetail } from '../../apis/services/placeDetailService';
+import { getReviewRating } from '../../apis/services/reviewRatingService';
 import {
-  dummyResponse,
-  mockedResponse,
-  getParams,
-} from '../../__mocks__/apis/placeDetailMocks';
+  reviewRatingMockedResponse,
+  getReviewRatingParams,
+  reviewAndRatingPaginationSuccessResponse,
+} from '../../__mocks__/apis/reviewAndRatingMocks';
 
 const registerUserCookies = {
   accessToken:
@@ -32,23 +32,26 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe('getPlaceDetail()', () => {
-  test('getPlaceDetail return correct data', async () => {
-    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
+describe('getReviewRating()', () => {
+  test('getReviewRating return correct data', async () => {
+    mockedAxios.get.mockResolvedValueOnce(reviewRatingMockedResponse);
 
     expect(mockedAxios.post).not.toHaveBeenCalled();
-    const dataPlaceDetail = await placeDetail(getParams);
+    const dataReviewRating = await getReviewRating(getReviewRatingParams);
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(
-      `${endpoint.place}/${getParams.id}`,
+      `${endpoint.place}/${getReviewRatingParams.placeID}/review`,
       {
         headers: {
           ...headers,
           Authorization: `Bearer ${registerUserCookies.accessToken}`,
         },
+        params: { latest: true, rating: false, limit: 1, page: 1 },
       }
     );
-    expect(dataPlaceDetail).toEqual(dummyResponse);
+    expect(dataReviewRating.data).toEqual(
+      reviewAndRatingPaginationSuccessResponse
+    );
   });
 });

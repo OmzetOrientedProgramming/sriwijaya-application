@@ -15,6 +15,7 @@ import Link from 'next/link';
 
 import moment from 'moment';
 import 'moment/locale/id';
+import { useGetReviewRating } from '../../../apis/hooks/reviewRatingHooks';
 moment.locale('id');
 
 const PlaceDetail: React.FC = () => {
@@ -34,6 +35,27 @@ const PlaceDetail: React.FC = () => {
       },
     }
   );
+
+  const {
+    data: dataReview,
+    status: statusReview,
+    error: errorReview,
+  } = useGetReviewRating(
+    {
+      placeID: stringID,
+      page: 1,
+      limit: 2,
+      latest: true,
+      rating: false,
+    },
+    {
+      onSuccess: (res: any) => {},
+      onError: (err: any) => {
+        toast.error(err.response.data.message, { position: 'top-right' });
+      },
+    }
+  );
+
   return (
     <>
       <Head>
@@ -106,16 +128,28 @@ const PlaceDetail: React.FC = () => {
                 <p>Ulasan ({data.data.review_count})</p>
               </div>
             )}
-            {status === 'success' &&
-              data.data.reviews.map((review: any, key: any) => (
+            {statusReview === 'success' &&
+              dataReview &&
+              dataReview.data.data.reviews.map((review: any, key: any) => (
                 <div key={key} tw="text-center mb-3">
                   <ReviewCard
-                    name={review.user}
+                    name={review.name}
                     rating={review.rating}
                     content={review.content}
+                    time={review.created_at}
                   />
                 </div>
               ))}
+
+            {statusReview === 'success' &&
+              dataReview &&
+              dataReview.data.data.total_review > 2 && (
+                <div tw="justify-center flex items-center mx-20 my-10">
+                  <Link href={`/place/${id}/review`}>
+                    <Button>See More</Button>
+                  </Link>
+                </div>
+              )}
           </div>
         </div>
       </Layout>
