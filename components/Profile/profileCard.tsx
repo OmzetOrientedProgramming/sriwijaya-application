@@ -23,7 +23,7 @@ function formatDateOfBirth(dateOfBirth: Date) {
 }
 
 function formatPhoneNumber(phoneNumber: string) {
-  console.log(typeof phoneNumber);
+  // console.log(typeof phoneNumber);
   return (
     '(' +
     phoneNumber.slice(0, 3) +

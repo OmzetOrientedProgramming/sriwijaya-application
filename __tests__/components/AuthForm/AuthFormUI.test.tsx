@@ -31,6 +31,10 @@ jest.mock('firebase/auth', () => {
   };
 });
 
+beforeAll(() => {
+  console.error = jest.fn();
+});
+
 afterEach(() => {
   cleanup();
   jest.clearAllMocks();

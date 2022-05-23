@@ -22,6 +22,10 @@ import InputResult from '../../../components/Booking/BookingForm/InputResult';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
+beforeAll(() => {
+  console.error = jest.fn();
+});
+
 afterEach(() => {
   cleanup();
   jest.clearAllMocks();
