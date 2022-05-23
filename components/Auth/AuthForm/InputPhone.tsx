@@ -81,6 +81,12 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
         <input
           type="number"
           id="phone"
+          min="0"
+          onKeyPress={(e: any) => {
+            if (e.key === 'e' || e.key === '-') {
+              e.preventDefault();
+            }
+          }}
           {...register('phone', {
             required: true,
             maxLength: 12,

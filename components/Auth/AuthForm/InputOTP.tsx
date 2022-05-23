@@ -69,13 +69,24 @@ const InputOTP: React.FC<InputOTPProps> = (props) => {
             return (
               <input
                 type="number"
+                min="0"
                 key={i}
                 data-testid={`otp-${i}`}
+                onKeyPress={(e: any) => {
+                  if (e.key === 'e' || e.key === '-') {
+                    e.preventDefault();
+                  }
+                  if (e.key === 'Enter' || e.keyCode === 13) {
+                    console.log('Enter');
+                  } else {
+                    e.target.value = e.target.value.slice(1);
+                  }
+                }}
                 {...register(`otpArr.${i}`, {
                   required: true,
                   onBlur: () => setValue('otp', combineArrayToString(otpData)),
-                  max: 9, // should prevent user to type more
-                  maxLength: 1,
+                  min: 0,
+                  max: 9,
                 })}
                 tw="h-8 w-8 text-center border border-black rounded"
                 onChange={handleRef}
