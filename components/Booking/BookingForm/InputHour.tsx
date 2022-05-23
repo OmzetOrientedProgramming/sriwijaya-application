@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import moment from 'moment';
 import { styled } from 'twin.macro';
 
-import { BookingFormContext } from '.';
+import { BookingFormContext, renderStep } from '.';
 import BackgroundWrapper from './BackgroundWrapper';
 import Button from '../../Utils/Button';
 import { useGetPlaceTimeSlots } from '../../../apis/hooks/placeDetailHooks';
@@ -24,7 +24,7 @@ const InputHour: React.FC<InputHourProps> = (props) => {
     handleSubmit,
     formState: { errors },
   } = useFormContext();
-  const { step, setStep } = useContext(BookingFormContext);
+  const { step, setStep, maxStep } = useContext(BookingFormContext);
 
   const [date, startTime, count, endTime] = watch([
     'date',
@@ -49,7 +49,9 @@ const InputHour: React.FC<InputHourProps> = (props) => {
     date,
   };
 
-  const { data: checkOutData } = useGetBookingTime(checkOutParams);
+  const { data: checkOutData } = useGetBookingTime(checkOutParams, {
+    enabled: !!startTime,
+  });
 
   const timeSlotsCheckoutData = checkOutData?.data;
 
@@ -69,23 +71,33 @@ const InputHour: React.FC<InputHourProps> = (props) => {
             </p>
           </div>
           {timeSlotsData ? (
-            <div tw="grid grid-cols-4 gap-3 mt-3">
-              {timeSlotsData?.map((timeSlot: any, key: number) => (
-                <StyledRadioContainer key={key}>
-                  <label>
-                    <input
-                      type="radio"
-                      value={timeSlot.start_time}
-                      {...register('start_time', { required: true })}
-                      name="start_time"
-                    />
-                    <h1>
-                      {moment(timeSlot.start_time, 'HH:mm:ss').format('HH:mm')}
-                    </h1>
-                  </label>
-                </StyledRadioContainer>
-              ))}
-            </div>
+            timeSlotsData.length > 0 ? (
+              <div tw="grid grid-cols-4 gap-3 mt-3">
+                {timeSlotsData?.map((timeSlot: any, key: number) => (
+                  <StyledRadioContainer key={key}>
+                    <label>
+                      <input
+                        type="radio"
+                        value={timeSlot.start_time}
+                        {...register('start_time', { required: true })}
+                        name="start_time"
+                      />
+                      <h1>
+                        {moment(timeSlot.start_time, 'HH:mm:ss').format(
+                          'HH:mm'
+                        )}
+                      </h1>
+                    </label>
+                  </StyledRadioContainer>
+                ))}
+              </div>
+            ) : (
+              <div tw="mt-3 flex justify-center items-center">
+                <p tw="text-center py-3 text-xs">
+                  Anda sudah tidak bisa check in di jam ini.
+                </p>
+              </div>
+            )
           ) : (
             <h1>Loading...</h1>
           )}
@@ -100,23 +112,29 @@ const InputHour: React.FC<InputHourProps> = (props) => {
               <p tw="text-xs">Pilih jam check-out:</p>
             </div>
             {timeSlotsCheckoutData ? (
-              <div tw="grid grid-cols-4 gap-3 mt-3">
-                {timeSlotsCheckoutData?.map((timeSlot: any, key: number) => (
-                  <StyledRadioContainer key={key}>
-                    <label>
-                      <input
-                        type="radio"
-                        value={timeSlot.time}
-                        {...register('end_time', { required: true })}
-                        name="end_time"
-                      />
-                      <h1>
-                        {moment(timeSlot.time, 'HH:mm:ss').format('HH:mm')}
-                      </h1>
-                    </label>
-                  </StyledRadioContainer>
-                ))}
-              </div>
+              timeSlotsCheckoutData.length > 0 ? (
+                <div tw="grid grid-cols-4 gap-3 mt-3">
+                  {timeSlotsCheckoutData?.map((timeSlot: any, key: number) => (
+                    <StyledRadioContainer key={key}>
+                      <label>
+                        <input
+                          type="radio"
+                          value={timeSlot.time}
+                          {...register('end_time', { required: true })}
+                          name="end_time"
+                        />
+                        <h1>
+                          {moment(timeSlot.time, 'HH:mm:ss').format('HH:mm')}
+                        </h1>
+                      </label>
+                    </StyledRadioContainer>
+                  ))}
+                </div>
+              ) : (
+                <div tw="mt-3 flex justify-center items-center">
+                  <p tw="text-center py-3 text-xs">Tidak ada jam check-out.</p>
+                </div>
+              )
             ) : (
               <h1>Loading...</h1>
             )}
@@ -127,20 +145,9 @@ const InputHour: React.FC<InputHourProps> = (props) => {
         )}
         {startTime && endTime && (
           <div tw="flex justify-between space-x-4 mt-9">
-            <div tw="flex flex-shrink-0 items-center space-x-1">
-              <p tw="text-base color[#335c85]">
-                Step <span tw="font-semibold">{step}/4</span>
-              </p>
-              <div tw="w-5 h-5">
-                <img
-                  tw="w-full h-full"
-                  src="/icon/check-blue.png"
-                  alt="Check"
-                />
-              </div>
-            </div>
+            {renderStep(step, maxStep)}
             <Button
-              type="submit"
+              type="button"
               disabled={errors.start_time || errors.end_time}
               onClick={handleSubmit(() => {
                 return setStep((prev: number) => prev + 1);

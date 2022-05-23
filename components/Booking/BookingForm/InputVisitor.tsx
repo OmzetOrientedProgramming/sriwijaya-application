@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { styled } from 'twin.macro';
 import { useFormContext } from 'react-hook-form';
 
-import { BookingFormContext } from './';
+import { BookingFormContext, renderStep } from './';
 import BackgroundWrapper from './BackgroundWrapper';
 import Button from '../../Utils/Button';
 
@@ -24,8 +24,11 @@ const InputVisitor: React.FC<InputVisitorProps> = (props) => {
     trigger,
   } = useFormContext();
 
-  const { step, setStep } = useContext(BookingFormContext);
+  const { step, setStep, maxStep } = useContext(BookingFormContext);
   const count = watch('count');
+
+  console.log('mario errors =>', errors);
+  console.log('mario errors count =>', !!errors?.count);
 
   return (
     <BackgroundWrapper background={placeImage}>
@@ -97,20 +100,13 @@ const InputVisitor: React.FC<InputVisitorProps> = (props) => {
           </p>
         </div>
         <div tw="flex justify-between space-x-4 mt-9">
-          <div tw="flex flex-shrink-0 items-center space-x-1">
-            <p tw="text-base color[#335c85]">
-              Step <span tw="font-semibold">{step}/4</span>
-            </p>
-            <div tw="w-5 h-5">
-              <img tw="w-full h-full" src="/icon/check-blue.png" alt="Check" />
-            </div>
-          </div>
+          {renderStep(step, maxStep)}
           <Button
-            type="submit"
+            type="button"
             disabled={errors.count}
-            onClick={handleSubmit(() => {
+            onClick={() => {
               return setStep((prev: number) => prev + 1);
-            })}
+            }}
           >
             Selanjutnya
           </Button>
@@ -122,7 +118,7 @@ const InputVisitor: React.FC<InputVisitorProps> = (props) => {
 
 export default InputVisitor;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   margin: 0;
   padding: 0.75rem 1rem;
   border: 1px solid #000000;
@@ -144,14 +140,14 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   padding: 0;
   margin: 0;
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-const validateKeyDown = (e: React.KeyboardEvent) => {
+export const validateKeyDown = (e: React.KeyboardEvent) => {
   const isArrow = /^[Arrow]/i.test(e.key);
   const isNumber = /^[0-9]$/i.test(e.key);
   const isBackspace = /^[Backspace]/i.test(e.key);

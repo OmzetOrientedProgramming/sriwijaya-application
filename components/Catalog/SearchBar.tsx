@@ -32,6 +32,7 @@ const SearchBar: React.FC<SearchBarFunctionProps> = (props) => {
             data-testid="search"
             tw="w-2/12 flex items-center justify-center border-l"
             onClick={props.onClick}
+            type="button"
           >
             <svg
               tw="w-6 h-6 text-gray-600"

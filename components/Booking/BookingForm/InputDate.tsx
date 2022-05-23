@@ -5,7 +5,7 @@ import 'twin.macro';
 
 import { Drawer } from '../../Drawer';
 import BookingCalendar from '../BookingCalendar/BookingCalendar';
-import { BookingFormContext } from '.';
+import { BookingFormContext, renderStep } from '.';
 import { useGetBookingDate } from '../../../apis/hooks/bookingHooks';
 import BackgroundWrapper from './BackgroundWrapper';
 import Button from '../../Utils/Button';
@@ -20,7 +20,7 @@ const InputDate: React.FC<InputDateProps> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { placeId, placeName, placeImage } = props;
 
-  const { step, setStep } = useContext(BookingFormContext);
+  const { step, setStep, maxStep } = useContext(BookingFormContext);
 
   const {
     handleSubmit,
@@ -78,16 +78,9 @@ const InputDate: React.FC<InputDateProps> = (props) => {
           </p>
         </div>
         <div tw="flex justify-between space-x-4 mt-9">
-          <div tw="flex flex-shrink-0 items-center space-x-1">
-            <p tw="text-base color[#335c85]">
-              Step <span tw="font-semibold">{step}/4</span>
-            </p>
-            <div tw="w-5 h-5">
-              <img tw="w-full h-full" src="/icon/check-blue.png" alt="Check" />
-            </div>
-          </div>
+          {renderStep(step, maxStep)}
           <Button
-            type="submit"
+            type="button"
             disabled={errors.date}
             onClick={handleSubmit(() => {
               return setStep((prev: number) => prev + 1);

@@ -4,7 +4,6 @@ import 'twin.macro';
 import { css, styled } from 'twin.macro';
 
 interface CardCatalogProps {
-  placeID: string;
   itemID: string;
   image: string;
   name: string;
@@ -14,44 +13,43 @@ interface CardCatalogProps {
 
 const CardCatalog: React.FC<CardCatalogProps> = (props) => {
   return (
-    <Link href={`/place/${props.placeID}/catalog/${props.itemID}`}>
-      <StyledCardCatalogContainer tw="shadow-md">
-        <StyledCardImageDiv src={props.image} />
-        <div tw="py-4 px-3 flex flex-col">
+    <StyledCardCatalogContainer tw="shadow-md">
+      <StyledCardImageDiv src={props.image} />
+      <div tw="py-4 px-3 flex flex-col">
+        <p
+          tw="text-base font-normal overflow-hidden leading-normal"
+          css={css`
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          `}
+        >
+          {props.name}
+        </p>
+
+        <div tw="mb-2">
           <p
-            tw="text-base font-normal overflow-hidden leading-normal"
+            tw="text-xs font-light text-[#868686] leading-normal"
             css={css`
               text-overflow: ellipsis;
               white-space: nowrap;
             `}
           >
-            {props.name}
-          </p>
-
-          <div tw="mb-2">
-            <p
-              tw="text-xs font-light text-[#868686] leading-normal"
-              css={css`
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              `}
-            >
-              {props.description}
-            </p>
-          </div>
-
-          <p
-            tw="text-base font-bold leading-tight"
-            css={css`
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            `}
-          >
-            Rp{props.price.toLocaleString('id-ID')}
+            {props.description}
           </p>
         </div>
-      </StyledCardCatalogContainer>
-    </Link>
+
+        <p
+          tw="text-base font-bold leading-tight"
+          css={css`
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          `}
+        >
+          Rp{props.price.toLocaleString('id-ID')}
+        </p>
+        {props.children}
+      </div>
+    </StyledCardCatalogContainer>
   );
 };
 
