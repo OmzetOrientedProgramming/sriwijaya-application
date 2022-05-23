@@ -9,11 +9,15 @@ import withAuth from '../../components/Utils/AuthHOC/withAuth';
 import { useGetPlaceDetail } from '../../apis/hooks/placeDetailHooks';
 import { Layout } from '../../components/Utils/Layout';
 import BookingForm from '../../components/Booking/BookingForm';
+import { IItem } from '../../components/Booking/BookingForm/InputItems';
 
 const Booking: NextPage = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
   const [step, setStep] = useState<number>(1);
+  const [activeItem, setActiveItem] = useState<
+    (IItem & { qty: number }) | null
+  >(null);
   let { id } = router.query;
   id = (id as string) || '';
 
@@ -39,12 +43,21 @@ const Booking: NextPage = () => {
         back
         hasNavbar={false}
         onBack={() => {
-          if (step > 1) setStep((prev) => prev - 1);
-          else router.back();
+          if (activeItem !== null && step === 5) {
+            setActiveItem(null);
+          } else if (step > 1) {
+            setStep((prev) => prev - 1);
+          } else router.back();
         }}
       >
         {placeData && (
-          <BookingForm step={step} setStep={setStep} placeData={placeData} />
+          <BookingForm
+            step={step}
+            setStep={setStep}
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+            placeData={placeData}
+          />
         )}
       </Layout>
     </>

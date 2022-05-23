@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import StyledImageDiv from '../../../../components/Utils/StyledImageDiv';
 import withAuth from '../../../../components/Utils/AuthHOC/withAuth';
 import { handleScrollRefetch } from '../../..';
+import Link from 'next/link';
 
 interface IItem {
   id: number;
@@ -116,14 +117,15 @@ const Catalog: React.FC = () => {
           />
           {items.map((detail: any) => (
             <div key={detail.id}>
-              <CardCatalog
-                placeID={stringID}
-                itemID={detail.id}
-                name={detail.name}
-                image={detail.image}
-                price={detail.price}
-                description={detail.description}
-              />
+              <Link href={`/place/${stringID}/catalog/${detail.id}`}>
+                <CardCatalog
+                  itemID={detail.id}
+                  name={detail.name}
+                  image={detail.image}
+                  price={detail.price}
+                  description={detail.description}
+                />
+              </Link>
             </div>
           ))}
         </div>
