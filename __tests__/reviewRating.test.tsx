@@ -1,19 +1,16 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
-import axios from 'axios';
+import React from 'react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import PlaceDetail from '../pages/place/[id]';
-import { headers } from '../apis/constants';
-import { getParams, mockedResponse } from '../__mocks__/apis/placeDetailMocks';
-import endpoint from '../apis/endpoint';
-import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
+
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { reviewRatingMockedResponse } from '../__mocks__/apis/reviewAndRatingMocks';
+import { createMockRouter } from '../__mocks__/test-utils/createMockRouter';
+import axios from 'axios';
+import {
+  reviewRatingMockedFailedResponse,
+  reviewRatingMockedResponse,
+} from '../__mocks__/apis/reviewAndRatingMocks';
+import Review from '../pages/place/[id]/review';
+import { handleScrollRefetch } from '../pages';
 
 const registerUserCookies = {
   accessToken:
@@ -54,64 +51,36 @@ const setupWrapper = () => {
   return Wrapper;
 };
 
-describe('useGetPlaceDetail()', () => {
-  test('page display place detail data', async () => {
+describe('Test UI For Review ', () => {
+  test('View Review Correctly', async () => {
     const mockRouter = createMockRouter({
-      query: { id: '1' },
+      query: {
+        placeID: '1',
+        limit: '',
+        page: '',
+        latest: 'true',
+        rating: 'false',
+      },
     });
 
     const Wrapper = setupWrapper();
 
-    mockedAxios.get.mockResolvedValueOnce(mockedResponse);
     mockedAxios.get.mockResolvedValueOnce(reviewRatingMockedResponse);
 
     render(
       <Wrapper>
         <RouterContext.Provider value={mockRouter}>
-          <PlaceDetail />
+          <Review />
         </RouterContext.Provider>
       </Wrapper>
     );
-
-    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
-    expect(mockedAxios.get).toHaveBeenCalledWith(
-      `${endpoint.place}/${getParams.id}`,
-      {
-        headers: {
-          ...headers,
-          Authorization: `Bearer ${registerUserCookies.accessToken}`,
-        },
-      }
-    );
-    expect(mockedAxios.get).toHaveBeenCalledWith(
-      `${endpoint.place}/${getParams.id}/review`,
-      {
-        headers: {
-          ...headers,
-          Authorization: `Bearer ${registerUserCookies.accessToken}`,
-        },
-        params: { latest: true, rating: false, limit: 2, page: 1 },
-      }
-    );
+    expect(mockedAxios.get).toHaveBeenCalled();
   });
+  test('handleScrollRefetch works correctly', async () => {
+    const refetch = jest.fn();
 
-  test('post button request failed', async () => {
-    const mockRouter = createMockRouter({
-      query: { id: '1' },
-    });
+    handleScrollRefetch(refetch);
 
-    const Wrapper = setupWrapper();
-
-    mockedAxios.post.mockRejectedValueOnce(new Error('Async error'));
-
-    render(
-      <Wrapper>
-        <RouterContext.Provider value={mockRouter}>
-          <PlaceDetail />
-        </RouterContext.Provider>
-      </Wrapper>
-    );
-
-    expect(mockedAxios.get).toHaveBeenCalledTimes(2);
+    expect(refetch).toHaveBeenCalledTimes(1);
   });
 });
