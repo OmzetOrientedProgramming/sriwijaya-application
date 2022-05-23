@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import tw, { styled, css } from 'twin.macro';
+import { useRouter } from 'next/router';
+import Router from 'next/router';
 import Countdown from './Countdown';
 
 interface BookingCardProps {
@@ -173,7 +175,6 @@ function getStateCard(
             padding-left: 16px;
           `}
         >
-          <BookingButton>Detail</BookingButton>
         </div>
       </div>
     );
@@ -193,9 +194,7 @@ function getStateCard(
     );
   } else if (state === 3) {
     return (
-      <Link href={`/place/${propsId}`}>
-        <BookingButton>Beri Penilaian</BookingButton>
-      </Link>
+      <BookingButton url={`/booking-saya/${propsId}/review`}>Beri Penilaian</BookingButton>
     );
   } else if (state === 4) {
     return <BasicStateCard hexColor="#FE3131">Gagal</BasicStateCard>;
@@ -203,6 +202,9 @@ function getStateCard(
 }
 
 const BookingCard: React.FC<BookingCardProps> = (props) => {
+  const router = useRouter();
+  if (!router.isReady) return <></>;
+  
   return (
     <StyledBookingCardContainer tw="shadow-md align-top">
       <StyledCardImageDiv src={props.placeImage} />
@@ -247,7 +249,7 @@ const BookingCard: React.FC<BookingCardProps> = (props) => {
             {getStateCard(
               props.status,
               mockBookingRating,
-              props.placeId,
+              props.bookingId,
               props.expiredTime
             )}
           </div>
@@ -302,23 +304,36 @@ const BasicStateCard = styled.div<BasicStateCardProps>`
 
 interface BookingButtonProps {
   children: string;
+  url: string;
 }
 
-const BookingButton: React.FC<BookingButtonProps> = ({ children }) => {
+const BookingButton: React.FC<BookingButtonProps> = ({ children, url }) => {
   return (
-    <div
-      css={[
-        css`
-          box-shadow: 0px 3px 0px 0px #888888;
-          border: 2px solid #003366;
-          font-size: 12px;
-          border-radius: 12px;
-          padding: 2px 12px;
-        `,
-        tw`font-bold background[#003366] text-white disabled:(shadow-none background[#888888] border[2px solid #888888])`,
-      ]}
-    >
-      {children}
-    </div>
+    <a>
+      <button
+        type='button'
+        css={[
+          css`
+            box-shadow: 0px 3px 0px 0px #888888;
+            border: 2px solid #003366;
+            font-size: 12px;
+            border-radius: 12px;
+            padding: 2px 12px;
+          `,
+          tw`font-bold background[#003366] text-white disabled:(shadow-none background[#888888] border[2px solid #888888])`,
+        ]}
+        onClick={(e) => {
+          handleButton(url);
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+      >
+        {children}
+      </button>
+    </a>
   );
 };
+
+const handleButton = (url: string) => {
+  Router.push(url);
+}

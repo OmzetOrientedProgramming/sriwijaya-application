@@ -17,6 +17,7 @@ const endpoint = {
   upload: `${baseUrl}/upload`,
   userProfile: `${baseUrl}/user`,
   bookingDetail: `${baseUrl}/booking/detail`,
+  bookingReview: `${baseUrl}/booking/review`,
 };
 
 export default endpoint;
