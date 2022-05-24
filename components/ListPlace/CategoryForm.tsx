@@ -37,28 +37,28 @@ const CategoryForm = ({
             <button
               tw="py-2.5 px-3 border border-[#BDBDBD] rounded"
               onClick={() => handleClick('indoor')}
-              css={[category === 'indoor' && tw`bg-[#F5F5F5]`]}
+              css={[category === 'indoor' && tw`bg-[#BDBDBD]`]}
             >
               Indoor
             </button>
             <button
               tw="py-2.5 px-3 border border-[#BDBDBD] rounded"
               onClick={() => handleClick('outdoor')}
-              css={[category === 'outdoor' && tw`bg-[#F5F5F5]`]}
+              css={[category === 'outdoor' && tw`bg-[#BDBDBD]`]}
             >
               Outdoor
             </button>
             <button
               tw="py-2.5 px-3 border border-[#BDBDBD] rounded"
               onClick={() => handleClick('smoking')}
-              css={[category === 'smoking' && tw`bg-[#F5F5F5]`]}
+              css={[category === 'smoking' && tw`bg-[#BDBDBD]`]}
             >
               Smoking
             </button>
             <button
               tw="py-2.5 px-3 border border-[#BDBDBD] rounded"
               onClick={() => handleClick('non-smoking')}
-              css={[category === 'non-smoking' && tw`bg-[#F5F5F5]`]}
+              css={[category === 'non-smoking' && tw`bg-[#BDBDBD]`]}
             >
               Non-smoking
             </button>

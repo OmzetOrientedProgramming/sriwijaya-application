@@ -12,21 +12,58 @@ interface FilterFormProps {
 
 const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
-  const { register, handleSubmit, reset } = useForm<FilterData>({
-    shouldUnregister: true,
-  });
 
-  const onSubmit: SubmitHandler<FilterData> = (data) => {
-    setFilter(data);
-    setIsOpen(false);
-  };
   const handleReset = (): void => {
     setFilter({
       price: [],
       rating: [],
       people: [],
     });
-    reset();
+  };
+
+  const handleRating = (newItem: string): void => {
+    const loc = filter.rating.indexOf(newItem);
+    if (loc === -1) {
+      setFilter({
+        ...filter,
+        rating: [...filter.rating, newItem],
+      });
+    } else {
+      filter.rating.splice(loc, 1);
+      setFilter({
+        ...filter,
+      });
+    }
+  };
+
+  const handlePrice = (newItem: string): void => {
+    const loc = filter.rating.indexOf(newItem);
+    if (loc === -1) {
+      setFilter({
+        ...filter,
+        price: [...filter.price, newItem],
+      });
+    } else {
+      filter.price.splice(loc, 1);
+      setFilter({
+        ...filter,
+      });
+    }
+  };
+
+  const handlePeople = (newItem: string): void => {
+    const loc = filter.people.indexOf(newItem);
+    if (loc === -1) {
+      setFilter({
+        ...filter,
+        people: [...filter.people, newItem],
+      });
+    } else {
+      filter.people.splice(loc, 1);
+      setFilter({
+        ...filter,
+      });
+    }
   };
 
   return (
@@ -37,12 +74,12 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
             <p tw="font-bold text-xl">Filter</p>
             <Button onClick={() => handleReset()}>Hapus Filter</Button>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
             <fieldset tw="mb-4">
               <label tw="flex flex-row justify-between mb-2">
                 <p>Kurang dari Rp16.000</p>
                 <input
-                  {...register('price', { required: true })}
+                  onClick={() => handlePrice('16000')}
                   type="checkbox"
                   value="16000"
                   tw="border-[#003366] text-blue-600"
@@ -51,20 +88,20 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
                 />
               </label>
               <label tw="flex justify-between mb-2">
-                <p>Rp16.000–Rp40.000</p>
+                <p>Rp16.000-Rp40.000</p>
                 <input
-                  {...register('price', { required: true })}
+                  onClick={() => handlePrice('16000-40000')}
                   type="checkbox"
-                  value="16000–40000"
+                  value="16000-40000"
                   tw=" border-[#003366] text-blue-600 "
                   name="price"
-                  defaultChecked={filter.price.includes('16000–40000')}
+                  defaultChecked={filter.price.includes('16000-40000')}
                 />
               </label>
               <label tw="flex flex-row justify-between mb-2">
-                <p>Rp40.000–Rp100.000</p>
+                <p>Rp40.000-Rp100.000</p>
                 <input
-                  {...register('price', { required: true })}
+                  onClick={() => handlePrice('40000-100000')}
                   type="checkbox"
                   value="40000-100000"
                   tw=" border-[#003366] text-blue-600"
@@ -75,7 +112,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>Lebih dari Rp100.000</p>
                 <input
-                  {...register('price', { required: true })}
+                  onClick={() => handlePrice('100000')}
                   type="checkbox"
                   value="100000"
                   tw=" border-[#003366] text-blue-600"
@@ -89,7 +126,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>1 orang</p>
                 <input
-                  {...register('people', { required: true })}
+                  onClick={() => handlePeople('1')}
                   type="checkbox"
                   value="1"
                   tw=" border-[#003366] text-blue-600"
@@ -98,21 +135,21 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
                 />
               </label>
               <label tw="flex flex-row justify-between mb-2">
-                <p>2–4 orang</p>
+                <p>2-4 orang</p>
 
                 <input
-                  {...register('people', { required: true })}
+                  onClick={() => handlePeople('2-4')}
                   type="checkbox"
                   value="2-4"
                   tw=" border-[#003366] text-blue-600"
                   name="people"
-                  defaultChecked={filter.people.includes('2-5')}
+                  defaultChecked={filter.people.includes('2-4')}
                 />
               </label>
               <label tw="flex flex-row justify-between mb-2">
-                <p>5–10 orang</p>
+                <p>5-10 orang</p>
                 <input
-                  {...register('people', { required: true })}
+                  onClick={() => handlePeople('5-10')}
                   type="checkbox"
                   value="5-10"
                   tw=" border-[#003366] text-blue-600"
@@ -123,7 +160,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>Lebih dari 10 orang</p>
                 <input
-                  {...register('people', { required: true })}
+                  onClick={() => handlePeople('10')}
                   type="checkbox"
                   value="10"
                   tw=" border-[#003366] text-blue-600"
@@ -137,7 +174,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>5 star</p>
                 <input
-                  {...register('rating', { required: true })}
+                  onClick={() => handleRating('5')}
                   type="checkbox"
                   value="5"
                   tw=" border-[#003366] text-blue-600"
@@ -148,7 +185,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>4 star</p>
                 <input
-                  {...register('rating', { required: true })}
+                  onClick={() => handleRating('4')}
                   type="checkbox"
                   value="4"
                   tw=" border-[#003366] text-blue-600"
@@ -159,7 +196,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>3 star</p>
                 <input
-                  {...register('rating', { required: true })}
+                  onClick={() => handleRating('3')}
                   type="checkbox"
                   value="3"
                   tw=" border-[#003366] text-blue-600"
@@ -170,7 +207,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>2 star</p>
                 <input
-                  {...register('rating', { required: true })}
+                  onClick={() => handleRating('2')}
                   type="checkbox"
                   value="2"
                   tw=" border-[#003366] text-blue-600"
@@ -181,7 +218,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
               <label tw="flex flex-row justify-between mb-2">
                 <p>1 star</p>
                 <input
-                  {...register('rating', { required: true })}
+                  onClick={() => handleRating('1')}
                   type="checkbox"
                   value="1"
                   tw=" border-[#003366] text-blue-600"
@@ -190,8 +227,8 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
                 />
               </label>
             </fieldset>
-            <Button type="submit">Terapkan</Button>
-          </form>
+            <Button onClick={() => setIsOpen(false)}>Terapkan</Button>
+          </div>
         </div>
       </Drawer>
       <Button onClick={() => setIsOpen(true)}>FILTER</Button>

@@ -33,8 +33,6 @@ const ListPlaces: NextPage = () => {
   const router = useRouter();
   if (!router.isReady) return <></>;
 
-  const { data, fetchNextPage, hasNextPage, isFetching, status } =
-    useGetListPlaces();
   const [filter, setFilter] = useState<FilterData>({
     price: [],
     rating: [],
@@ -46,6 +44,14 @@ const ListPlaces: NextPage = () => {
     lng: 0,
   });
   const [category, setCategory] = useState<string>('');
+
+  const { data, fetchNextPage, hasNextPage, isFetching, status } =
+    useGetListPlaces({
+      sort,
+      category,
+      ...filter,
+      ...location,
+    });
 
   useEffect(() => {
     window.addEventListener('scroll', () => handleScrollRefetch(fetchNextPage));
@@ -79,22 +85,26 @@ const ListPlaces: NextPage = () => {
         </div>
         {status === 'success' &&
           data?.pages.map((page: any) => {
-            return page.data.places.map((detail: any) => {
-              return (
-                <div tw="w-full" key={detail.id}>
-                  <CardPlace
-                    id={detail.id}
-                    image={detail.image}
-                    name={detail.name}
-                    description={detail.description}
-                    address={detail.address}
-                    distance={detail.distance}
-                    rating={detail.rating}
-                    review_count={detail.review_count}
-                  />
-                </div>
-              );
-            });
+            return page.data.places.length === 0 ? (
+              <h1>Tidak ada tempat yang memenuhi kriteria</h1>
+            ) : (
+              page.data.places.map((detail: any) => {
+                return (
+                  <div tw="w-full" key={detail.id}>
+                    <CardPlace
+                      id={detail.id}
+                      image={detail.image}
+                      name={detail.name}
+                      description={detail.description}
+                      address={detail.address}
+                      distance={detail.distance}
+                      rating={detail.rating}
+                      review_count={detail.review_count}
+                    />
+                  </div>
+                );
+              })
+            );
           })}
         {isFetching && hasNextPage && <p tw="m-8">Loading . . .</p>}
       </div>
