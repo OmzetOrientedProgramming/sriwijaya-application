@@ -1,11 +1,26 @@
 import { useInfiniteQuery } from 'react-query';
-import { getListPlaces } from '../services/listPlacesService';
+import {
+  getListPlaces,
+  getListPlacesParams,
+} from '../services/listPlacesService';
 
-export function useGetListPlaces() {
+export function useGetListPlaces(
+  params: Omit<getListPlacesParams, 'limit' | 'page'>
+) {
   return useInfiniteQuery(
-    'get_query_places',
+    ['get_query_places', params],
     ({ pageParam }) => {
-      return getListPlaces({ limit: 5, page: pageParam });
+      return getListPlaces({
+        limit: 5,
+        page: pageParam,
+        sort: params.sort,
+        category: params.category,
+        people: params.people,
+        price: params.price,
+        rating: params.rating,
+        lat: params.lat,
+        lng: params.lng,
+      });
     },
     {
       getNextPageParam: (currentPage, allPages) => {

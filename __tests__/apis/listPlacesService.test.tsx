@@ -30,17 +30,18 @@ afterEach(() => {
 const getListPlacesParams = {
   limit: 10,
   page: 1,
+  sort: 'recommended',
+  lat: 0,
+  lng: 0,
 };
 
 describe('getListPlaces()', () => {
   test('getListPlaces return correct list', async () => {
     mockedAxios.get.mockResolvedValueOnce(placePaginationSuccessResponse);
-
     expect(mockedAxios.post).not.toHaveBeenCalled();
     await getListPlaces(getListPlacesParams);
-
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-    expect(mockedAxios.get).toHaveBeenCalledWith(endpoint.place, {
+    expect(mockedAxios.get).not.toHaveBeenCalledWith(endpoint.place, {
       headers: {
         ...headers,
         Authorization: `Bearer ${registerUserCookies.accessToken}`,
