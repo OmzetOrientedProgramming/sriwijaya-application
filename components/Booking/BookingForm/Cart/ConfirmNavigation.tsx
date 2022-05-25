@@ -59,18 +59,6 @@ const ConfirmNavigation: React.FC<AddToCartNavigationProps> = ({ placeId }) => {
       try {
         const bookingResponse = await mutateAsync(postCreateBookingParams);
         if (bookingResponse.message === 'success') {
-          setTimeout(function () {
-            console.log('setTimeout');
-            axios.get(endpoint.ongoingBookings, options).then((res) => {
-              console.log(res.data[6]);
-              if (res.data[6].status === 0) {
-                console.log('Expired Gagal');
-              } else {
-                console.log('Confirmed!');
-              }
-            });
-          }, 30 * 1000);
-
           toast.success('Sukses membuat booking!');
           router.push('/booking-saya');
         }
