@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
     <div tw="text-left">
       <div tw="text-xl capitalize mb-0 font-bold">{title}</div>
       <div tw="text-base mt-1 mb-0">
-        <p tw="font-bold opacity-50">{distance} km</p>
+        {/* <p tw="font-bold opacity-50">{distance} km</p> */}
       </div>
       <div tw="flex items-center capitalize mt-3 mb-0">
         <img tw="h-5 mr-2" src="/images/PlaceDetail/Pin.svg" />
