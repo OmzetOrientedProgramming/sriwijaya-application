@@ -37,7 +37,7 @@ const FilterForm = ({ filter, setFilter }: FilterFormProps): JSX.Element => {
   };
 
   const handlePrice = (newItem: string): void => {
-    const loc = filter.rating.indexOf(newItem);
+    const loc = filter.price.indexOf(newItem);
     if (loc === -1) {
       setFilter({
         ...filter,
