@@ -7,14 +7,12 @@ import { Location } from '../../pages';
 interface SortFormProps {
   sort: string;
   setSort: Dispatch<SetStateAction<string>>;
-  location: Location;
   setLocation: Dispatch<SetStateAction<Location>>;
 }
 
 const SortForm = ({
   sort,
   setSort,
-  location,
   setLocation,
 }: SortFormProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,24 +45,13 @@ const SortForm = ({
             <label tw="flex flex-row-reverse justify-between mb-2">
               <input
                 onChange={(): void => {
-                  handleSubmit('recommended');
-                }}
-                type="radio"
-                tw=" border-[#003366] text-blue-600"
-                defaultChecked={sort === 'recommended'}
-              />
-              <p>Disarankan</p>
-            </label>
-            <label tw="flex flex-row-reverse justify-between mb-2">
-              <input
-                onChange={(): void => {
                   handleSubmit('popularity');
                 }}
                 type="radio"
                 tw=" border-[#003366] text-blue-600"
                 defaultChecked={sort === 'popularity'}
               />
-              <p>Populer</p>
+              <p>Disarankan</p>
             </label>
             <label tw="flex flex-row-reverse justify-between mb-2">
               <input

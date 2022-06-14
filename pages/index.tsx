@@ -38,7 +38,7 @@ const ListPlaces: NextPage = () => {
     rating: [],
     people: [],
   });
-  const [sort, setSort] = useState<string>('recommended');
+  const [sort, setSort] = useState<string>('popularity');
   const [location, setLocation] = useState<Location>({
     lat: 0,
     lng: 0,
@@ -75,17 +75,12 @@ const ListPlaces: NextPage = () => {
       >
         <div tw="flex flex-initial w-full p-4 gap-x-3">
           <FilterForm filter={filter} setFilter={setFilter} />
-          <SortForm
-            sort={sort}
-            setSort={setSort}
-            location={location}
-            setLocation={setLocation}
-          />
+          <SortForm sort={sort} setSort={setSort} setLocation={setLocation} />
           <CategoryForm category={category} setCategory={setCategory} />
         </div>
         {status === 'success' &&
-          data?.pages.map((page: any) => {
-            return page.data.places.length === 0 ? (
+          data?.pages.map((page: any, index: number) => {
+            return page.data.places.length === 0 && index === 0 ? (
               <h1>Tidak ada tempat yang memenuhi kriteria</h1>
             ) : (
               page.data.places.map((detail: any) => {
