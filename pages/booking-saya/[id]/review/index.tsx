@@ -1,16 +1,13 @@
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import { css } from 'twin.macro';
 import Head from 'next/head';
-
 
 import withAuth from '../../../../components/Utils/AuthHOC/withAuth';
 import { useRouter } from 'next/router';
 import { Layout } from '../../../../components/Utils/Layout';
-import Link from 'next/link';
 import BookingReviewCard from '../../../../components/BookingList/Review/BookingReviewCard';
 import { useGetBookingDetail } from '../../../../apis/hooks/bookingDetailHooks';
 import toast from 'react-hot-toast';
-import { Route, Navigate, Router, Routes } from 'react-router-dom'
 
 const BookingReview: React.FC = () => {
   const router = useRouter();
@@ -20,53 +17,52 @@ const BookingReview: React.FC = () => {
   let numberID: number = (id as unknown as number) || 0;
 
   const params = {
-      bookingId: numberID,
+    bookingId: numberID,
   };
 
-  const { data, status, error } = useGetBookingDetail(params, {
+  const { data, status } = useGetBookingDetail(params, {
     onSuccess: (res: any) => {
-      var isEligible = (res.data.status === 3)
+      var isReviewEligible = res.data.status === 3;
 
-      if (!isEligible){
-        router.push("/booking-saya")
+      if (!isReviewEligible) {
+        router.push('/booking-saya');
       }
     },
     onError: (err: any) => {
       toast.error(err.response.data.message);
-    }
-  })
+    },
+  });
 
   const booking = data?.data;
-  var isEligible = (status === 'success') && (booking?.status === 3)
+  var isEligible = status === 'success' && booking?.status === 3;
 
   return (
     <>
-    { isEligible && (
-      <>
-        <Head>
-          <title>Ulas Booking</title>
-        </Head>
-        <Layout title="Ulasan" hasNavbar={false}>
-          <div
-            css={css`
-              height: 100%;
-              align-items: flex-start;
-            `}
-          >
-            <BookingReviewCard
-              bookingId={numberID}
-              placeImage={booking?.image}
-              placeName={booking?.place_name}
-              date = {booking?.date}
-              startTime= {booking?.start_time}
-              endTime = {booking?.end_time}
-              totalPrice={booking?.total_price}
-            />
-          </div>
-
-        </Layout>
-      </>
-    )} 
+      {isEligible && (
+        <>
+          <Head>
+            <title>Ulas Booking</title>
+          </Head>
+          <Layout title="Ulasan" hasNavbar={false}>
+            <div
+              css={css`
+                height: 100%;
+                align-items: flex-start;
+              `}
+            >
+              <BookingReviewCard
+                bookingId={numberID}
+                placeImage={booking?.image}
+                placeName={booking?.place_name}
+                date={booking?.date}
+                startTime={booking?.start_time}
+                endTime={booking?.end_time}
+                totalPrice={booking?.total_price}
+              />
+            </div>
+          </Layout>
+        </>
+      )}
     </>
   );
 };

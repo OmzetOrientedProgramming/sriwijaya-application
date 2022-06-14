@@ -3,7 +3,6 @@ import { Drawer } from '../Drawer';
 import Button from '../Utils/Button';
 import 'twin.macro';
 import { FilterData } from '../../pages';
-import { SubmitHandler, useForm } from 'react-hook-form';
 
 interface FilterFormProps {
   filter: FilterData;

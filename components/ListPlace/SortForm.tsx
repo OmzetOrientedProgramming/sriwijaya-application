@@ -19,8 +19,8 @@ const SortForm = ({
 }: SortFormProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSubmit = (sort: string) => {
-    setSort(sort);
+  const handleSubmit = (sortSubmit: string) => {
+    setSort(sortSubmit);
     setIsOpen(false);
   };
 

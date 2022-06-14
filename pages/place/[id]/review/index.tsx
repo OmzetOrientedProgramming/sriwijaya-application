@@ -11,7 +11,7 @@ import ReviewCard from '../../../../components/PlaceDetail/reviewCard';
 
 import moment from 'moment';
 import 'moment/locale/id';
-import SortReview from '../../../../components/PlaceDetail/sortReview';
+import SortReview from '../../../../components/PlaceDetail/sortForm';
 import useScroll from '../../../../hooks/useScroll';
 import { handleScrollRefetch } from '../../..';
 moment.locale('id');
@@ -95,13 +95,13 @@ const Review: React.FC = () => {
               </div>
             )}
             {status === 'success' &&
-              review.map((review: any) => (
-                <div key={review.id} tw="text-center mb-3">
+              review.map((reviewItem: any) => (
+                <div key={reviewItem.id} tw="text-center mb-3">
                   <ReviewCard
-                    name={review.name}
-                    rating={review.rating}
-                    content={review.content}
-                    time={review.created_at}
+                    name={reviewItem.name}
+                    rating={reviewItem.rating}
+                    content={reviewItem.content}
+                    time={reviewItem.created_at}
                   />
                 </div>
               ))}

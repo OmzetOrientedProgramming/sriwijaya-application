@@ -15,8 +15,8 @@ const CategoryForm = ({
 }: CategoryFormProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (category: string): void => {
-    setCategory(category);
+  const handleClick = (categorySubmit: string): void => {
+    setCategory(categorySubmit);
     setIsOpen(false);
   };
 
