@@ -43,7 +43,7 @@ const BookingReview: React.FC = () => {
           <Head>
             <title>Ulas Booking</title>
           </Head>
-          <Layout title="Ulasan" hasNavbar={false}>
+          <Layout title="Ulasan" hasNavbar={false} back={true}>
             <div
               css={css`
                 height: 100%;

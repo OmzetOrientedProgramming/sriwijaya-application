@@ -115,6 +115,11 @@ const Catalog: React.FC = () => {
             setInputText={setInputText}
             setPagination={setPaginationState}
           />
+          {items.length === 0 && (
+            <p tw="font-bold text-gray-400 flex justify-center items-center mt-12">
+              Item tidak tersedia
+            </p>
+          )}
           {items.map((detail: any) => (
             <div key={detail.id}>
               <Link href={`/place/${stringID}/catalog/${detail.id}`}>
