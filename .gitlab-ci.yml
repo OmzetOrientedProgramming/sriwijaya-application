@@ -36,7 +36,7 @@ SonarScanner Dev:
     entrypoint: ['']
   stage: test
   script:
-    - npm install
+    # - npm install
     - sonar-scanner
       -Dsonar.host.url=$SONARQUBE_HOST_URL
       -Dsonar.login=$SONARQUBE_TOKEN
@@ -54,7 +54,7 @@ SonarScanner:
     entrypoint: ['']
   stage: test
   script:
-    - npm install
+    # - npm install
     - sonar-scanner
       -Dsonar.host.url=$SONARQUBE_HOST_URL
       -Dsonar.login=$SONARQUBE_TOKEN

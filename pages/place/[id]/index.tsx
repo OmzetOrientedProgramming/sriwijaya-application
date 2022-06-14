@@ -126,6 +126,13 @@ const PlaceDetail: React.FC = () => {
             )}
             {statusReview === 'success' &&
               dataReview &&
+              dataReview.data.data.reviews.length === 0 && (
+                <p tw="font-bold text-gray-400 flex justify-center items-center mt-6">
+                  Tidak ada Ulasan
+                </p>
+              )}
+            {statusReview === 'success' &&
+              dataReview &&
               dataReview.data.data.reviews.map((review: any, key: any) => (
                 <div key={key} tw="text-center mb-3">
                   <ReviewCard
