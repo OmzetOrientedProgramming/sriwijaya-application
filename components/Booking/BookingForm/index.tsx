@@ -1,7 +1,7 @@
-import React, { useState, createContext } from 'react';
+import React, { createContext } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import moment from 'moment';
-import tw, { css } from 'twin.macro';
+import tw from 'twin.macro';
 
 import InputVisitor from './InputVisitor';
 import InputDate from './InputDate';

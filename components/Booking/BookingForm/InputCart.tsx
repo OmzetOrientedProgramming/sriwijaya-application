@@ -1,14 +1,10 @@
 import React, { useContext, useCallback } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import axios from 'axios';
-import nookies from 'nookies';
 import toast from 'react-hot-toast';
 import 'twin.macro';
 
 import { usePostCreateBooking } from '../../../apis/hooks/bookingHooks';
-import { headers } from '../../../apis/constants';
-import endpoint from '../../../apis/endpoint';
 import Button from '../../Utils/Button';
 import CardCatalog from '../../Catalog/CardCatalog';
 import ConfirmNavigation from './Cart/ConfirmNavigation';
@@ -37,13 +33,6 @@ const InputCart: React.FC<InputCardProps> = ({ placeId }) => {
   const items: { [key: number]: IItem & { qty: number } } = watch('items');
 
   const router = useRouter();
-
-  const options = {
-    headers: {
-      ...headers,
-      Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
-    },
-  };
 
   const { mutateAsync, isLoading } = usePostCreateBooking();
 

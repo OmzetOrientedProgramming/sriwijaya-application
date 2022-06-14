@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import tw, { styled, css } from 'twin.macro';
 import { useRouter } from 'next/router';
 import Router from 'next/router';
@@ -174,8 +173,7 @@ function getStateCard(
             vertical-align: middle;
             padding-left: 16px;
           `}
-        >
-        </div>
+        ></div>
       </div>
     );
   }
@@ -194,7 +192,9 @@ function getStateCard(
     );
   } else if (state === 3) {
     return (
-      <BookingButton url={`/booking-saya/${propsId}/review`}>Beri Penilaian</BookingButton>
+      <BookingButton url={`/booking-saya/${propsId}/review`}>
+        Beri Penilaian
+      </BookingButton>
     );
   } else if (state === 4) {
     return <BasicStateCard hexColor="#FE3131">Gagal</BasicStateCard>;
@@ -204,7 +204,7 @@ function getStateCard(
 const BookingCard: React.FC<BookingCardProps> = (props) => {
   const router = useRouter();
   if (!router.isReady) return <></>;
-  
+
   return (
     <StyledBookingCardContainer tw="shadow-md align-top">
       <StyledCardImageDiv src={props.placeImage} />
@@ -311,7 +311,7 @@ const BookingButton: React.FC<BookingButtonProps> = ({ children, url }) => {
   return (
     <a>
       <button
-        type='button'
+        type="button"
         css={[
           css`
             box-shadow: 0px 3px 0px 0px #888888;
@@ -336,4 +336,4 @@ const BookingButton: React.FC<BookingButtonProps> = ({ children, url }) => {
 
 const handleButton = (url: string) => {
   Router.push(url);
-}
+};

@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Drawer } from '../Drawer';
 import Button from '../Utils/Button';
 import 'twin.macro';
@@ -23,8 +22,8 @@ const SortForm = ({
   setIsOpen,
   setPage,
 }: SortFormProps): JSX.Element => {
-  const handleSubmit = (sort: string, isSorted: boolean) => {
-    setSort(sort);
+  const handleSubmit = (sortSubmit: string, isSorted: boolean) => {
+    setSort(sortSubmit);
     setLatest(isSorted);
     setRating(!isSorted);
     setPage(1);

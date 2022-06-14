@@ -17,7 +17,6 @@ const InputVisitor: React.FC<InputVisitorProps> = (props) => {
   const { placeName, placeImage, minVisitor, maxVisitor } = props;
   const {
     register,
-    handleSubmit,
     formState: { errors },
     watch,
     setValue,

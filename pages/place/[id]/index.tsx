@@ -36,11 +36,7 @@ const PlaceDetail: React.FC = () => {
     }
   );
 
-  const {
-    data: dataReview,
-    status: statusReview,
-    error: errorReview,
-  } = useGetReviewRating(
+  const { data: dataReview, status: statusReview } = useGetReviewRating(
     {
       placeID: stringID,
       page: 1,

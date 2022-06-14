@@ -1,6 +1,5 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { useRouter } from 'next/router';
 import moment from 'moment';
 import currency from 'currency.js';
 import 'twin.macro';
@@ -16,7 +15,7 @@ interface InputResultProps {
 
 const InputResult: React.FC<InputResultProps> = (props) => {
   const { placeName, placePrice } = props;
-  const { watch, handleSubmit } = useFormContext();
+  const { watch } = useFormContext();
   const { step, setStep, maxStep } = useContext(BookingFormContext);
 
   const [count, date, startTime, endTime] = watch([

@@ -132,7 +132,7 @@ const InputPhone: React.FC<InputPhoneProps> = (props) => {
                       )
                     );
                   }
-                  err.response.data.errors?.forEach((response: string) =>
+                  err.response.data.errors?.map((response: string) =>
                     toast.error(capitalize(response), {
                       position: 'top-right',
                     })

@@ -16,7 +16,6 @@ export type getListPlacesParams = {
   lng: number;
 };
 
-
 export const getListPlaces = async (params: getListPlacesParams) => {
   const options = {
     headers: {
@@ -24,8 +23,8 @@ export const getListPlaces = async (params: getListPlacesParams) => {
       Authorization: `Bearer ${nookies.get(null)?.accessToken}`,
     },
     params,
-    paramsSerializer: (params: getListPlacesParams) => {
-      return qs.stringify(params, { arrayFormat: 'repeat' });
+    paramsSerializer: (param: getListPlacesParams) => {
+      return qs.stringify(param, { arrayFormat: 'repeat' });
     },
   };
   const response = await axios.get(endpoint.place, options);

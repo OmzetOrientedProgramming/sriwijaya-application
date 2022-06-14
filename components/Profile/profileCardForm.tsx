@@ -349,7 +349,7 @@ const StyledProfileCardImageEditDiv = styled.div<StyledProfileCardImageDivEditPr
 `;
 
 const formatDateOfBirthField = (dateOfBirth: Date) => {
-  return !(dateOfBirth.getTime() === new Date('0001-01-01T00:00:00Z').getTime())
+  return dateOfBirth.getTime() !== new Date('0001-01-01T00:00:00Z').getTime()
     ? dateOfBirth.toISOString().substring(0, 10)
     : undefined;
 };
